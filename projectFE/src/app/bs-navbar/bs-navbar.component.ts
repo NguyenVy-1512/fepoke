@@ -73,6 +73,13 @@ export class BsNavbarComponent implements OnInit {
     this.authenticationService.getProducts().subscribe((data) => {
       this.products = data;
       this.product$ = [];
+      if(this.search == '')
+      {
+        this.product$ = this.products;
+        this.search = 'product'
+        this.router.navigate(['/search/'+ this.search]);
+      }
+      else{
       for (var i = 0; i < this.products.length; i++) {
           var string = this.products[i].name.toLowerCase();
         if (string.indexOf(this.search) > -1) {
@@ -80,6 +87,7 @@ export class BsNavbarComponent implements OnInit {
             this.product$.push(this.products[i]);
         }
       }
+    }
       console.log(this.product$);
       this.data.changProductlistSearch(this.product$);
     });

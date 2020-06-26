@@ -20,6 +20,7 @@ export class ProductDetailComponent implements OnInit {
   products: products[] = [];
   product$: products[] = [];
   p: products;
+  cate: string[];
   quantity: number[];
   flag: boolean = false;
   setcard: boolean;
@@ -40,6 +41,7 @@ export class ProductDetailComponent implements OnInit {
     this.getProduct(this.productid);
     //this.data.currentp.subscribe(p => this.p = p)
     console.log(this.p);
+
     this.productid = this.route.snapshot.url[1].path;
     //this.getProduct(this.productid);
     // lấy số lượng sản phẩm, nếu đã có trong giỏ hàng thì lấy số đó, nếu chưa có set về 1

@@ -62,4 +62,11 @@ export class ProductFormComponent implements OnInit {
       this.router.navigate(['/admin/products']);
     });
   }
+  ondelete(){
+    this.productid = this.route.snapshot.url[2].path;
+    this.prductsService.deleteProduct(this.productid).subscribe(
+      res => {console.log('xóa thành công');
+      this.router.navigate(['/admin/products']);
+    });
+  }
 }

@@ -37,7 +37,7 @@
                     <tbody>
                         <tr *ngFor = "let order of orders; index as i">
                             <td> <a data-toggle="modal" data-target="#myModal">{{order._id}}</a> </td>
-                            <td> <p data-toggle="modal" data-target="#myModal">{{products[i].name}} x {{order.quantity}}</p> </td>
+                            <td> <p data-toggle="modal" data-target="#myModal">{{order.quantity}}</p> </td>
                             <td>{{order.receiver}}</td>
                             <td>{{order.phone}}</td>
                             <td>{{order.address}}</td>

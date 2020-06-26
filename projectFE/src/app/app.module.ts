@@ -5,6 +5,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule} from 'ng2-charts';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -83,6 +84,7 @@ const appRoutes: Routes = [
   { path: 'admin/orders/list', component: OrdersListComponent},
   { path: 'category/:idcate', component: CategoryComponent},
   { path: 'search/:idserch' , component: SearchComponent},
+  { path: 'search/' , component: SearchComponent},
   { path: 'vclteam' , component: WebInfoComponent},
 ];
 
@@ -130,6 +132,7 @@ const appRoutes: Routes = [
     //ChatDialogComponent,  
   ],
   imports: [
+    Ng5SliderModule,
     BrowserModule,
     ReactiveFormsModule,
     NgxPaginationModule,

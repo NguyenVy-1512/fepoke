@@ -1,0 +1,18 @@
+<ul class="list-group">
+    <div class="headline">
+            <span class="far fa-user-circle" style="margin-top: 10px;"></span><p>Admin </p> 
+        </div>
+        <li class="list-group-item cl" routerLink="/admin/dashboard">
+            <i class="fas poke"></i>Dashboard</li>
+        <li class="list-group-item cl" routerLink="/admin/noti">
+            <i class="fas fa-bell"></i>Notification <span class="badge badge-pill badge-danger">8</span></li>
+        <li class="list-group-item cl" routerLink="/admin/users">
+            <i class="fas fa-users"></i> Users</li>
+        <li class="list-group-item cl" routerLink="/admin/products">
+            <i class="fas fa-box-open"></i>Products</li>
+        <li class="list-group-item cl" routerLink="/admin/orders">
+            <i class="fas fa-box"></i>Orders</li>
+        <li class="list-group-item cl" (click) ="onisproduct()" routerLink="/admin/products/new">
+            <i class="fas fa-edit"></i>Product Form</li>
+        <li (click)="logout()" class="list-group-item cl">Log Out</li>
+</ul>

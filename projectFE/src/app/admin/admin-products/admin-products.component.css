@@ -1,0 +1,296 @@
+.col {
+  padding: 20px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  padding-bottom: 200px;
+}
+
+.sticky-top {
+top: 0;
+}
+
+.container-fluid {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 
+  3px 5px 14px 0 #f5f5f5; 
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+background: #242424; 
+}
+
+.my-pagination /deep/ .ngx-pagination li {
+background-color: none;
+background: none;
+text-align: center;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-next a{
+text-decoration: none;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-next a:hover{
+  background-color: #242424;
+  color: white;
+  }
+
+  .my-pagination /deep/ .ngx-pagination .pagination-previous a{
+    text-decoration: none;
+    }
+  
+    .my-pagination /deep/ .ngx-pagination .pagination-previous a:hover{
+      background-color: #242424;
+      color: white;
+      }
+
+
+.my-pagination /deep/ .ngx-pagination a:hover {
+background-color: white;
+}
+
+.my-pagination {
+font-size: 13px;
+}
+
+.col-2 {
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+}
+
+.col-2:after {
+content: " ";
+display: block;
+width: 4px;
+height: 40px;
+top: 263px;
+left: 0;
+background: #d93a3a;
+position: absolute;
+}
+
+.col-10 {
+  box-shadow: inset 2px -5px 14px 0 #f5f5f5 ;
+  border-left: 1px solid #eeeeee;
+}
+
+.fu{
+  position: relative;
+  bottom: 0px;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.fu:hover{
+  bottom: 3px;
+  cursor: pointer;
+}
+
+input::placeholder {
+  font-size: small;
+}
+
+table thead th {
+  border: none;
+}
+
+table {
+  border: none;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  align-items: center;
+  font-family: 'Share Tech Mono', monospace;
+  background: #242424;
+  color: #fff;
+  padding-right: 20px;
+  padding-left: 20px;
+  height: 40px;
+  transition: 0.2s;
+  border: 1px solid #e0e0e0;
+  box-shadow: 
+  3px 5px 14px 0 #f5f5f5; 
+}
+
+.btn:hover {
+  box-shadow:
+0 1px 1.1px rgba(0, 0, 0, 0.024),
+0 2.8px 3.1px rgba(0, 0, 0, 0.035),
+0 6.6px 7.5px rgba(0, 0, 0, 0.046),
+0 22px 36px rgba(0, 0, 0, 0.07);
+}
+
+
+
+h4 {
+font-family: 'Share Tech Mono', monospace;
+font-weight: 600;
+}
+
+th {
+  border: none;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+}
+
+
+input {
+border: 1px solid #e0e0e0;
+box-shadow: 
+3px 5px 14px 0 #f5f5f5; 
+border-radius: 5px;
+width: 50%;
+font-size: small;
+height: 40px;
+}
+
+
+input:focus  {
+box-shadow: none;
+border: 1px solid #242424;
+}
+
+input:placeholder-shown {
+padding-left: 15px;
+}
+
+.besa {
+  margin-bottom: 20px;
+  display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+
+
+.popup {
+  margin: 100px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px 15px 3px 3px ;
+  width: 300px;
+  height: 260px;
+  position: relative;
+  transition: all 5s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.popup .close {
+  position: absolute;
+  font-size: 15px;
+  text-decoration: none;
+  color: #d93a3a;
+  opacity: 1;
+  display: flex;
+  height: 21px;
+  width: 21px;
+  border-radius: 100px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  top: 5px;
+  right: 5px;
+  transition: 0.1s;
+}
+
+.fa-question-circle{
+  color: yellowgreen;
+  opacity: 0.7;
+  margin-top: 30px;
+}
+
+.are {
+font-weight: 700;
+margin-top: 10px;
+margin-bottom: 0px;
+color: #242424;
+}
+
+.quote {
+    font-family: 'Noto Sans', sans-serif;
+font-size: 13px;
+margin-bottom: 30px;
+opacity: 0.6;
+letter-spacing: 1px;
+}
+
+.popup .close:hover {
+  color: white;
+  background: linear-gradient(to right, #d31027, #ea384d);
+  top: 0px;
+  right: 0px;
+  height: 30px;
+  width: 30px;
+  box-shadow: 0 3px 7px 0 rgba(255, 72, 72, 0.3);
+}
+
+.popup .content {
+    margin-bottom: 30px;
+}
+
+.btnn {
+  height: 40px;
+  width: 100px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(to left, yellowgreen, rgb(173, 223, 73));
+  position: relative;
+  border: none;
+  transition: 0.2s;
+}
+
+.btnn:hover {
+  box-shadow: 
+  0 1px 0 0 #eeeeee,
+  3px 5px 14px 0 #f5f5f5; 
+  background: linear-gradient(to left, yellowgreen, rgb(188, 233, 97));
+}
+
+
+.action {
+  background: transparent;
+border: none;
+  position: relative;
+}
+
+.action:after {
+  position: absolute;
+  width: 50px;
+  height: 24px;
+  content: " ";
+  display: flex;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  background: #55555588;
+  left: 50%;
+  margin-left: -25px;
+  font-size: 12px;
+  color: white;
+  transition: 0.2s;
+  opacity: 0;
+}
+
+.action:hover:after {
+  opacity: 1;
+  transform: translateY(4px);
+}
+
+.edit:after {
+content: "Edit";
+}
+
+.delete:after {
+content: "Delete";
+}

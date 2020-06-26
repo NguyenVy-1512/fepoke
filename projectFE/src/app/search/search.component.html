@@ -1,0 +1,103 @@
+<div class="container-fluid">
+
+    <!-- dòng định hướng cho trang -->
+    <ul class="breadcrumb">
+        <button class="back">BACK</button>
+        <li><a href="#">Home</a></li>
+        <li>Grass</li>
+    </ul>
+
+    <!-- hiển thị category và sản phẩm -->
+    <div class="row no-gutters">
+
+        <!-- category nè -->
+        <div class="col col-2" id="cat">
+            <div class="category">
+                <product-filter></product-filter>
+            </div>
+        </div>
+<!--div class="col" style="overflow: hidden;" (ngOninit)="ngOninit()">
+
+    <div-- class="container" id="navbar">
+        <div class="box-1">
+            <div class="sub">
+                <form [formGroup]="searchForm" >
+                <div class="flex-container f1">
+                    
+                    <span class="fa fa-search"></span>
+                    <input formControlName="search" name = "search" type="search" placeholder="Search">
+                
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="box-2">
+            <div class="sub">
+                <div class="flex-container f2">
+                    <span style="margin-left: 5px; margin-right: 3px;">Type</span>
+                    <type></type>
+                    <type></type>
+                </div>
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="sub">
+                <div class="flex-container f3" style="font-weight: 600; ">
+                    <div class="cuc">
+                        <p class="tooltiptext">Price Range</p>
+                        <span>$0 - $</span>
+                        <span style="color: #d63939;" id="value">9</span>
+                        <span style="margin-right: 12px">.00</span>
+                    </div>
+                    <input type="range" class="slider" min="0" max="8" value="8" step="1" id="slider">
+                </div>
+            </div>
+        </div>
+        <div class="box-4">
+            <div class="sub">
+                <div class="flex-container f4">
+                    <span class="fa fa-star"></span>
+                    <span style="margin-left: -10px; opacity: 0.3;">|</span>
+                    <span (click) = "onsearch()" class="fa fa-refresh"></span>
+                </div>
+            </div>
+        </div>
+
+    </!--div-->
+    <div class="col">
+        <!-- tên category và số lượng còn trong kho-->
+        <div class="row category-row">
+
+
+            <!-- chiếc select để đựng category khi thu nhỏ màn hình lại -->
+            <select id="category">
+                <option value="Type1">Type</option>
+                <option value="Normal">Normal</option>
+                <option value="Fire">Fire</option>
+                <option value="Water">Water</option>
+                <option value="Grass">Grass</option>
+                <option value="Electric">Electric</option>
+                <option value="Ice">Ice</option>
+                <option value="Fighting">Fight</option>
+                <option value="Poison">Poison</option>
+                <option value="Ground">Ground</option>
+                <option value="Flying">Flying</option>
+                <option value="Psychic">Psychic</option>
+                <option value="Bug">Bug</option>
+                <option value="Rock">Rock</option>
+                <option value="Ghost">Ghost</option>
+                <option value="Dragon">Dragon</option>
+                <option value="Dark">Dark</option>
+                <option value="Steel">Steel</option>
+                <option value="Fairy">Fairy</option>
+            </select>
+
+        </div>
+   
+        <div class="prod">
+            <product-card  *ngFor="let product of productlistsearch" [product]="product">
+            </product-card>
+        </div>
+    </div>
+    </div>
+</div>

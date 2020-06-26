@@ -1,0 +1,135 @@
+<div class="container" >
+    <ul class="breadcrumb">
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Information</a></li>
+        <li>Payment</li>
+    </ul>
+
+    <div class="row check-out" style="padding-top: 10px;">
+        <div [ngSwitch]="loading"  class="col shipping-info">
+            <h3 style="font-weight: bold;"> Ship to</h3>
+            <form *ngSwitchCase="false" [formGroup]="CheckOut">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input formControlName="name" name ="name" type="name" class="form-control">
+
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input formControlName="phone" name ="phone" type="tel" class="form-control">
+
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <input formControlName="address" name ="address" type="text" class="form-control" >
+
+                </div>
+                <div class="form-group">
+                    <label>Payment Methods</label>
+
+                    <div class="cut">
+
+                        <label class="paym cuc1">
+                            <p class="heo heo1"> <i class="fa fa-credit-card"></i>Credit/Debit Card</p>
+                            <input type="radio" >
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="paym cuc2">
+                            <p class="heo heo2"> <i class="fa fa-money"></i>Cash On Delivery</p>
+                            <input type="radio" >
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+                </div>
+
+            </form>
+            <form *ngSwitchCase="true"  [formGroup]="CheckOut">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input formControlName="name" name ="name" type="name" class="form-control" value={{user.name}}>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input formControlName="phone" name ="phone" type="tel" class="form-control" value={{user.phone}}>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <input formControlName="address" name ="address" type="text" class="form-control" >
+
+                </div>
+                <div class="form-group">
+                    <label>Payment Methods</label>
+
+                    <div class="cut">
+
+                        <label class="paym cuc1">
+                            <p class="heo heo1"> <i class="fa fa-credit-card"></i>Credit/Debit Card</p>
+                            <input type="radio" >
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="paym cuc2">
+                            <p class="heo heo2"> <i class="fa fa-money"></i>Cash On Delivery</p>
+                            <input type="radio" >
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    
+        <div class="col space">
+        </div>
+        <div class="col cart-summary">
+            <div class="card">
+                <div class="card-body">
+                    <h3 style="font-weight:600">Order Summary</h3>
+                    <p *ngIf = "totalproduct" class="Card-text">You have {{totalproduct}} items in your cart.</p>
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let product of productlistcard; index as i" class="list-group-item">
+                        {{quantity[i]}} x {{product.name}}
+                        <div class="float-right">
+                            {{quantity[i] * product.price}}
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        Subtotal
+                        <div *ngIf = "Total" class="float-right" style=" font-weight: bold">
+                            {{Total}}
+                        </div>
+                    </li>
+
+                    <li class="list-group-item"
+                        style="opacity: .8; font-size: 14px; border-top: none; margin-top: -18px;">
+                        Shipping fee
+                        <div class="float-right">
+                            1000
+                        </div>
+                    <li class="list-group-item" style=" font-weight: bold;font-size: 17px;">
+                        Total
+                        <div *ngIf = "Total" class="float-right" style="color: #d93a3a; font-size: 23px;">
+                            {{Total + 1000}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters r">
+        <button routerLink="/shopping-cart" class="btn">Edit Cart</button>
+        <button (click) ="addorder()"  class="btn btn-back">Place Order</button>
+    </div>
+</div>

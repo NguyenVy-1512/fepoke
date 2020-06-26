@@ -1,0 +1,41 @@
+<div class="container">
+
+    <!--ko cần quan tâm chỗ này-->
+    <div class="row r">
+
+        <div class="container ec">
+            <h1 class="far fa-check-circle fa-3x"></h1>
+            <h3 style="font-weight: bold;" class="noti"> Your order has been placed!</h3>
+
+            <p>Order Number : <span style="font-weight: bold;">#12MF34JFN</span> </p>
+         
+
+        </div>
+
+        <div class="button-container">
+            <button class="btn" data-toggle="modal" data-target="#myModal"> Cancel</button>
+            <button routerLink="/" class="btn btn-back"> Continue Shopping</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- thêm event cho button trong này -->
+<div id="myModal" class="modal">
+    <div class="popup">
+
+        <!-- khu vực này ko cần quan tâm -->
+        <i class="far fa-smile fa-2x"></i>
+        <h3>Are you sure?</h3>
+        <p style="margin-bottom:-10px; margin-top:-10px; opacity: .5;">chak chua za?</p>
+        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
+        <!-- khu vực này ko cần quan tâm -->
+
+        <div class="content">
+            <!-- bỏ nó vào div content để căn giữa cho nó -->
+            <button routerLink="/cancel-order" data-dismiss="modal" class="btn btnn"></button>
+        </div>
+    </div>
+</div>

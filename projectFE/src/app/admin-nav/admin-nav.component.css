@@ -1,0 +1,89 @@
+
+.headline {
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.poke{
+    height: 17px;
+    position: relative;
+}
+
+.poke:after {
+    content: " ";
+    position: absolute;
+    width: 20px;
+    border-radius: 20px;
+    height: 20px;
+    background: linear-gradient(to bottom, #d93a3a 50%, #fff 50%);
+    box-shadow: inset 0 0 0 2px #242424;
+    transition: 0.2s;
+}
+
+
+.poke:before {
+    content: " ";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: inset 0 0 0 2px #242424;
+    left: 50%;
+    margin-left: -7px;
+    top: 50%;
+    margin-top: -3px;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.cl:hover .poke:after {
+    height: 26px;
+    width: 26px;
+    transform: translateX(-6px) translateY(-6px);
+    background: linear-gradient(to top, #d93a3a 50%, #fff 50%);
+    box-shadow: inset 0 0 0 3px #242424;
+}
+
+.cl:hover .poke:before {
+    height: 12px;
+    width: 12px;
+    transform: translateX(-5px) translateY(-5px);
+    box-shadow: inset 0 0 0 3px #242424;
+}
+
+.fas {
+    width: 25px;
+    font-size: 17px;
+}
+
+.list-group-item {
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 15px;
+    background: transparent;
+    color: #444444;
+}
+
+.list-group {
+    width: 100%;
+}
+
+.cl:hover {
+    cursor: pointer;
+    background: #f6f6f6;
+padding-left: 25px;
+}
+
+.cl {
+    transition: 0.1s;
+}
+
+
+  

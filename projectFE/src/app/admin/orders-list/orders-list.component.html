@@ -1,0 +1,68 @@
+
+        <div class="row">
+            <div class="col col-2" >
+            <admin-nav></admin-nav>
+            </div>
+            <div class="col col-10">
+
+                    <div class="besa">
+                   
+                            <h4>ORDERs</h4>
+                                 <input type="search" class="form-control"  [(ngModel)]="searchText" placeholder="Search by Order number">
+                                 <div class="change-view-buttons">
+                                    <span style="font-family: monospace; font-size: 12px;">CHANGE VIEW</span>
+                                        <button class="change-view list-view" ><i class="fas fa-list"></i></button>
+                                        <button class="change-view card-view" routerLink="/admin/orders"><i class="fas fa-th-list"></i></button>    
+                                    </div>  
+                             </div>
+
+               
+            <div class="container-fluid">
+                <table class="table">
+                  
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Order Number</th>
+                            <th style="width: 25%;">Summary</th>
+                            <th style="width: 25%;">User ID</th>
+                            <th style="width: 15%;">Price</th>
+                            <th style="width: 10%;">Actions</th>
+                        </tr>
+                    </thead>
+                   
+                        <tr *ngFor = "let order of orders | grdFilter: {_id: searchText}; let i=index">
+                            <td> 
+                                <a data-target="#myModal1" data-toggle="modal">{{order._id}}</a>
+                                </td>
+                            <td>{{products[i].name}} x {{order.quantity}}</td>
+                            <td>{{order.userID}}</td>
+                            <td>{{products[i].price * order.quantity + 1000}}</td>
+                            <td style="font-size: 16px;">
+                                <span class="fas fa-check" style="color: yellowgreen; padding-left: 5px;"> </span>
+                                <span data-toggle="modal" data-target="#myModal2" class="fas fa-times" style="color: #e73939; padding-left: 15px;"> </span>
+                            </td>
+                        </tr>
+                   
+                    </table>
+                </div>
+            </div>
+        </div>    
+
+    <div *ngFor = "let order of orders; let i=index" id="myModal1" class="modal">
+        <div class="car" >
+        <order-card  [order] = "order" [product] ="products[i]"></order-card>
+    </div>
+    </div>
+
+    
+    <div id="myModal2" class="modal">
+            <div class="popup">
+                    <i class="far fa-question-circle fa-3x"></i>
+                    <h4 class="are">Are you sure?</h4>
+                    <p class="quote">This order will be canceled!</p>
+                    <div class="close"  data-dismiss="modal"><i class="fas fa-times"></i></div>
+                    <div class="content">
+                       <button (click)= "cancel()" data-dismiss="modal" class="btnn">CONFIRM</button>
+                    </div>
+                </div>
+        </div>

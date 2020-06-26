@@ -1,0 +1,45 @@
+body {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+chat-dialog {
+    position: absolute;
+    z-index: 4;
+}
+
+main {
+    flex:1;
+}
+
+footer {
+    padding-top: 20px;
+    height: 80px;
+    color: white;
+    justify-content: center;
+    font-size: 12px;
+    width:100%;
+    background: #242424;
+}
+
+
+.co {
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-top: -5px; 
+color: #7a7a7a; 
+font-family: 'Noto Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #b8b8b8;
+}
+
+a:hover {
+color: white;
+}

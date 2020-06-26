@@ -1,0 +1,75 @@
+.container {
+    background: white;
+    padding: 20px;
+}
+
+.btn {
+  border-radius: 0;
+  outline: none;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 100px; 
+  font-size: 15px;
+  font-weight: bold;
+  color: #242424;
+  background:transparent;
+  border: 3px solid #242424;
+  height: 50px;
+width: 210px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:after{
+  content: "CONTINUE SHOPPING";
+  position: absolute;
+  color: #242424;
+  left: 50%;
+  margin-left: -70px;
+  top: 50%;
+  margin-top: -10px;
+  transition: 0.2s;
+}
+
+.btn::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f07a";
+  font-size: x-large;
+  position: absolute;
+  color: #242424;
+  left: 50%;
+  margin-left: -12px;
+  top: 50%;
+  margin-top: 35px;
+  transition: 0.2s;
+}
+
+.btn:hover:after {
+  margin-top: -50px;
+}
+
+.btn:hover::before {
+  margin-top: -18px;
+}
+
+.far {
+color: yellowgreen;
+}
+
+.ec {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.col {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+@media (max-width:800px) {
+  .ec {
+    margin-bottom: 40px;
+  }
+}

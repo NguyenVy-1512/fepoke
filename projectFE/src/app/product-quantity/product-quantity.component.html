@@ -1,0 +1,16 @@
+<div [ngSwitch]="flag">
+    <div *ngSwitchCase="false" class="container" method="POST">
+        <button [disabled]="Counter == 1" class="quanbtn btn" (click)="Decre1()">-</button>
+
+        <input class="quanbtn quantity" type="text" value={{Counter}}>
+
+        <button [disabled]="Counter == 10" class="quanbtn btn" (click)="Incre1()">+</button>
+    </div>
+    <div *ngSwitchCase="true" class="container" method="POST">
+        <button [disabled]="Counter == 1" class="quanbtn btn" (click)="Decre()">-</button>
+
+        <input class="quanbtn quantity" type="text" value={{Counter}}>
+
+        <button [disabled]="Counter == 10" class="quanbtn btn" (click)="Incre()">+</button>
+    </div>
+</div>

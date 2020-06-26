@@ -1,0 +1,281 @@
+.row {
+    border-radius: 0px;
+    background: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.container {
+    width: 860px;
+    margin-top: 100px;
+    box-shadow: 5px 10px 30px 0 rgba(82, 82, 82, 0.418);
+}
+
+.dashi {
+    margin-top: -25px;
+    padding-top: 0;
+    background: transparent;
+    text-align: right;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: row;
+}
+
+
+    p {
+        font-size: 14px;
+    }
+
+    .bn {
+        height: 50px;
+        width: 150px;
+        background: #242424;
+        font-weight: 600;
+        font-family: 'Share Tech Mono', monospace;
+        position: absolute;
+        right: 0;
+        border: none;
+        color: white;
+      }
+
+      .bn:hover {
+          background: #d93a3a;
+      }
+
+      .top {
+        display: flex; 
+        flex-direction: row;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+.s {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.address {
+    margin-bottom: 16px;
+}
+
+.list-group-item {
+    height: 30px;
+    font-size: 13px;
+    padding-top: 0;
+   border: none;
+}
+
+.a {
+    padding-left: 10px;
+}
+.tim {
+    font-weight: 600;
+    font-size: 13px;
+    opacity : 0.3;
+}
+
+.dash {
+    font-size: 20px; 
+    font-weight: 900; 
+    margin-top: -25px; 
+    margin-bottom: 10px; 
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.col {
+    border-right: 1px solid #e0e0e0;
+    padding-left: 0px;
+    padding-right: 0px;
+    flex: 1;
+}
+
+label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: #242424;
+}
+
+.tien {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 900;
+}
+
+.bulk {
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 8px;
+}
+
+.besa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.ac {
+    margin-bottom: 8px;
+}
+
+
+/*
+
+.btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+
+
+.cancel {
+padding-left: 12px;
+    color: #fff;
+    background: #242424;
+}
+
+
+
+.check {
+    background: rgb(227, 252, 178);
+    color: yellowgreen;
+    box-shadow: 0 0 0 1px yellowgreen;
+}
+
+.check:hover {
+    background: yellowgreen;
+    color: white;
+}
+
+.cancel:hover {
+    width: 40px;
+    height: 40px;
+    transform: translateY(5px);
+    box-shadow: 0 5px 5px 0 rgba(255, 137, 137, 0.418);
+}
+
+.btn:focus {
+    background: #d93a3a;
+    color: #fff;
+    box-shadow: 0 0 0 10px #ffcccc ;
+}
+*/
+.popup {
+    margin: 120px auto;
+    padding: 20px;
+    background: #242424;
+    border-radius: 0 ;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    box-shadow:
+  0 3.7px 2.7px rgba(0, 0, 0, 0.022),
+  0 9.4px 6.9px rgba(0, 0, 0, 0.031),
+  0 19.1px 14.2px rgba(0, 0, 0, 0.039),
+  0 39.4px 29.2px rgba(0, 0, 0, 0.048),
+  0 108px 80px rgba(0, 0, 0, 0.07)
+;
+  }
+  
+  .popup .close {
+    position: absolute;
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+    opacity: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 37px;
+    width: 37px;
+    top: 0;
+    right: 0;
+    padding-top: 10px;
+    padding-right: 10px;  
+    cursor: pointer;
+border-radius: 100px 0 100px 100px;
+  }
+
+  .popup .close:hover {
+      color: #d93a3a;
+      background: #fff;
+  }
+  
+  .popup .content {
+   justify-content: center;
+  }
+
+  .btnn {
+    height: 50px;
+    width: 100px;
+    background: #d63a3a;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border: none;
+  }
+  
+
+  .btnn:after{
+    content: "CONFIRM";
+    position: absolute;
+    color: white;
+    left: 50%;
+    margin-left: -31px;
+    top: 50%;
+    margin-top: -12px;
+    transition: 0.2s;
+  }
+  
+  .btnn::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f2ed";
+    font-size: 24px;
+    position: absolute;
+    color: white;
+    left: 50%;
+    margin-left: -10px;
+    top: 50%;
+    margin-top: 35px;
+    transition: 0.2s;
+  }
+  
+  .btnn:hover:after {
+    margin-top: -50px;
+  }
+  
+  .btnn:hover::before {
+    margin-top: -18px;
+  }
+  
+  
+@media only screen and (max-width:800px)
+ {
+     .order-info {
+         flex-direction: column;
+     }
+     
+     .summary {
+         border-top: 1px solid #e0e0e0;
+     }
+
+     .ship-to {
+border-top: 1px solid #e0e0e0;
+     }
+
+     .container {
+         width: 400px;
+     }
+
+     .bn {
+         background: var(--do);
+     }
+ }

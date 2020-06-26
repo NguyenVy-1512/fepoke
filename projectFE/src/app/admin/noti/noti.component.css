@@ -1,0 +1,187 @@
+.col {
+    padding: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    padding-bottom: 200px;
+}
+
+.container-fluid {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 0 #eeeeee,
+    3px 5px 14px 0 #f5f5f5;     
+    margin-bottom: 20px;
+    padding: 15px;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.col-2 {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+}
+
+.col-2:after {
+    content: " ";
+    display: block;
+    width: 4px;
+    height: 40px;
+    top: 185px;
+    left: 0;
+    background: #d93a3a;
+    position: absolute;
+  }
+
+.col-10 {
+    box-shadow: inset 2px -5px 14px 0 #f5f5f5 ;
+    border-left: 1px solid #eeeeee;
+    overflow: hidden;
+}
+
+.con {
+    position: relative;
+    transition: 0.2s;
+}
+
+.con:hover .container-fluid{
+    cursor: pointer;
+    box-shadow:
+    0 6.7px 5.3px rgba(0, 0, 0, 0.02),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.03)
+  ;
+  border-radius: 10px 20px 20px 10px;
+}
+
+.con:hover {
+    padding-right: 50px;
+}
+
+.con:hover .btn{
+    right: -10px;
+}
+
+i {
+    padding-top: 8px;
+    font-size: 30px;
+    width: 45px;
+    position: relative;
+}
+
+i:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 15px;
+    display: block;
+    position: absolute;
+}
+
+.fa-user:after {
+    content: "\f02e ";
+    color: yellowgreen;
+    top: 0;
+    right: 8px;
+}
+
+.fa-lemon:after {
+    content: "\f005 ";
+    color: #ffc107;
+    top: 0px;
+    right: 8px;
+}
+
+.fa-trash-alt:after {
+    content: "\f00d ";
+    font-family: "Font Awesome 5 Free";
+    color: #d93a3a;
+    top: 0px;
+    right: 8px;
+    font-size: 20px;
+    mix-blend-mode: multiply;
+}
+
+.fa-meh:after {
+    content: "\f043 ";
+    font-family: "Font Awesome 5 Free";
+    color: #486dc2;
+    top: 0px;
+    right: 8px;
+    font-size: 20px;
+    transform: rotateY(180deg);
+}
+
+.fa-pagelines:after {
+    content: "\f055 ";
+    font-family: "Font Awesome 5 Free";
+    color: #7cc1f0;
+    top: 0px;
+    right: 8px;
+    font-size: 20px;
+    mix-blend-mode: multiply;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: -3px;
+}
+
+.detail {
+    padding-left: 10px;
+    font-size: 15px;
+    margin-top: -12px;
+    margin-bottom: 0px;
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.datetime {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding-right: 10px;
+font-size: 12px;
+}
+
+.time {
+    margin-top: -12px;
+    margin-bottom: 0px;
+}
+
+.btn {
+    position: absolute;
+    font-size: 30px;
+    top: 8px;
+    right: -70px;
+    transition: 0.2s;
+    color: #dadada;
+}
+
+.btn:hover {
+    color: #242424;
+}
+
+.fa-circle {
+    position: absolute;
+    top: 0;transition: 0.2s;
+    right: 0;
+    font-size: 18px;
+}
+
+.con:hover .fa-circle {
+    top: 50%;
+    margin-top: -5px;
+    right: 45px;
+    font-size: 10px;
+}
+
+.con:active .fa-circle {
+    font-size: 0px;
+}

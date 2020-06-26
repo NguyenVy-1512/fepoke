@@ -1,0 +1,67 @@
+<div class="container-fluid" (ngOninit)="ngOnInit()" >
+
+    <ul class="breadcrumb">
+        <button class="back">BACK</button>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/category"></a></li>
+        <li>{{p.name}}</li>
+    </ul>
+    <h2 class="cat-name">GRASS <span class="remaining-products">(23 products)</span> </h2>
+
+    <div class="row no-gutters" style="margin-top: 20px;">
+ <div class="col">
+            <div class="detail">
+                <div class="row no-gutters no r-in">
+        <div class="col col-2">
+            <div class="category">
+                <product-filter></product-filter>
+            </div>
+        </div>
+
+        <div class="col col-10">
+            <div class="detail"  >
+               
+                <div class="row no-gutters no r-in">
+                    <div class="col-5 image">
+                        <img src={{p.imgurl}} alt="Product-image"
+                            style="width: 100%;">
+                    </div>
+                    <div class="col-7" style="padding-left: 50px; padding-top: 30px;">
+                        <p class="product-number">{{p.id}}</p>
+                        <h2 class="product-name">{{p.name}}</h2>
+                        <h6 class="type1">Grass <span>/ Poison</span> </h6>
+                        <h2 class="product-price">{{p.price}}</h2>
+                        <p class="old-price">{{p.price + (p.price * 10/100)}}</p>
+                        <div class="product-quantity">
+                            <product-quantity
+                            [Counter] = "counter"
+                            [id] = "id"
+                            [flag] = "flag"
+                            (valueChange2)="notifyMessage($event)"
+                            (valueChange3)="notifyMessage1($event)">
+                            </product-quantity
+                            >
+                        </div>
+                        <button class="btn add-to-cart-btn"  (click) = "addtocard()"></button>
+                    </div>
+                </div>
+               
+                <div *ngIf='p' class="box-view description">
+                    <h4 class=" headline">Description</h4>
+                    <p>{{p.description}}</p>
+                </div>
+
+                <h4 class=" headtype">Related Products</h4>
+                <div class="row no-gutters r-in">
+                    <div class="conbo">
+
+                        <div class="prod">
+                            <product-card *ngFor="let product of products" [product]="product"></product-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

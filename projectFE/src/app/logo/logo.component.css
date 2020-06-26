@@ -1,0 +1,155 @@
+.semi {
+    width: 26px;
+    height: 13px;
+    border-radius: 100px 100px 0 0;
+     background: #d93a3a;
+     box-shadow: 0 0 0 4px #242424;
+     position: relative;
+}
+
+.semi:after {
+    content: " ";
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: #242424;
+    border-radius: 100px 100px 0 0;
+    bottom: 0;
+    right: 50%;
+    margin-right: -6px;
+}
+
+.bot {
+    display: inline-block;
+    width: 34px;
+    height:17px;
+    overflow: hidden;
+    position: absolute;
+    padding-left: 4px;
+    margin-top: 17px;
+transition: 0.2s;
+}
+
+.top {
+    display: inline-block;
+    width: 34px;
+    height:17px;
+    overflow: hidden;
+    position: absolute;
+    padding-top: 4px;
+    padding-left: 4px;
+    transition: 0.3s;
+}
+
+.white  {
+    background: white;
+    transform: rotate(180deg);
+}
+
+.ball {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height:60px;
+    padding-top: 14px;
+    position: relative;
+    margin-left: 13px;
+    z-index: 2;
+}
+
+.ball:hover .top{
+transform: translateX(10px)
+           rotate(-35deg) ;
+padding-top: 4px;
+height: 21px;
+}
+
+.ball:hover .bot{
+    transform: translateX(48px)
+               translateY(-17px)
+               rotate(-145deg) ;
+               height: 21px;
+               padding-top: 4px;
+}
+
+
+.ball:hover .title {
+    transform: translateX(40px);
+    font-size: 20px;
+    opacity: 1;
+}
+
+span {
+    margin-left: -2px;
+}
+
+
+.ball:hover i {
+    transform: rotate(10deg);
+}
+
+.fa-circle{
+    font-size: 10px;
+    color: #d93a3a;
+    position: absolute;
+    transition: 0.3s;
+    top: 22px;
+    left: 15px;
+    z-index: 1;
+    margin-left: 13px;
+    }
+    
+    .fa-pagelines{
+        font-size: 24px;
+    color: yellowgreen;
+    transform: rotate(135deg);
+    position: absolute;
+    transition: 0.3s;
+    top: 23px;
+    left: 14px;
+z-index: 1;
+margin-left: 13px;
+    }
+
+.ball:hover ~ .fa-circle{
+top: 39px;
+left: 36px;
+
+}
+
+.ball:hover ~ .fa-pagelines{
+top: 40px;
+left: 43px;
+
+}
+
+.long-text {
+    position: absolute;
+    font-size: 10px;
+    font-weight: 600;
+    top: 20px;
+    left: 15px;
+    padding-top: 20px;
+z-index: 1;
+    transition: 0.3s;
+    margin-left: 13px;
+    color: #242424;
+}
+
+
+.ball:hover ~ .long-text {
+    top: 40px;
+    left: 40px;
+}
+
+.ball:hover ~ .h {
+transform: rotate(55deg) translateX(-10px);
+}
+
+.ball:hover ~ .i {
+    transform: rotate(45deg) translateX(-5px);
+}
+
+.ball:hover ~ .excl {
+    transform: rotate(35deg);
+}

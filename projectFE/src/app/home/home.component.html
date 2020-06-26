@@ -1,0 +1,645 @@
+<div class="row" style="overflow: hidden;">
+
+  <div class="column" style="width: 100%; display: flex; flex-direction: column;align-items: center">
+
+    <!-- ảnh bìa -->
+    <div class=" co headimage">
+      <img src="https://i.imgur.com/rItMYD3.png" class="img-cover" alt="" style="margin-bottom:50px">
+    </div>
+
+    <!-- chỗ chứa banner quảng cáo giảm 50% và carousel cho mấy món christmas -->
+    <div class="row" style="width: 100%; overflow: hidden;">
+      <div class="column mainp" style="overflow: hidden;">
+        <!-- banner giảm 50% -->
+        <div class=" coco prom">
+          <img src="https://i.imgur.com/ZfbWxMC.png" class="img" alt="">
+        </div>
+        <!--christmas carousel-->
+        <div class=" co prod ">
+
+          <h4 class="h-text"> CHRISTMAS DEALS </h4>
+
+          <div  class="product-view">
+            <div class="container">
+              <div id="CEI" class="carousel slide" data-ride="carousel">
+                <ol  class="carousel-indicators daucham">
+                  <li  data-target="#CEI" data-slide-to="0" class="active"></li>
+                  <li data-target="#CEI" data-slide-to="1"></li>
+                  <li data-target="#CEI" data-slide-to="2"></li>
+
+                </ol>
+
+                <div  class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="product-row-view">
+                      <product-card  *ngFor="let product of products" [product]="product">
+                      </product-card>
+                    </div>
+                  </div>
+
+                </div>
+                <a class="carousel-control-prev" href="#CEI" role="button" data-slide="prev">
+                  <span class="prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#CEI" role="button" data-slide="next">
+                  <span class="next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+
+            </div>
+            <!-- button xem them -->
+            <!--div class="con">
+              <button class="btn">SEE MORE</button>
+            </!--div-->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- cac the loai product -->
+    <div class=" co c-type">
+
+      <h4 class="h-text"> SHOP BY CATEGORY </h4>
+
+      <div class="cucu">
+        <span class="shop-now" routerLink="/category"> SHOP NOW </span>
+      </div>
+
+      <div class="type-cat">
+        <button routerLink="/category/Normal" class="btnn">
+          <i class="fas fa-circle"></i>
+          <p>Normal</p>
+        </button>
+        <button routerLink="/category/Fire" class="btnn">
+          <i class="fas fa-fire"></i>
+          <p>Fire</p>
+        </button>
+        <button routerLink="/category/Grass" class="btnn">
+          <i class="fas fa-leaf"></i>
+          <p>Grass</p>
+        </button>
+        <button routerLink="/category" class="btnn">
+          <i class="fas fa-tint"></i>
+          <p>Water</p>
+        </button>
+        <button routerLink="/category/Electric" class="btnn">
+          <i class="fas fa-bolt"></i>
+          <p>Electric</p>
+        </button>
+        <button routerLink="/category/Dragon" class="btnn">
+          <i class="fas fa-dragon"></i>
+          <p>Dragon</p>
+        </button>
+        <button routerLink="/category/Ghost" class="btnn">
+          <i class="fas fa-ghost"></i>
+          <p>Ghost</p>
+        </button>
+        <button routerLink="/category/Dark" class="btnn">
+          <i class="fas fa-moon"></i>
+          <p>Dark</p>
+        </button>
+        <button routerLink="/category/Bug" class="btnn">
+          <i class="fas fa-bug"></i>
+          <p>Bug</p>
+        </button>
+        <button routerLink="/category/Flying" class="btnn">
+          <i class="fas fa-feather-alt"></i>
+          <p>Flying</p>
+        </button>
+        <button routerLink="/category/Rock" class="btnn">
+          <i class="fas fa-dice-d6"></i>
+          <p>Rock</p>
+        </button>
+        <button routerLink="/category/Ice" class="btnn">
+          <i class="fas fa-snowflake"></i>
+          <p>Ice</p>
+        </button>
+        <button routerLink="/category/Fairy" class="btnn">
+          <i class="fas fa-spa"></i>
+          <p>Fairy</p>
+        </button>
+        <button routerLink="/category/Steel" class="btnn">
+          <i class="fas fa-gear"></i>
+          <p>Steel</p>
+        </button>
+        <button routerLink="/category/Psychic" class="btnn">
+          <i class="fas fa-bullseye"></i>
+          <p>Psychic</p>
+        </button>
+        <button routerLink="/category/Poison" class="btnn">
+          <i class="fas fa-skull"></i>
+          <p>Poison</p>
+        </button>
+        <button routerLink="/category/Fighting" class="btnn">
+          <i class="fas fa-fist-raised"></i>
+          <p>Fighting</p>
+        </button>
+        <button routerLink="/category/Ground" class="btnn">
+          <i class="fas fa-mountain"></i>
+          <p>Ground</p>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- san pham nhieu luot mua -->
+    <div class=" co prod "style="overflow: hidden;">
+
+      <h4 class="h-text"> BEST SELLERs </h4>
+
+      <div class="product-view">
+
+        <div class="container">
+          <div id="CEI1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators daucham">
+              <li data-target="#CEI1" data-slide-to="0" class="active"></li>
+              <li data-target="#CEI1" data-slide-to="1"></li>
+              <li data-target="#CEI1" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+
+                <div class="product-row-view">
+                  <product-card *ngFor="let product of products1" [product]="product">
+                    </product-card>
+                </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#CEI1" role="button" data-slide="prev">
+              <span class="prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#CEI1" role="button" data-slide="next">
+              <span class="next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <!--div class="con">
+          <button class="btn">SEE MORE</button>
+        </!--div-->
+      </div>
+    </div>
+
+    <!-- ẨN ALL PRODUCT VÀ THAY BẰNG NHẬN XÉT CỦA NGƯỜI DÙNG
+<div class="row allprod">
+  <h4 class="h-text"> ALL PRODUCTs </h4>
+
+  <div class="cucu" style="margin-bottom: 10px;">
+    <span class="shop-now" routerLink="/category"> VIEW ALL </span>
+  </div>
+
+    <div  class="all-product-view"
+       *ngFor="let product of product$" >
+          <product-card
+          (click)="setSelectProduct(product)"
+          [_id] = "product._id"
+          [name] = "product.name"
+          [price] = "product.price"
+          [imgurl] = "product.imgurl"
+         >
+        </product-card>
+    </div>
+</div>
+
+-->
+
+    <div class="row customer-feedback" id="big-screen" style="overflow: hidden;">
+
+      <h4 class="h-text"> CUSTOMERs' FEEDBACKs </h4>
+
+      <div class="feedback-view">
+        <div class="container">
+          <div id="user-comment-carousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+            <div class="carousel-inner ">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/raxfdwl.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Sa</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Xin chào cô chú xin chào các bạn</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/YgDOOTW.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Bu</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Web nhìn cũng được, giá rẻ hơn shopee</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/YgDOOTW.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Vy</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Happy New Year!!!</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/raxfdwl.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Bi</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Muốn đi nhanh thì đi một mình, muốn đi xa thì đi một mình nhưng
+                                đi xa hơn</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/YgDOOTW.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé UIT</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">lam web kho qua :'(</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/lMzN8nB.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Doraemon</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">はじめまして。私はドラえもんです。</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- KHU VỰC NÀY RẤT GHÊ -->
+
+    <div class="row customer-feedback" id="small-screen">
+
+      <h4 class="h-text"> CUSTOMERs' FEEDBACKs </h4>
+
+      <div class="feedback-view">
+        <div class="container">
+          <div id="user-comment-carousel" class="carousel slide" data-interval="2000" data-ride="carousel">
+            <div class="carousel-inner ">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/raxfdwl.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Sa</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Xin chào cô chú xin chào các bạn</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/YgDOOTW.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Bu</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Web nhìn cũng được, giá rẻ hơn shopee</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+
+                <div class="row">
+
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/YgDOOTW.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Vy</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Happy New Year!!!</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="carousel-item">
+                <div class="row">
+
+                  <div class="col">
+
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/raxfdwl.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé Bi</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">Muốn đi nhanh thì đi một mình, muốn đi xa thì đi một mình nhưng
+                                đi xa hơn</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/YgDOOTW.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Bé UIT</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">lam web kho qua :'(</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="card feedback-card">
+                      <div class="card-body">
+                        <div class="column">
+                          <div class="row no-gutters">
+                            <div class="avatar-col">
+                              <img class="avatar" src="https://i.imgur.com/lMzN8nB.png" alt="">
+                            </div>
+
+                            <div class="name-col">
+                              <p class="customer-name"> Doraemon</p>
+                              <p class="customer-class">
+                                NEW CUSTOMER <span class="fas fa-award"></span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col feedback-content">
+                              <p class="feedback-text">はじめまして。私はドラえもんです。</p>
+                              <p class="feedback-time">12/23/2019</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KHU VỰC NÀY RẤT GHÊ -->
+
+
+
+
+
+    <div class="row signup-sign">
+      <div class="cont">
+        <h2 class="keugoi">SIGN-UP DI MOI NGUOI OI!</h2>
+        <button class="bt" routerLink="/sign-up"> SIGN-UP</button>
+      </div>
+    </div>
+
+  </div>
+</div>

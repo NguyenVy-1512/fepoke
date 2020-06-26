@@ -1,0 +1,265 @@
+.col {
+    padding-bottom: 100px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 1400px;
+  padding: 0;
+  padding-right: 0;
+  }
+
+  .row {
+      width: 100%;
+  }
+
+.s {
+    font-size: 13px;
+    flex: 1;
+}
+
+.hang {
+    display: flex;
+    flex-direction: row;
+}
+
+.cot-1 {
+    flex: 1;
+}
+
+
+.cot-2 {
+    flex: 1;
+    margin-left: 30px;
+}
+
+.col-dac-biet {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    background: blueviolet;
+}
+
+
+
+.user-nav{
+    width: 250px;
+}
+
+.img {
+    width: 70px;
+}
+
+.col-4 {
+    margin-left: 60px;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Share Tech Mono', monospace;
+    width: 100%;
+    padding-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+#name {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: -20px;
+}
+
+.ten {
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sa {
+    padding-top: 23px;
+    padding-bottom: 5px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.list-group-item {
+    font-family: 'Share Tech Mono', monospace;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 17px;
+    position: relative;
+    background: transparent;
+}
+
+.list-group-item:hover {
+    color: var(--do);
+    cursor: pointer;
+}
+    .far {
+        width: 30px;
+        height: 30px;
+        margin-top: -10px;
+        padding-top: 6px;
+        margin-right: 5px;
+        text-align: center;
+    align-items: centers;
+        color: var(--den);
+        position: relative;
+    }
+
+input::placeholder {
+    font-size: small;
+}
+
+.col-2 {
+    border-right: 1px solid #e0e0e0;
+}
+
+.sa {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
+}
+
+
+.btn {
+    border-radius: 0;
+    outline: none;
+    font-weight: bold;
+    height : 45px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #242424;
+    background:transparent;
+    border: 3px solid #242424;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  
+  .btn:hover {
+    color: white;
+    background: #242424;
+  }
+  
+
+  .cochu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .cacban {
+      margin-top: 11px;
+      font-family: 'Share Tech Mono', monospace;
+font-weight: 600;
+font-size: 14px;
+transition: 0.2s;
+        cursor: pointer;
+    }
+  .container {
+    background: white;
+    padding: 20px;
+}
+
+:placeholder-shown {
+  padding-left: 0;
+}
+
+::placeholder {
+  font-weight: 500;
+  color: #d4d4d4;
+  font-size: 17px;
+}
+
+input {
+  height: 45px;
+  box-shadow: 0 0 0 1px #cecece;
+  border-radius: 5px;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  border: none;
+}
+
+.form-control:read-only {
+    background: #f0f0f0;
+ box-shadow: 0 0 0 1px #cecece;
+}
+
+input:focus{
+  box-shadow: 0 0 0 2px #242424;
+}
+
+label {
+  color: #525252bb;
+}
+
+.save {
+    background: #242424;
+    color: white;
+}
+
+.save:hover {
+    background: #d93a3a;
+    border: 3px solid #d93a3a;
+}
+
+.alert {
+    text-align: right;
+    height: 30px;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding-top: 5px;
+    padding-right: 5px;
+    font-weight: 600;
+    position: relative;
+    font-family: 'Share Tech Mono', monospace;
+ }
+
+ .alert::after{
+     font-family: "Font Awesome 5 Free";
+     content: "\f06a";
+     font-size: 20px;
+     font-weight: 900;
+     position: absolute;
+     top: -36px;
+     right: 12px;
+ }
+ 
+ .alert-danger {
+    color: #d93a3a;
+ }
+
+ @media only screen and (max-width:900px) {
+    .user-nav{
+        width: 150px;
+    }
+
+    .headline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ten {
+        margin-left: 0;
+    }
+
+}
+
+ @media only screen and (max-width:800px) {
+     #user-nav {
+         display: none;
+     }
+
+     .col-dac-biet {
+        flex-direction: column;
+    }
+
+ }

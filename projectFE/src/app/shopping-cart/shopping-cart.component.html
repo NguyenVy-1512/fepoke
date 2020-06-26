@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row shop-row">
+    <div class="col shop-col">
+      <div class="shopping-cart-title sticky-top">
+        Shopping Cart
+      </div>
+    </div>
+    <div class="col cart-col">
+      <div class="detail">
+        <!-- <button class="btn btn-sm">Clear all items</button>-->
+        <p class="item-in-cart"> You have {{totalproduct}} item(s) in your cart</p>
+        
+        <!--show list item trong gio hang-->
+        <ul>
+          <li>
+            <div class="container item" (ngOnInit)="ngOnInit()" *ngFor="let product of productlistcard; index as i" >
+              <div class="row" >
+                <div class="col"  >
+                  <img class="img-container" src={{product.imgurl}} alt="">
+                  <div class="name-price">
+                    <p class="pro-name" routerLink="/product-detail">{{product.name}}</p>
+                    <p class="pro-price">{{product.price}}</p>
+                  </div>
+                </div>
+
+                <div class="quantity" style="width: 100px;">
+                  <product-quantity
+                  [Counter] = "quantity[i]"
+                  [id] = "i"
+                  [flag] = "flag"
+                  (valueChange)="notifyMessage($event)"
+                  (valueChange1)="notifyMessage1($event)"
+                  >
+                  </product-quantity>
+                </div>
+
+                <div class="col del-sub">
+                  <button  class="del-btn"></button>
+                  <p class="sub-total">{{product.price * quantity[i]}}</p>
+                </div>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+
+      </div>
+   
+      <div class="row boro" *ngIf="totalproduct > 0">
+        <div class="col total">
+          Total <span class="total-price">{{total}}</span>
+          <p style="font-size: 13px; font-weight: 500;">INCLUDING 10% VAT</p>
+        </div>
+      </div>
+
+      <button (click) ="ckeckout()" style="margin-top: 10px;" class="btn">Check Out</button>
+      <img src="https://i.imgur.com/QRH4239.png" alt="" style="width: 100%;" *ngIf="totalproduct == 0">
+      <div class="omg" *ngIf="totalproduct == 0">
+        <a routerLink="/" class="btn btn-back">Continue Browsing</a>
+      </div>
+    </div>
+ </div>
+</div>

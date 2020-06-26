@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="column">
+        <div class="row order-info">
+            <div class="col">
+                <div class="top">
+                    <div class="bulk" style="flex:1">
+                        <label for="">NUMBER</label>
+                        <P>{{order._id}} </P>
+                    </div>
+                    <div class="bulk" style="border-left: 1px solid #e0e0e0; flex:1">
+                        <label for="">DATE</label>
+                        <p>12/12/19</p>
+                    </div>
+                </div>
+                <div class="bulk">
+                    <label for="">ORDER STATUS</label>
+                    <p class="s a">Confirmed <span class="tim">12/12/2019 - 12:45AM</span> </p>
+                    <p class="s a">Packed <span class="tim"> 12/12/2019 - 12:50AM</span></p>
+                    <p class="s a">Delivering <span class="tim">12/12/2019 - 1:00AM</span> </p>
+                    <p class="s a">Delivered <span class="tim">12/13/2019 - 12:45AM</span> </p>
+                </div>
+
+            </div>
+
+            <div class="col summary">
+                <div class="bulk"> <label>SUMMARY</label>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {{order.quantity}} x {{product.name}}
+                            <div class="float-right">
+                                {{order.quantity * product.price}}
+                            </div>
+                        </li>
+
+                        <li class="list-group-item dash dashi">
+                            ____
+                        </li>
+
+                        <li class="list-group-item">
+                            Subtotal
+                            <div class="float-right">
+                                {{order.quantity * product.price}}
+                            </div>
+                        </li>
+
+                        <li class="list-group-item fee">
+                            Shipping fee
+                            <div class="float-right">
+                                $1000
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="col ship-to">
+                <div class="bulk">
+                    <label>SHIP TO</label>
+                    <p class="s name">{{order.receiver}}</p>
+                    <p class="s phone">{{order.phone}}</p>
+                    <p class="s address">{{order.address}}</p>
+
+                </div>
+
+                <div class="bulk" style="border-top: 1px solid #e0e0e0;">
+                    <label>TOTAL</label> <span style="font-size: 10px; margin-top: 5px;" class="float-right">CASH ON
+                        DELIVERY</span>
+                    <h2 class="tien">{{order.quantity * product.price + 1000}}</h2>
+                    <p style="font-size: 10px; margin-top: -5px;"> Including 10% VAT and shipping fee</p>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="row" style="border: none; position: relative;">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <button class="bn" data-toggle="modal" data-target="#myModal2">CANCEL ORDER</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="myModal2" class="modal">
+    <div class="popup">
+        <h5 style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+            This order will be canceled!</h5>
+        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
+        <div class="content">
+            <button (click) ="cancel()" routerLink="/cancel-order" data-dismiss="modal" class="btnn"></button>
+        </div>
+    </div>
+</div>

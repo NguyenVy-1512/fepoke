@@ -1,0 +1,184 @@
+.headtype {
+color: #ffffff;
+    background: #242424;
+    width: 100%;
+}
+
+.list-group-item {
+    cursor: pointer;
+    position: relative;
+    font-size: 15px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 0;
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.hey {
+display: flex;
+flex-direction: row;
+}
+
+.list-group-item:hover {
+    background: #242424;
+    color: white;
+}
+
+.list-group-item:after {
+    display: block;
+    content: " ";
+    position: absolute;
+   border-top: 1px solid white;
+   border-right: 1px solid white;
+   transform: rotate(45deg);
+    height: 8px;
+    width: 8px;
+    top: 50%;
+    margin-top: -4px;
+    right: 20px;
+    transition: 0.2s;
+}
+
+.list-group-item:before {
+    display: block;
+    content: " ";
+    position: absolute;
+    background: white;
+    height: 1px;
+    width: 30px;
+    top: 50%;
+    margin-top: -1px;
+    right: 20px;
+    transition: 0.2s;
+}
+
+.list-group-item:hover:after {
+right: 10px;
+}
+
+.list-group-item:hover:before {
+    right: 10px;
+}
+
+.btn-img {
+    width: 100%;
+cursor: pointer;  
+
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-container:after {
+    display: block;
+    content: " ";
+    position: absolute;
+   border-top: 1px solid white;
+   border-right: 1px solid white;
+   transform: rotate(45deg);
+    height: 8px;
+    width: 8px;
+    left: 22px;
+    bottom: 11px;
+    transition: 0.2s;
+}
+
+.img-container:before {
+    display: block;
+    content: " ";
+    position: absolute;
+    background: white;
+    height: 1px;
+    width: 20px;
+    bottom: 15px;
+    left: 10px;
+    transition: 0.2s;
+}
+
+.img-container:hover:after {
+left: 27px;
+}
+
+.img-container:hover:before {
+    left: 15px;
+}
+
+ul {
+    list-style-type: none;
+}
+/*
+.list-group-item:after {
+    position: absolute;
+    content: " ";
+    right: 20px;
+    width: 0px;
+    height: 0px;
+    top: 50%;
+    margin-top: -1px;
+    transition: 0.2s ease;
+    border-radius: 100px;
+}
+.list-group-item:hover:after {
+    height: 10px;
+    width: 10px;
+    top: 50%;
+    margin-top: -5px;
+} 
+.cat1:after {
+    background: #a9a87a;
+}
+.cat2:after {
+    background: #ee7d39;
+}
+.cat3:after {
+    background: #6a91ed;
+}
+.cat4:after {
+    background: #7bc856;
+}
+.cat5:after {
+    background: #f7cf41;
+}
+.cat6:after {
+    background: #9ad8d8;
+}
+.cat7:after {
+    background: #be2c2d;
+}
+.cat8:after {
+    background: #9e409f;
+}
+.cat9:after {
+    background: #dfbf6e;
+}
+.cat10:after {
+    background: #a891ee;
+}
+.cat11:after {
+    background: #f65689;
+}
+.cat12:after {
+    background: #a8b831;
+}
+.cat13:after {
+    background: #b69f40;
+}
+.cat14:after {
+    background: #705796;
+}
+.cat15:after {
+    background: #6f3cf5;
+}
+.cat16:after {
+    background: #6e5849;
+}
+.cat17:after {
+    background: #b8b8cf;
+}
+.cat18:after {
+    background: #f6c9e3;
+}
+*/

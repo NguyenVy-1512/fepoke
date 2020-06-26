@@ -1,0 +1,274 @@
+.container {
+    padding: 20px 20px 0 20px;
+    position: relative;
+    border-radius: 10px;
+    padding-right: -40px;
+    margin-bottom: 20px;
+    box-shadow:
+    inset 3px 5px 14px 0 #f5f5f5; 
+}
+
+.col {
+    padding: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+}
+
+.card {
+    margin-right: 40px;
+width: 80%;
+    border-radius: 10px;
+    box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.006),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.008),
+  0 12.5px 10px rgba(0, 0, 0, 0.01),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.012)
+;
+}
+
+.p {
+    margin-bottom: 2px;
+    font-size: 15px;
+}
+
+.p-number {
+    margin-top: 10px;
+}
+
+.p-name {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.p-price {
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: 900;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pri {
+    position: relative;
+}
+
+.pri:after{
+    position: absolute;
+    content: "$";
+    margin-top: 30px;
+    left: 10px;
+    font-size: 17px;
+    color: #959595;
+}
+
+input[id="price"] {
+    padding-left: 20px;
+}
+
+.descrip{
+    font-size: 13px;
+    color: #b8b8b8;
+    margin-top: -10px;
+    margin-bottom:  5px;
+    background: white;
+    width: 80px;
+    padding-left: 5px;
+}
+
+.type {
+    display: flex;
+    flex-direction: row;
+    margin-top: -25px;
+font-size: 13px;
+}
+
+.headline {
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+  .btn {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    color: #fff;
+    background: linear-gradient(to left, yellowgreen, rgb(173, 223, 73));
+    position: relative;
+    border: none;
+    transition: 0.1s;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .btnn {
+    background: #ececec;
+    color: #242424;
+    margin-bottom: 15px;
+    height: 34px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 0px 3px 3px 0;
+    font-family: 'Share Tech Mono', monospace;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+  }
+
+  .btnn:hover {
+      background:#e0e0e0 ;
+  }
+
+.btn:hover {
+    box-shadow: 0 5px 20px #99fd174f;
+}
+
+  .del {
+    background: #242424;
+  }
+
+  .del:hover {
+      background: #d93a3a;
+      box-shadow: 0 5px 20px #d93a3a3f;
+  }
+
+/*
+.btn {
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace;
+    background: #242424;
+    color: white;
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s ease;
+    border: none;
+}
+.btn:after {
+    font-size: 36px;
+        width: 40px;
+        height: 40px;
+        content: "+";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: yellowgreen;
+        color: #242424;
+        border-radius: 100px;
+        position: absolute;
+        margin-left: 54px;
+        transition: 0.2s ease;
+    }
+.btn:hover {
+    padding-right: 50px;
+}
+.btn:hover:after {
+    margin-left: 45px;
+    transform: rotate(180deg);
+}
+.clear:after {
+    content: "-";
+    background: #d93a3a;
+    color: #242424;
+    border-radius: 100px;
+    margin-left: 80px;
+}
+.clear:hover:after {
+    margin-left: 62px;
+}
+*/
+
+.res {
+    background: #ececec;
+    color: #242424;
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 5px;
+    font-family: 'Share Tech Mono', monospace;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+}
+
+.res:hover 
+{
+    background: #e0e0e0;
+}
+
+input::placeholder {
+    font-size: small;
+}
+
+label {
+    font-size: small;
+}
+
+.col-2 {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+}
+
+.col-2:after {
+    content: " ";
+    display: block;
+    width: 4px;
+    height: 40px;
+    top: 341px;
+    left: 0;
+    background: #d93a3a;
+    position: absolute;
+  }
+
+.col-10 {
+    box-shadow: inset 3px -5px 14px 0 #f5f5f5 ;
+    border-left: 1px solid #eeeeee;
+}
+
+h4 {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.form-control {
+    border: 1px solid #e0e0e0;
+    outline: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: small;
+}
+
+.form-control:focus {
+    border: 1px solid #242424;
+    box-shadow: none;
+}
+
+.besa {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sa {
+    margin-bottom: 0;
+}
+
+img {
+    width: 100%;
+}

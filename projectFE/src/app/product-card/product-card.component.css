@@ -1,0 +1,152 @@
+.card {
+  position: relative;
+  width: 14rem;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.old-price {
+  color : #b3b3b3;
+  font-size: 17px;
+ margin-top: -20px;
+ margin-bottom: -5px;
+  text-decoration-line: line-through;
+}
+
+.card-name {
+  color : #555555;
+  font-size: 17px;
+  margin-bottom: 0px;
+  margin-top: -20px;
+  font-family: 'Roboto Mono', monospace;
+  transition: 0.1s;
+}
+
+
+.card-price {
+  font-weight: 700;
+  color : #e73939;
+  font-size: 24px;
+  transition: 0.1s;
+  margin-top: 5px;
+}
+
+.card:hover {
+  transform: translateY(0px);
+  /* box-shadow: 0 15px 30px -10px #d93a3ad5;*/
+  box-shadow:
+   -13px 0 0 -10px #fff,
+  13px 0 0 -10px #fff,
+  0 -13px 0 -10px #fff,
+  0 13px 0 -10px #fff,
+  0 0 0 2px #242424;
+}
+
+.nut-card {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+outline: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 6px;
+  font-size: 20px;
+}
+
+.add-cart{
+  width: 22px;
+  height: 23px;
+  content: "";
+  display: block;
+  position: relative;
+border: 2px solid #fff;
+margin-left: 9px;
+transition: 0.2s;
+}
+
+.add-cart:after {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 50%;
+  margin-left: -5px;
+  top: -7px;
+ content: " ";
+ display: block;
+ border-radius: 10px 10px 0 0;
+ border: 2px solid #fff;
+ border-bottom: none;
+ transition: 0.2s;
+}
+
+.nut-add{
+  position: absolute;
+  right: -51px;
+  bottom: 11px;
+  transition: 0.2s;
+  background-color: var(--den);
+}
+
+.nut-add:after {
+  position: absolute;
+  content: " ";
+  display: block;
+  width: 10px;
+  height: 2px;
+  left: 50%;
+  margin-left: -5px;
+  bottom: 11px;
+  background-color: #fff;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.nut-add:before {
+  position: absolute;
+  content: " ";
+  display: block;
+  width: 10px;
+  height: 2px;
+  left: 50%;
+  margin-left: -5px;
+  bottom: 11px;
+  background-color: #fff;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.nut-add:hover:after {
+transform: rotate(180deg);
+  bottom: 21px;
+
+}
+
+.nut-add:hover:before {
+transform: rotate(90deg);
+  bottom: 21px;
+}
+
+.card:hover .nut-add{
+right: 10px;
+}
+
+.nut-add:hover{
+  background: var(--do);
+}
+
+@media only screen and (max-width: 411px) {
+.card {
+  width: 11rem;
+}
+}

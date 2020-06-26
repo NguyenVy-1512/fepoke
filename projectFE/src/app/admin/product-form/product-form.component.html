@@ -1,0 +1,279 @@
+<div class="row" (ngInit)="ngOnInit()">
+    <div class="col col-2">
+        <admin-nav></admin-nav>
+    </div>
+    <div class="col col-10">
+        <div [ngSwitch]="isproduct" class="container-fluid">
+            <div *ngSwitchCase= "false" class="row">
+
+                <div class="col-6">
+
+                    <h4>Information</h4>
+                    <form [formGroup]="addproductForm">
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="number">Number</label>
+                                <input formControlName="id" id="id" type="text"  [(ngModel)]="id"class="form-control">
+                            </div>
+
+                            <div class="form-group col-8">
+                                <label for="title">Title</label>
+                                <input formControlName="name" id="name" type="text"  [(ngModel)]="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="price" class="pri">Price</label>
+                            <input formControlName="price" id="price" type="text"  [(ngModel)]="price" class="form-control">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="category">Type 1</label>
+                                <select  formControlName="category" id="category"  [(ngModel)]="category"  class="form-control">
+                                    <option value="Type1">Type 1</option>
+                                    <option selected value="Normal">Normal</option>
+                                    <option value="Fire">Fire</option>
+                                    <option value="Water">Water</option>
+                                    <option value="Grass">Grass</option>
+                                    <option value="Electric">Electric</option>
+                                    <option value="Ice">Ice</option>
+                                    <option value="Fighting">Fighting</option>
+                                    <option value="Poison">Poison</option>
+                                    <option value="Ground">Ground</option>
+                                    <option value="Flying">Flying</option>
+                                    <option value="Psychic">Psychic</option>
+                                    <option value="Bug">Bug</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Ghost">Ghost</option>
+                                    <option value="Dragon">Dragon</option>
+                                    <option value="Dark">Dark</option>
+                                    <option value="Steel">Steel</option>
+                                    <option value="Fairy">Fairy</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="category">Type 2</label>
+                                <select  formControlName="category1" id="category1"   [(ngModel)]="category1"  class="form-control">
+                                    <option value="Type2">Type 2</option>
+                                    <option value="Normal">Normal</option>
+                                    <option selected value="Fire">Fire</option>
+                                    <option value="Water">Water</option>
+                                    <option value="Grass">Grass</option>
+                                    <option value="Electric">Electric</option>
+                                    <option value="Ice">Ice</option>
+                                    <option value="Fighting">Fighting</option>
+                                    <option value="Poison">Poison</option>
+                                    <option value="Ground">Ground</option>
+                                    <option value="Flying">Flying</option>
+                                    <option value="Psychic">Psychic</option>
+                                    <option value="Bug">Bug</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Ghost">Ghost</option>
+                                    <option value="Dragon">Dragon</option>
+                                    <option value="Dark">Dark</option>
+                                    <option value="Steel">Steel</option>
+                                    <option value="Fairy">Fairy</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="detail">Description</label>
+                            <textarea formControlName="desc" id="desc"  [(ngModel)]="desc" class="form-control"></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Image</label>
+                            <input formControlName="image" id="image" type="text"  [(ngModel)]="image" class="form-control">
+                        </div>
+                        <!--div class="form-group">
+                                <label for="imageURL">Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                      <input formControlName="image" type="file" class="custom-file-input" id="inputGroupFile04">
+                                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                      <button class="btnn" type="button">UPLOAD</button>
+                                    </div>
+                                  </div>
+                                    </--div-->
+
+                        <input type="reset" class="res" value="RESET">
+                    </form>
+
+                    <div class="besa">
+                        <button routerLink="/admin/products" class="btn  del">Delete</button>
+                        <button (click)="onadd()" class="btn ">Save</button>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 0px;">
+                            <h4>Preview</h4>
+                            <img class="card-img-top" src="{{image}}"
+                                alt="">
+
+                            <p class="p p-number">{{id}}</p>
+                            <div class="main">
+                                <p class="p-name">{{name}}</p>
+                                <p class="p-price">{{price}}</p>
+                            </div>
+                            <div class="type">
+                                <p class="p-type1">{{category}}</p>
+                                <p>/</p>
+                                <p class="p-type2">{{category1}}</p>
+                            </div>
+                        </div>
+
+                        <div class="card-body" style="padding-top: 0px;">
+                            <p class="descrip"> {{desc}}</p>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div *ngSwitchCase = "true" class="row">
+
+                <div class="col-6">
+
+                    <h4>Information</h4>
+                    <form [formGroup]="addproductForm">
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="number">Number</label>
+                                <input formControlName="id" id="id" type="text" class="form-control"  [(ngModel)]="id" value="{{product._id}}">
+                            </div>
+
+                            <div class="form-group col-8">
+                                <label for="title">Title</label>
+                                <input formControlName="name" id="name" type="text" class="form-control"  [(ngModel)]="name" value="{{product.name}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="price" class="pri">Price</label>
+                            <input formControlName="price" id="price" type="text" class="form-control"  [(ngModel)]="price" value="{{product.price}}">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="category">Type 1</label>
+                                <select formControlName="category" id="category"  [(ngModel)]="category" class="form-control">
+                                    <option value="Type1">Type 1</option>
+                                    <option selected value="Normal">Normal</option>
+                                    <option value="Fire">Fire</option>
+                                    <option value="Water">Water</option>
+                                    <option value="Grass">Grass</option>
+                                    <option value="Electric">Electric</option>
+                                    <option value="Ice">Ice</option>
+                                    <option value="Fighting">Fighting</option>
+                                    <option value="Poison">Poison</option>
+                                    <option value="Ground">Ground</option>
+                                    <option value="Flying">Flying</option>
+                                    <option value="Psychic">Psychic</option>
+                                    <option value="Bug">Bug</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Ghost">Ghost</option>
+                                    <option value="Dragon">Dragon</option>
+                                    <option value="Dark">Dark</option>
+                                    <option value="Steel">Steel</option>
+                                    <option value="Fairy">Fairy</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="category">Type 2</label>
+                                <select formControlName="category1" id="category1"  [(ngModel)]="category1" class="form-control">
+                                    <option value="Type2">Type 2</option>
+                                    <option value="Normal">Normal</option>
+                                    <option selected value="Fire">Fire</option>
+                                    <option value="Water">Water</option>
+                                    <option value="Grass">Grass</option>
+                                    <option value="Electric">Electric</option>
+                                    <option value="Ice">Ice</option>
+                                    <option value="Fighting">Fighting</option>
+                                    <option value="Poison">Poison</option>
+                                    <option value="Ground">Ground</option>
+                                    <option value="Flying">Flying</option>
+                                    <option value="Psychic">Psychic</option>
+                                    <option value="Bug">Bug</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Ghost">Ghost</option>
+                                    <option value="Dragon">Dragon</option>
+                                    <option value="Dark">Dark</option>
+                                    <option value="Steel">Steel</option>
+                                    <option value="Fairy">Fairy</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="detail">Description</label>
+                            <textarea formControlName="desc" class="form-control" id="desc"  [(ngModel)]="desc" value="{{product.description}}"></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Image</label>
+                            <input formControlName="image" id="image" type="text" class="form-control" [(ngModel)]="image" value="{{product.imgurl}}">
+                        </div>
+                        <!--div class="form-group">
+                                <label for="imageURL">Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                      <input formControlName="image" type="file" class="custom-file-input" id="inputGroupFile04">
+                                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                      <button class="btnn" type="button">UPLOAD</button>
+                                    </div>
+                                  </div>
+                                    </--div-->
+                                    <input type="reset" class="res" value="RESET">
+                    </form>
+
+                    <div class="besa">
+                        <button routerLink="/admin/products" class="btn  del">Delete</button>
+                        <button (click) = "onchange()" class="btn ">Change</button>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 0px;">
+                            <h4>Preview</h4>
+                            <img class="card-img-top" src="{{product.imgurl}}"
+                                alt="">
+
+                            <p class="p p-number">{{product._id}}</p>
+                            <div class="main">
+                                <p class="p-name">{{product.name}}</p>
+                                <p class="p-price">{{product.price}} </p>
+                            </div>
+                            <div class="type">
+                                <p class="p-type1">{{f.category.value}}</p>
+                                <p>/</p>
+                                <p class="p-type2">{{f.category1.value}}</p>
+                            </div>
+                        </div>
+
+                        <div class="card-body" style="padding-top: 0px;">
+                            <p class="descrip">{{desc}}</p>
+                            
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div >
+    </div>
+</div>

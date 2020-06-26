@@ -1,0 +1,92 @@
+<div class="navbar navbar-expand-lg">
+
+  <div class="row no-gutters">
+    <div class="column">
+      <a class="navbar-brand" routerLink="/">
+        <logo routerLink="/"></logo>
+      </a>
+
+
+    </div>
+
+    <!--
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="bars"></span>
+  </button>-->
+
+    <div class="col">
+      <div class="tiny-search" id="small" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false"
+        aria-controls="collapse-search">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </div>
+
+      <form [formGroup]="searchForm" id="big">
+        <div class="container cuc">
+          <a class="search-button" (click)="onsearch()"> <i class="fas fa-minus"></i> </a>
+          <input formControlName="search" name="search" type="search" class="search" placeholder="Search">
+        </div>
+      </form>
+      <div [ngSwitch]="loading" class="log">
+        <div *ngSwitchCase="false">
+          <div class="d-flex flex-row " id="big">
+            <a class="nav-link" routerLink="/login" style="margin-right: -10px; margin-left: -10px;">Login</a>
+            <a class="nav-link" routerLink="/sign-up">Sign-Up</a>
+          </div>
+          <div class="tiny-sign" id="small" data-toggle="collapse" data-target="#collapse-sign" aria-expanded="false"
+            aria-controls="collapse-sign">
+            <input type="checkbox">
+            <span class="ham-menu"></span>
+          </div>
+
+        </div>
+        <div *ngSwitchCase="true">
+          <div class="dropdown">
+            <div class="drod-togg">
+              <span routerLink="/my/info/{{user._id}}" id="big"
+                style="margin-right: 10px; margin-left: -10px; font-size: 14px;">{{user.name}}</span>
+              <i class="user-icon" style="margin-right: 5px;"></i>
+            </div>
+
+            <!-- hiển thị first name sau khi đăng nhập , khi ở anonymous user thì chỉ hiển thị login, sign-up -->
+            <div class="dropdown-content" (ngOninit)="ngOninit()" [ngSwitch]="inadmin">
+              <a class="arrow first"></a>
+              <a class="dropdo" routerLink="/my/info/{{user._id}}" id="small">My Info</a>
+              <a *ngSwitchCase="false" class="dropdo" routerLink="/my/orders">My Orders</a>
+              <a *ngSwitchCase="true" class="dropdo" routerLink="/admin/orders">Manage Orders</a>
+              <a *ngSwitchCase="true" class="dropdo" routerLink="/admin/products">Manage Products</a>
+              <a class="dropdo logout" (click)="logout()">Log Out</a>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <a class="nav-link cucu" routerLink="/shopping-cart">
+      <div class="cart">
+        <button (click)="onsetcard()" class="shopping-cart">
+        </button>
+      </div>
+    </a>
+  </div>
+</div>
+</div>
+<!-- ô search hiện ra khi nhấn zô nút search ở màn hình nhỏ -->
+<div class="collapse collapse-search" id="collapse-search">
+  <form [formGroup]="searchForm">
+    <div class="container search-box d-flex flex-row">
+      <input formControlName="search" name="search" type="search" class="search" placeholder="Search">
+      <a class="search-button" (click)="onsearch()"> <i class="fas fa-minus"></i> </a>
+    </div>
+
+  </form>
+</div>
+
+
+<div class="collapse collapse-sign" id="collapse-sign">
+  <div class="col-sign" id="small">
+    <a class="nav-link" routerLink="/login">Login</a>
+    <a class="nav-link" routerLink="/sign-up">Sign-Up</a>
+  </div>
+</div>

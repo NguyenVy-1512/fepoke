@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+        <div class="col-xs-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading top-bar" style="display: flex; justify-content: space-between;">
+
+                    <h5 class="far fa-comment-alt"></h5>
+                    <i id="minim_chat_window" class="fas fa-minus"></i>
+
+                </div>
+                <div class="row msg_container base_sent">
+                    <div class="col-md-10 col-xs-10">
+                        <div class="messages msg_sent">
+                            <label for="nameField">Chào bạn, tôi có thể giup gì cho bạn</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-2 avatar">
+                        <img src="https://i.imgur.com/YgDOOTW.png" class=" img-responsive ">
+                    </div>
+                </div>
+                <div class="panel-body msg_container_base">
+
+
+
+
+                    <div class="row msg_container base_sent">
+
+                        <div class="col-md-10 col-xs-10">
+
+                            <ng-container *ngFor="let message of messages | async">
+                            <ng-container *ngIf="message?.content?.length">
+                            <div class="messages" [ngClass]="{ 'from': message.sentBy === 'bot',
+                                                                  'to':   message.sentBy === 'user' }"
+                                    [ngSwitch]="message.num">
+                               
+                                    <ng-container *ngSwitchCase="0">
+                                        <div *ngFor="let mes of message.content"> {{ mes }}
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="1">
+                                        
+                                            <div *ngFor="let mes of message.content">
+                                                {{ mes }}
+                                            </div>
+                                       
+                                    </ng-container>
+                                    <div *ngSwitchCase="2" class="row">
+                                       
+                                            <div *ngFor="let rep of message.content" class="btn-backgound">
+                                                <button (click)="send(rep)" class="btn btn-black-border"
+                                                    id="btn-chat">{{rep}}
+                                                </button>
+                                            </div>
+                                       
+                                    </div>
+                                    <div *ngSwitchCase="3" class="row">
+                                       
+                                            <div *ngFor="let rep of message.content" class="btn-backgound">
+                                                <button (click)="sendurl()" class="btn btn-black-border"
+                                                    id="btn-chat">{{rep}}
+                                                </button>
+                                            </div>
+                                        
+                                    </div>
+
+                            </div>
+                        </ng-container>
+
+                            </ng-container>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm chat_input"
+                            placeholder="muốn gì ..." [(ngModel)]="formValue" (keyup.enter)="sendMessage()" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-black" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

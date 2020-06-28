@@ -57,4 +57,8 @@ export class ChatDialogComponent implements OnInit {
     });
     
   }
+    isDisplay = false;
+  toggleDisplay(){
+    this.isDisplay = !this.isDisplay;
+  }
 }

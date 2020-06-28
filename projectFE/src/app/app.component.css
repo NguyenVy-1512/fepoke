@@ -9,6 +9,7 @@ body {
 chat-dialog {
     position: absolute;
     z-index: 4;
+    right: 340px;
 }
 
 main {

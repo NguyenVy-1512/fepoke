@@ -5,9 +5,10 @@
                 <div class="panel-heading top-bar" style="display: flex; justify-content: space-between;">
 
                     <h5 class="far fa-comment-alt"></h5>
-                    <i id="minim_chat_window" class="fas fa-minus"></i>
+                    <i id="minim_chat_window" class="fas fa-minus" (click) = "toggleDisplay()"></i>
 
                 </div>
+                <div class="panel-body msg_container_base" [hidden] = "isDisplay">
                 <div class="row msg_container base_sent">
                     <div class="col-md-10 col-xs-10">
                         <div class="messages msg_sent">
@@ -18,11 +19,7 @@
                         <img src="https://i.imgur.com/YgDOOTW.png" class=" img-responsive ">
                     </div>
                 </div>
-                <div class="panel-body msg_container_base">
-
-
-
-
+                
                     <div class="row msg_container base_sent">
 
                         <div class="col-md-10 col-xs-10">
@@ -74,7 +71,7 @@
 
 
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer" [hidden] = "isDisplay">
                     <div class="input-group">
                         <input id="btn-input" type="text" class="form-control input-sm chat_input"
                             placeholder="muốn gì ..." [(ngModel)]="formValue" (keyup.enter)="sendMessage()" />

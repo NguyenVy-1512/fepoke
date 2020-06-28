@@ -25,6 +25,21 @@ export class ApiService {
     })
   }
 
+  //payment 
+  payment(Authorization: string, stripetoken, amount: number, phone, shippingaddr, method): Observable<any> {
+    this.httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': Authorization
+      })
+    }
+    return this.http.post<any>(this.apiURL + '/payment', { amount: amount, stripetoken: stripetoken, phone: phone, shippingaddr: shippingaddr, method: method }, this.httpOption).pipe(
+      retry(3),
+      catchError(error=>{
+        return this.handleError(error)
+      })
+    )
+  }
 
   //Admin - get user
   getUser(): Observable<any> {

@@ -34,12 +34,12 @@
 
                         <label class="paym cuc1">
                             <p class="heo heo1"> <i class="fa fa-credit-card"></i>Credit/Debit Card</p>
-                            <input type="radio" >
+                            <input type="radio">
                             <span class="checkmark"></span>
                         </label>
                         <label class="paym cuc2">
                             <p class="heo heo2"> <i class="fa fa-money"></i>Cash On Delivery</p>
-                            <input type="radio" >
+                            <input type="radio">
                             <span class="checkmark"></span>
                         </label>
 
@@ -70,18 +70,19 @@
                     <label>Payment Methods</label>
 
                     <div class="cut">
-
                         <label class="paym cuc1">
-                            <p class="heo heo1"> <i class="fa fa-credit-card"></i>Credit/Debit Card</p>
-                            <input type="radio" >
+                            <label for="radio1" class="heo heo1"> <i class="fa fa-credit-card"></i>Credit/Debit
+                                Card</label>
+                            <input id="radio1" type="radio" name="paymethod" value="credit"
+                                (change)="onPaymentMethodChange(1)" formControlName="paymethod">
                             <span class="checkmark"></span>
                         </label>
                         <label class="paym cuc2">
-                            <p class="heo heo2"> <i class="fa fa-money"></i>Cash On Delivery</p>
-                            <input type="radio" >
+                            <label for="radio2" class="heo heo2"> <i class="fa fa-money"></i>Cash On Delivery</label>>
+                            <input id="radio2" type="radio" name="paymethod" value="cod"
+                                (change)="onPaymentMethodChange(2)" formControlName="paymethod">
                             <span class="checkmark"></span>
                         </label>
-
                     </div>
                 </div>
 
@@ -130,6 +131,51 @@
     </div>
     <div class="row no-gutters r">
         <button routerLink="/shopping-cart" class="btn">Edit Cart</button>
-        <button (click) ="addorder()"  class="btn btn-back">Place Order</button>
+        <div *ngIf="paymethod === ''; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+            <button (click)="addorder()" class="btn btn-back" disabled>Place Order</button>
+        </ng-template>
+        <ng-template #elseBlock>
+            <div *ngIf="paymethod === 'COD'; else elseBlock">
+                <button (click)="addorder()" class="btn btn-back">Place Order</button>
+            </div>
+            <ng-template #elseBlock>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-back" data-toggle="modal" data-target="#stripeModal">
+                    Place Order
+                </button>
+            </ng-template>
+        </ng-template>
+    </div>
+</div>
+
+<div class="modal fade" id="stripeModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Your Payment Info</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form novalidate (ngSubmit)="buy()" [formGroup]="stripeFromGrp">
+                    <label for="name-card-element">
+                        Your Name:
+                    </label>
+                    <input class="stripeInput" id="name-card-element" type="text" formControlName="name"
+                        placeholder="Jane Doe">
+                    <br>
+                    <label for="card-element">
+                        Credit or debit card:
+                    </label>
+                    <div id="card-element" class="field"></div>
+                    <button type="submit" class="btn btn-payment">Submit Payment</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+        </div>
     </div>
 </div>

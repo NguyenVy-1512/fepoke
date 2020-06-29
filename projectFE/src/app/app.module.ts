@@ -58,6 +58,9 @@ import { GrdFilterPipe } from './shared';
 import { WebInfoComponent } from './web-info/web-info.component';
 //import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
 import { ChatModule } from './chat/chat.module';
+import { NgxStripeModule } from '@nomadreservations/ngx-stripe';
+import { RatingComponent } from './rating/rating.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -129,6 +132,7 @@ const appRoutes: Routes = [
     ProCatComponent,
     CategoryComponent,
     SideNavComponent,
+    RatingComponent,
     //ChatDialogComponent,  
   ],
   imports: [
@@ -147,6 +151,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     BrowserModule, 
     FormsModule, 
+    NgxStripeModule,
     Ng2SearchPipeModule,
     ChatModule
   ],

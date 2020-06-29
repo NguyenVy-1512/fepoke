@@ -7,5 +7,6 @@ export class User {
     phone: string;
     isVerified: string;
     orderIDs: string[];
+    token: string;
     
 }

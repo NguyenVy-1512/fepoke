@@ -3,6 +3,7 @@ import { DataService, AlertService, ApiService } from '../shared';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User, products } from '../_models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service'
 
 @Component({
   selector: 'bs-navbar',
@@ -14,6 +15,8 @@ export class BsNavbarComponent implements OnInit {
   loading: boolean = true;
   token: string;
   user: User;
+  name: string;
+  iduser: string;
   setcard: boolean = true;
   search: string;
   insearch: boolean;
@@ -27,6 +30,7 @@ export class BsNavbarComponent implements OnInit {
     private router: Router,
     private authenticationService: ApiService,
     private alertService: AlertService,
+    private cookieService: CookieService,
     private data: DataService) { }
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
@@ -45,6 +49,19 @@ export class BsNavbarComponent implements OnInit {
       this.totalproduct = this.totalproduct + this.quantity[i];
     }
     console.log(this.inadmin);
+    this.iduser = this.cookieService.get("id");
+    this.name = this.cookieService.get("name");
+    this.token = this.cookieService.get("token");
+    console.log(this.token);
+    if(this.token !== '')
+    {
+      this.loading = true;
+    }
+
+    this.authenticationService.infouser(this.token).subscribe((res) => {
+      
+      console.log(res);
+    })
   }
   
   logout() {
@@ -59,6 +76,9 @@ export class BsNavbarComponent implements OnInit {
       this.data.changeMessage(false);
       this.data.changeToken("");
       this.data.changUser('');
+      this.cookieService.set("token", '');
+      this.cookieService.set("id", '');
+      this.cookieService.set("name", '');
   }
 
   onsetcard(){

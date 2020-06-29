@@ -48,7 +48,8 @@ export class ProductFormComponent implements OnInit {
   get f() { return this.addproductForm.controls; }
 
   onadd(){
-
+    this.categorys[0] = new category('',this.f.category.value);
+    this.categorys[0] = new category('',this.f.category1.value);
     this.prductsService.addProduct(this.f.name.value, this.f.desc.value, this.f.price.value, 5, 8, this.f.image.value, this.categorys)
           .subscribe(
               res => {console.log('them san pham thanh cong');

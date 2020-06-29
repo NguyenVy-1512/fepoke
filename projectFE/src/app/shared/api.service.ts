@@ -117,6 +117,20 @@ export class ApiService {
           return this.handleError(error)
         }));
   }
+
+  infouser(Authorization: string) {
+    this.httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': Authorization
+      })
+    }
+    return this.http.get(this.apiURL + `/user/profile`, this.httpOption)
+      .pipe(
+        catchError(error => {
+          return this.handleError(error)
+        }));
+  }
   private extractData(res: Response) {
     let body = res;
     return body || {};
@@ -219,7 +233,18 @@ export class ApiService {
       'Something bad happened; please try again later.');
   };
 
+  addrate(Authorization, userID, productID, rate,content): Observable<any> {
+    this.httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': Authorization
+      })
+    }
+    return this.http.post<any>(this.apiURL + '/rating/', { userID:userID, productID: productID, rate:rate, content: content} ,this.httpOption).pipe(
+     catchError(this.handleError));
+  }
 }
+
   //Error handling
 //   handleError(err){
 //     let errorMessage = '';

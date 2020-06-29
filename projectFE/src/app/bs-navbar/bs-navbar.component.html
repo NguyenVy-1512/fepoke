@@ -43,7 +43,7 @@
         <div *ngSwitchCase="true">
           <div class="dropdown">
             <div class="drod-togg">
-              <span routerLink="/my/info/{{user._id}}" id="big"
+              <span routerLink="/my/info/{{iduser}}" id="big"
                 style="margin-right: 10px; margin-left: -10px; font-size: 14px;">{{user.name}}</span>
               <i class="user-icon" style="margin-right: 5px;"></i>
             </div>
@@ -51,7 +51,7 @@
             <!-- hiển thị first name sau khi đăng nhập , khi ở anonymous user thì chỉ hiển thị login, sign-up -->
             <div class="dropdown-content" (ngOninit)="ngOninit()" [ngSwitch]="inadmin">
               <a class="arrow first"></a>
-              <a class="dropdo" routerLink="/my/info/{{user._id}}" id="small">My Info</a>
+              <a class="dropdo" routerLink="/my/info/{{iduser}}" id="small">My Info</a>
               <a *ngSwitchCase="false" class="dropdo" routerLink="/my/orders">My Orders</a>
               <a *ngSwitchCase="true" class="dropdo" routerLink="/admin/orders">Manage Orders</a>
               <a *ngSwitchCase="true" class="dropdo" routerLink="/admin/products">Manage Products</a>

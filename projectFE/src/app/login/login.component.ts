@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit{
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       this.data.currenttoken.subscribe(token => this.token = token);
       console.log(this.token);
+      
   }
 
   // convenience getter for easy access to form fields
@@ -61,6 +62,9 @@ export class LoginComponent implements OnInit{
               res => {
                 console.log(res);
                 this.alertService.success('Login successful', true);
+                this.cookieService.set("token", res.token);
+                this.cookieService.set("id", res.user._id);
+                this.cookieService.set("name", res.user.name);
                 this.data.changeToken('Bearer '+ res.token);
                 this.data.changUser(res.user);
                 this.data.currentuser.subscribe(user => this.user = user);

@@ -42,8 +42,18 @@
                             </product-quantity
                             >
                         </div>
+                        <div class="row">
                         <button class="btn add-to-cart-btn"  (click) = "addtocard()"></button>
+                        <button class="b" data-toggle="modal" data-target="#myModal">Dánh giá</button>
+                        <div id="myModal" class="modal">
+                            <div class="c">
+                                <rating [productID] ="p.id">  </rating>
+                                <button class="fas fa-times" data-dismiss="modal"></button>
+                            </div>
+                        </div>
                     </div>
+                    </div>
+                    
                 </div>
                
                 <div *ngIf='p' class="box-view description">

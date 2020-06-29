@@ -1,3 +1,23 @@
+.c {
+  display :inline-block;
+    flex-direction : row;
+    justify-content : center;
+    position: relative;
+    
+}
+
+
+/* Modal Content */
+
+
+/* The Close Button */
+
+.c:hover,
+.c:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 .col {
   padding-bottom: 200px;
 }
@@ -157,6 +177,22 @@ text-transform: uppercase;
   flex-direction: column;
 }
 
+.b {
+  background: #242424;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+  width: 160px;
+  margin-left: 20px;
+  margin-top: 20px;
+  
+}
+.b:hover {
+  background: #d93a3a ;
+}
 
 @media only screen and (max-width:1000px) {
 
@@ -224,4 +260,5 @@ padding-right: 0;
   border-bottom: none;
   margin-bottom: 0;
 }
+
 }

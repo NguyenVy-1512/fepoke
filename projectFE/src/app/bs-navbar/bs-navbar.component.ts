@@ -24,7 +24,7 @@ export class BsNavbarComponent implements OnInit {
   product$: products[] = [];
   inadmin: boolean;
   quantity: number[] = [];
-  totalproduct: number =0;
+  @Input() totalproduct;
   constructor( private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -46,7 +46,7 @@ export class BsNavbarComponent implements OnInit {
     this.data.currentquantity.subscribe(quantity => this.quantity = quantity);
     for(var i = 0; i< this.quantity.length ; i++)
     {
-      this.totalproduct = this.totalproduct + this.quantity[i];
+      //this.totalproduct = this.totalproduct + this.quantity[i];
     }
     console.log(this.inadmin);
     this.iduser = this.cookieService.get("id");
@@ -62,6 +62,8 @@ export class BsNavbarComponent implements OnInit {
       
       console.log(res);
     })
+
+    
   }
   
   logout() {

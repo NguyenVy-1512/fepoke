@@ -216,6 +216,18 @@ export class ApiService {
         return this.handleError(error)
       }));
   }
+  getOrder(id, Authorization): Observable<any> {
+    this.httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': Authorization
+      })
+    }
+    return this.http.get<any>(this.apiURL + '/order/' + id, this.httpOption).pipe(
+      catchError(error => {
+        return this.handleError(error)
+      }));
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

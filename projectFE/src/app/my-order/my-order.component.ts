@@ -29,12 +29,12 @@ export class MyOrderComponent implements OnInit {
         this.orders = res;
         for(var i = 0; i< res.length; i++)
         {
-          this.productsServices.getProduct(res[i].productID).subscribe(res=>{
-            this.products.push(res);
-            console.log(this.products);
+          this.productsServices.getOrder(this.orders[i]._id, this.token).subscribe(res=>{
+            //this.products.push(res);  
+            console.log(res);
         }) 
-        
         }
+        
         console.log("lay order thành cong");
       });
   }

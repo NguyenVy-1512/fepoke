@@ -8,7 +8,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'rating',
   templateUrl: './rating.component.html',
-  styleUrls: ['./rating.component.css']
+  styleUrls: ['./rating.component.css'],
+  styles: [`
+.star {
+font-size: 30px;
+color: #ebebeb;
+}
+.filled {
+color: #FFD656;
+}
+`]
 })
 export class RatingComponent implements OnInit {
   rate:number;

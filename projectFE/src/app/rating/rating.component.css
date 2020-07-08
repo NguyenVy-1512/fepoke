@@ -10,16 +10,97 @@
     font-family: 'Roboto Mono', monospace;
     
 }
+
+textarea:focus{
+    border: none;
+    box-shadow: 0 0 0 2px #111111 ;
+}
 .a {
     border-radius: 0px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Share Tech Mono', monospace;
     text-align: center;
     color: black;
     size: 15px;
+    text-transform: uppercase;
 }
 .container {
     width: 860px;
     margin-top: 100px;
     margin-left: 100px;
-    box-shadow: 5px 10px 30px 0 rgba(82, 82, 82, 0.418);
+    margin-bottom: 50px;
+    padding: 20px 10px;
+    box-shadow:
+  0 2.3px 3.6px rgba(0, 0, 0, 0.024),
+  0 6.3px 10px rgba(0, 0, 0, 0.035),
+  0 15.1px 24.1px rgba(0, 0, 0, 0.046),
+  0 50px 80px rgba(0, 0, 0, 0.07)
+;
+
+}
+ngb-rating:focus {
+    outline: none;
+}
+
+.btn{
+    background: #ebebeb;
+    border-radius: 0;
+    color: #242424;
+    padding: auto auto;
+    height : 40px;
+    width: 70px;
+font-size: 12px;
+outline: none;
+font-weight: bold;
+}
+
+.btn-fill{
+    background: #242424;
+    border: none;
+    color: white;
+}
+
+.btn-fill:hover{
+    background: #D93A3A;
+}
+
+.btn-tran:hover{
+    background: #FFD656;
+}
+
+.pre{
+    font-size: 16px;
+    color: #242424;
+    background: #FFD656;
+    width: 150px;
+    padding: auto;
+    position: relative;
+}
+
+.pre::after{
+    content: " ";
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+    background: white;
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: -15px;
+    left: -15px;
+}
+
+.pre::before{
+    content: " ";
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+    background: white;
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: -15px;
+    right: -15px;
+}
+
+b{
+    color: #D93A3A;
+    font-size: 20px;
 }

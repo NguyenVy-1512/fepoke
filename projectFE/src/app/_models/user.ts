@@ -8,5 +8,6 @@ export class User {
     isVerified: string;
     orderIDs: string[];
     token: string;
+    address: string;
     
 }

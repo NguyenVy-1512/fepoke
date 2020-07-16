@@ -1,11 +1,11 @@
 export class order {
    
     _id: string;
-    userID: string;
+    userid: string;
     quantity: number;
     receiver: string;
     phone:string;
     address: string;
-    productID:string;
+    productid:string;
     
 }

@@ -6,7 +6,7 @@
     </ul>
 
     <div class="row check-out" style="padding-top: 10px;">
-        <div [ngSwitch]="loading"  class="col shipping-info">
+        <!--div [ngSwitch]="loading"  class="col shipping-info">
             <h3 style="font-weight: bold;"> Ship to</h3>
             <form *ngSwitchCase="false" [formGroup]="CheckOut">
 
@@ -46,12 +46,12 @@
                     </div>
                 </div>
 
-            </form>
-            <form *ngSwitchCase="true"  [formGroup]="CheckOut">
+            </form *ngSwitchCase="true"-->
+            <form   [formGroup]="CheckOut">
 
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input formControlName="name" name ="name" type="name" class="form-control" value={{user.name}}>
+                    <label>Email</label>
+                    <input formControlName="name" name ="name" type="email" class="form-control" value={{user.email}}>
 
                 </div>
 
@@ -63,10 +63,10 @@
 
                 <div class="form-group">
                     <label>Address</label>
-                    <input formControlName="address" name ="address" type="text" class="form-control" >
+                    <input formControlName="address" name ="address" type="text" class="form-control" value={{user.address}}>
 
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label>Payment Methods</label>
 
                     <div class="cut">
@@ -84,10 +84,10 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                </div>
+                </div-->
 
             </form>
-        </div>
+        
     
         <div class="col space">
         </div>
@@ -131,25 +131,25 @@
     </div>
     <div class="row no-gutters r">
         <button routerLink="/shopping-cart" class="btn">Edit Cart</button>
-        <div *ngIf="paymethod === ''; then thenBlock else elseBlock"></div>
-        <ng-template #thenBlock>
+        <!--div *ngIf="paymethod === ''; then thenBlock else elseBlock"></div-->
+        <!--ng-template #thenBlock>
             <button (click)="addorder()" class="btn btn-back" disabled>Place Order</button>
-        </ng-template>
-        <ng-template #elseBlock>
-            <div *ngIf="paymethod === 'COD'; else elseBlock">
+        </ng-template-->
+        <!--ng-template #elseBlock>
+            <div *ngIf="paymethod === 'COD'; else elseBlock"-->
                 <button (click)="addorder()" class="btn btn-back">Place Order</button>
-            </div>
-            <ng-template #elseBlock>
-                <!-- Button trigger modal -->
+            <!--/div>
+            <ng-template #elseBlock-->
+                <!-- Button trigger modal>
                 <button type="button" class="btn btn-back" data-toggle="modal" data-target="#stripeModal">
                     Place Order
                 </button>
             </ng-template>
-        </ng-template>
+        </ng-template-->
     </div>
 </div>
 
-<div class="modal fade" id="stripeModal" role="dialog">
+<!--div class="modal fade" id="stripeModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -178,4 +178,4 @@
               </div>
         </div>
     </div>
-</div>
+</div-->

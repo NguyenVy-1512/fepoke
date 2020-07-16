@@ -42,6 +42,7 @@ export class BsNavbarComponent implements OnInit {
     this.data.currentloading.subscribe(loading => this.loading = loading);
     this.data.currenttoken.subscribe(token => this.token = token);
     this.data.currentuser.subscribe(user => this.user = user);
+    console.log(this.user);
     this.data.currentinadmmin.subscribe(inadmin => this.inadmin = inadmin);
     this.data.currentquantity.subscribe(quantity => this.quantity = quantity);
     for(var i = 0; i< this.quantity.length ; i++)

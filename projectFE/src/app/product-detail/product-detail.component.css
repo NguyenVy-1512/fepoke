@@ -49,6 +49,11 @@ justify-items: center;
   margin-top: 50px; 
   width: 100px}
 
+.product-rating{
+  margin-top: 10px; 
+  font-size: 20px;
+  }
+
 .image {
   margin-bottom: 20px;
 }

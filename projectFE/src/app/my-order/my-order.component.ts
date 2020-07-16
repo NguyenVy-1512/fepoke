@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class MyOrderComponent implements OnInit {
   user: User;
   token: string;
-  orders: order[];
+  orders: order[] = [];
   products: products[] = [];
   p : products;
   constructor(private router: Router,
@@ -20,28 +20,19 @@ export class MyOrderComponent implements OnInit {
 
   ngOnInit() {
     this.data.currentuser.subscribe(user => this.user = user);
-    this.data.currenttoken.subscribe(token => this.token = token);
-    console.log(this.token);
     console.log(this.user._id);
-    this.productsServices.getorderbyID(this.user._id, this.token).subscribe(res =>
+    this.productsServices.getorderbyuser(this.user._id).subscribe(res =>
       {
         console.log(res);
         this.orders = res;
         for(var i = 0; i< res.length; i++)
         {
-          this.productsServices.getOrder(this.orders[i]._id, this.token).subscribe(res=>{
-            //this.products.push(res);  
-            console.log(res);
+          this.productsServices.getProduct(this.orders[i].productid).subscribe(res=>{
+            this.products.push(res);
         }) 
+        console.log(this.products);
         }
-        
         console.log("lay order thành cong");
       });
-  }
-  getproduct(id){
-    this.productsServices.getProduct(id).subscribe(res=>{
-        this.p = res;
-    })  
-  
   }
 }

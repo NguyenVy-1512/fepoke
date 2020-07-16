@@ -60,6 +60,7 @@ import { WebInfoComponent } from './web-info/web-info.component';
 import { ChatModule } from './chat/chat.module';
 import { NgxStripeModule } from '@nomadreservations/ngx-stripe';
 import { RatingComponent } from './rating/rating.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 const appRoutes: Routes = [
@@ -133,6 +134,7 @@ const appRoutes: Routes = [
     CategoryComponent,
     SideNavComponent,
     RatingComponent,
+    CommentComponent,
     //ChatDialogComponent,  
   ],
   imports: [

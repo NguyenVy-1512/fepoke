@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
       private alertService: AlertService,
       private data: DataService,
       private cookieService: CookieService) {
-          this.socket = io.connect('http://localhost:3000')
+          
       }
 
   ngOnInit() {
@@ -70,12 +70,12 @@ export class LoginComponent implements OnInit{
                 this.data.currentuser.subscribe(user => this.user = user);
                 if(res.user.role == 'admin'){
                 this.data.changinadmin(true);
-                this.socket.close()
+                //this.socket.close()
                 this.router.navigate(['/admin/dashboard']);
                 }
                 else {
                     this.data.changinadmin(false);
-                    this.socket.emit('userLogin', this.user.name)
+                    //this.socket.emit('userLogin', this.user.name)
                     this.router.navigate(['/']);
                 }
                 //   this.cookieService.set('userID', res.user._id);

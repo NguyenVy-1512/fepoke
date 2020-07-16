@@ -6,11 +6,10 @@ export class products {
      name: string;
      desc: string;
      price: number;
-     rating: number;
      imgurl: string;
      currency:string;
      view: number;
-     category: category[];
+     category: string[];
      qty: number;
     
 }

@@ -31,7 +31,7 @@ export class OrdersListComponent implements OnInit {
         this.orders = res;
         for(var i = 0; i< res.length; i++)
         {
-          this.productsServices.getProduct(this.orders[i].productID).subscribe(res=>{
+          this.productsServices.getProduct(this.orders[i].productid).subscribe(res=>{
             this.p = res;
             this.products.push(this.p);
         }) 

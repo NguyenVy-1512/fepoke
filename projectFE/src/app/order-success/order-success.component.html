@@ -6,8 +6,8 @@
         <div class="container ec">
             <h1 class="far fa-check-circle fa-3x"></h1>
             <h3 style="font-weight: bold;" class="noti"> Your order has been placed!</h3>
-
-            <p>Order Number : <span style="font-weight: bold;">#12MF34JFN</span> </p>
+            
+            <p>Order Number : <span  *ngFor="let p of orderid" style="font-weight: bold;">{{p}}</span> </p>
          
 
         </div>

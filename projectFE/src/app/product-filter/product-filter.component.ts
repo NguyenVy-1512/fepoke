@@ -1,5 +1,5 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
-import { products } from '../_models';
+import { products, category } from '../_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService ,DataService} from '../shared';
 
@@ -10,6 +10,7 @@ import { ApiService ,DataService} from '../shared';
 })
 export class ProductFilterComponent implements OnInit {
   products: products[] = [];
+  category: category;
   totalproduct: number =0;
   name: string;
   a =[];
@@ -40,10 +41,16 @@ export class ProductFilterComponent implements OnInit {
   }
   onClick1(){
     this.totalproduct = 0;
+    this.products = [];
     this.productsServices.getProductByCategories("Normal").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+    {
+    this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+    this.products.push(res);
+    })
+    }
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -58,9 +65,15 @@ export class ProductFilterComponent implements OnInit {
   onClick2(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Fire").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -75,9 +88,15 @@ export class ProductFilterComponent implements OnInit {
   onClick3(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Water").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -92,9 +111,15 @@ export class ProductFilterComponent implements OnInit {
   onClick4(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Grass").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -109,9 +134,15 @@ export class ProductFilterComponent implements OnInit {
   onClick5(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Electric").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -126,9 +157,15 @@ export class ProductFilterComponent implements OnInit {
   onClick6(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Ice").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -143,9 +180,15 @@ export class ProductFilterComponent implements OnInit {
   onClick7(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Fighting").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -160,9 +203,15 @@ export class ProductFilterComponent implements OnInit {
   onClick8(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Poison").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -177,9 +226,15 @@ export class ProductFilterComponent implements OnInit {
   onClick9(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Ground").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -194,9 +249,15 @@ export class ProductFilterComponent implements OnInit {
   onClick10(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Flying").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -211,9 +272,15 @@ export class ProductFilterComponent implements OnInit {
   onClick11(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Psychic").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -228,9 +295,15 @@ export class ProductFilterComponent implements OnInit {
   onClick12(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Bug").subscribe((data) => {
-      this.products = data;
+      this.category = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -245,9 +318,15 @@ export class ProductFilterComponent implements OnInit {
   onClick13(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Rock").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -262,9 +341,15 @@ export class ProductFilterComponent implements OnInit {
   onClick14(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Ghost").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category= data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -279,9 +364,15 @@ export class ProductFilterComponent implements OnInit {
   onClick15(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Dragon").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -296,9 +387,15 @@ export class ProductFilterComponent implements OnInit {
   onClick16(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Dark").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -313,9 +410,15 @@ export class ProductFilterComponent implements OnInit {
   onClick17(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Steel").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }
@@ -330,9 +433,15 @@ export class ProductFilterComponent implements OnInit {
   onClick18(){
     this.totalproduct = 0;
     this.productsServices.getProductByCategories("Fariry").subscribe((data) => {
-      this.products = data;
+      for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+      this.category = data;
       this.a[0] = this.products;
-      for(var i = 0; i< data.length; i++)
+      for(var i = 0; i< data.products.length; i++)
       {
         this.totalproduct = this.totalproduct +1;
       }

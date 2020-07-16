@@ -6,7 +6,7 @@
   <div class="form-group text-center">
     <ngb-rating [formControl]="ctrl">
      <ng-template let-fill="fill">
-    <span class="star color{{rating}}" [class.filled]="fill === 100">&#9733;</span>
+    <span class="star color{{rating}}" [class.filled]="fill === 100" >&#9733;</span>
   </ng-template>
     </ngb-rating>
     <div class="form-text small">
@@ -26,13 +26,14 @@
   <div class="col">
   <form [formGroup]="rateForm" >
     <div class="form-group text-center">
-        <a style="font-size: 14px">Viết nhận xét</a>
+        <a  style="font-size: 14px">Viết nhận xét</a>
         <textarea 
             formControlName="content"
             id="content"
             type="text" 
             class="form-control"
             style="font-size: 14px;"
+
             ></textarea> 
     </div>
   </form>
@@ -40,7 +41,8 @@
   
   <div class="col" style="display: flex; justify-content: space-between;">
     <button class="btn btn-tran" (click)="reset()">CLEAR</button>
-  <button class="btn btn-fill">GỬI</button>
+  <button class="btn btn-fill"  [disabled]="check === true" (click)="toggle()">GỬI
+  </button>
   </div>
   
   </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, products } from '../_models';
+import { User, products, category } from '../_models';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, tap, retry, catchError } from 'rxjs/operators';
@@ -143,9 +143,13 @@ export class ApiService {
         return this.handleError(error)
       }));
   }
+  getCategory(id): Observable<category> {
+    return this.http.get<category>(this.apiURL + '/category/' + id, this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
 
-  getProductByCategories(name): Observable<[]> {
-    return this.http.get<any>(this.apiURL + '/category/'+ name ,this.httpOpt).pipe(
+  getProductByCategories(name): Observable<category> {
+    return this.http.get<category>(this.apiURL + '/category/cate/'+ name ,this.httpOpt).pipe(
      catchError(this.handleError));
   }
 
@@ -176,15 +180,10 @@ export class ApiService {
       }));
   }
 
-  addorder(Authorization,productid, userid, quantity,receiver, phone, address): Observable<any> {
-    this.httpOption = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': Authorization
-      })
-    }
-    return this.http.post<any>(this.apiURL + '/order/add', {productid: productid, userid:userid, quantity:quantity, receiver: receiver, phone: phone, address: address
-    } ,this.httpOption).pipe(
+  addorder(productid, userid, quantity,email, phone, address): Observable<any> {
+
+    return this.http.post<any>(this.apiURL + '/order/add', {productid: productid, userid: userid, quantity: quantity, phone: phone, address: address, email: email
+    } ,this.httpOpt).pipe(
      catchError(this.handleError));
   }
 
@@ -193,14 +192,13 @@ export class ApiService {
      catchError(this.handleError));
   }
 
-  getorderbyID(id, Authorization): Observable<any> {
-    this.httpOption = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': Authorization
-      })
-    }
-    return this.http.get<any>(this.apiURL + '/order/user/'+id ,this.httpOption).pipe(
+  getorderbyID(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/order/'+id ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  getorderbyuser(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/order/user/'+id ,this.httpOpt).pipe(
      catchError(this.handleError));
   }
 
@@ -229,6 +227,26 @@ export class ApiService {
       }));
   }
 
+  addrate( userID, productID, rate,content): Observable<any> {
+    return this.http.post<any>(this.apiURL + '/rating', { userID: userID, productID: productID, rate: rate, content: content} ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  getratingbyid(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/rating/'+id ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  getratingbyuser(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/rating/user/'+id ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  updateratingbyuser(id, rate, content): Observable<any> {
+    return this.http.patch<any>(this.apiURL + '/rating/'+id ,{rate: rate, content: content},this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -245,16 +263,7 @@ export class ApiService {
       'Something bad happened; please try again later.');
   };
 
-  addrate(Authorization, userID, productID, rate,content): Observable<any> {
-    this.httpOption = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': Authorization
-      })
-    }
-    return this.http.post<any>(this.apiURL + '/rating/', { userID:userID, productID: productID, rate:rate, content: content} ,this.httpOption).pipe(
-     catchError(this.handleError));
-  }
+  
 }
 
   //Error handling

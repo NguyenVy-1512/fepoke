@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormBuilder,FormGroup, FormControl, Validators} from '@angular/forms';
-import { User } from '../_models';
+import { User, products, rating } from '../_models';
 import { AlertService, ApiService, DataService } from '../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -21,11 +21,12 @@ color: #FFD656;
 })
 export class RatingComponent implements OnInit {
   rate:number;
+  check: boolean = false;
   token:string;
-  @Input() productID: string;
   user: User;
   content: string;
-  productid:string;
+  @Input() p: string;
+  r: rating;
   rateForm: FormGroup;
   ctrl = new FormControl(null, Validators.required);
 
@@ -43,18 +44,35 @@ export class RatingComponent implements OnInit {
     this.rate = this.ctrl.value;
     this.data.currentuser.subscribe(user=> this.user = user);
     this.data.currenttoken.subscribe(token => this.token = token);
-    this.productid = this.route.snapshot.url[1].path;
     console.log(this.user._id);
   }
   toggle() {
-    if (this.ctrl.disabled) {
-      this.ctrl.enable();
-    } else {
-      this.ctrl.disable();
+    this.rate = this.ctrl.value;
+    var checkrate = false;
+    this.Service.getratingbyuser(this.user._id).subscribe(res=>{
+      for(var i = 0; i < res.length; i++)
+      {
+        if(res[i].productID == this.p)
+        {
+          checkrate = true;
+          this.Service.updateratingbyuser(res[i]._id, this.rate, this.f.content.value).subscribe(res =>{
+            this.check = true;
+          })
+        }
+      }
+      if(checkrate == false)
+      {
+      this.Service.addrate(this.user._id, this.p, this.rate, this.f.content.value).subscribe(res=>{
+        console.log('thanh cong');
+        this.check = true;
+      })
     }
-    this.Service.addrate(this.token,this.user._id,this.productid,this.rate,this.f.content.value).subscribe(res=>{
-      console.log('thanh cong')
     })
+    console.log(this.user._id);
+    console.log(this.p);
+    console.log(this.rate);
+    console.log(this.f.content.value);
+    
   }
   get f() { return this.rateForm.controls; }
   reset(){

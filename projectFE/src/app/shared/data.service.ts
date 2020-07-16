@@ -20,8 +20,10 @@ export class DataService {
   insearch = new BehaviorSubject<boolean>(true);
   productlistsearch= new BehaviorSubject<products[]>([]);
   productlistcategory = new BehaviorSubject<products[]>([]);
-
+  orderid = new BehaviorSubject<string[]>([]);
   productlist= new BehaviorSubject<string[]>([]);
+
+  currentorderid = this.orderid.asObservable();
   currentid = this.id.asObservable();
   currentloading = this.loading.asObservable();
   currenttoken = this.token.asObservable();
@@ -45,6 +47,11 @@ export class DataService {
   changeMessage(loading) {
     this.loading.next(loading);
   }
+
+  changeorderid(orderid) {
+    this.orderid.next(orderid);
+  }
+
   changeToken(token){
     this.token.next(token);
   }

@@ -3,7 +3,7 @@
     <ul class="breadcrumb">
         <button class="back">BACK</button>
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/category"></a></li>
+        <li><a routerLink="/category">category</a></li>
         <li>{{p.name}}</li>
     </ul>
     <h2 class="cat-name">GRASS <span class="remaining-products">(23 products)</span> </h2>
@@ -27,11 +27,14 @@
                             style="width: 100%;">
                     </div>
                     <div class="col-7" style="padding-left: 50px; padding-top: 30px;">
-                        <p class="product-number">{{p.id}}</p>
+                        
                         <h2 class="product-name">{{p.name}}</h2>
-                        <h6 class="type1">Grass <span>/ Poison</span> </h6>
+                        <div class="row">
+                        <h6 *ngFor="let cate of category" class="type1">{{cate.name}} / </h6>
+                        </div>
                         <h2 class="product-price">{{p.price}}</h2>
                         <p class="old-price">{{p.price + (p.price * 10/100)}}</p>
+                        <h2 class="product-rating">{{p.view}} sao</h2>
                         <div class="product-quantity">
                             <product-quantity
                             [Counter] = "counter"
@@ -46,9 +49,16 @@
                         <button class="btn add-to-cart-btn"  (click) = "addtocard()"></button>
                         <button class="b" data-toggle="modal" data-target="#myModal">Dánh giá</button>
                         <div id="myModal" class="modal">
+                            <div [ngSwitch]="loading">
+                                <div *ngSwitchCase="false">
+                                <button class="c" routerLink="/login" data-dismiss="modal" >Đăng nhập để đánh giá</button>
+                                </div>
+                            <div *ngSwitchCase="true">
                             <div class="c">
-                                <rating [productID] ="p.id">  </rating>
+                                <rating [p] = "productid" >  </rating>
                                 <button class="fas fa-times" data-dismiss="modal"></button>
+                            </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -64,10 +74,14 @@
                 <h4 class=" headtype">Related Products</h4>
                 <div class="row no-gutters r-in">
                     <div class="conbo">
-
                         <div class="prod">
                             <product-card *ngFor="let product of products" [product]="product"></product-card>
                         </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class= "conbo">
+                        
                     </div>
                 </div>
             </div>

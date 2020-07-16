@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../shared';
 
 @Component({
   selector: 'order-success',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderSuccessComponent implements OnInit {
 
-  constructor() { }
+  orderid: string[];
+
+  constructor(
+    private data: DataService
+  ) { }
 
   ngOnInit() {
+    this.data.currentorderid.subscribe(orderid => this.orderid = orderid);
   }
 
 }

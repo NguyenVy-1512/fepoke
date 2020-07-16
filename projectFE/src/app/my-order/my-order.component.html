@@ -26,20 +26,21 @@
 
                     <thead>
                         <tr>
-                            <th style="width: 15%;">ID</th>
-                            <th style="width: 20%;">Summary</th>
+                            <th style="width: 20%;">ID</th>
                             <th style="width: 15%;">NAME</th>
-                            <th style="width: 10%;">PHONE</th>
-                            <th style="width: 40%;">ADDRESS</th>
+                            <th style="width: 10%;">Quantity</th>
+                            <th style="width: 15%" >Total</th>
+                            <th style="width: 15%;">PHONE</th>
+                            <th style="width: 25%;">ADDRESS</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr *ngFor = "let order of orders; index as i">
                             <td> <a data-toggle="modal" data-target="#myModal">{{order._id}}</a> </td>
-                            <td> <p data-toggle="modal" data-target="#myModal">{{products[i].name}} x {{order.quantity}}</p> </td>
-                            <td>{{order.receiver}}</td>
-                            <td>{{order.phone}}</td>
+                            <td> <p data-toggle="modal" data-target="#myModal">{{products[i].name}}</p> </td>
+                            <td>{{order.quantity}}</td>
+                            <td>{{products[i].price * order.quantity}}</td>
                             <td>{{order.address}}</td>
                             <div id="myModal" class="modal">
                                 <div class="c">

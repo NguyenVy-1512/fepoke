@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { order, products } from '../_models';
+import { order, products, User } from '../_models';
 import { ApiService, DataService } from '../shared';
 
 @Component({
@@ -11,11 +11,13 @@ export class OrderCardComponent implements OnInit {
   @Input() order: order;
   @Input() product: products;
   token: string;
+  user: User;
   constructor(private orderService: ApiService,
     private data: DataService) { }
 
   ngOnInit() {
     console.log(this.order);
+    this.data.currentuser.subscribe(user => this.user = user);
   }
   cancel(){
     this.data.currenttoken.subscribe(token => this.token = token);

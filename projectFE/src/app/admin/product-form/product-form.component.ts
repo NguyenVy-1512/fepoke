@@ -12,8 +12,7 @@ import { products, category } from 'src/app/_models';
 export class ProductFormComponent implements OnInit {
   addproductForm: FormGroup;
   product= new products();
-  categorys:category[]= [];
-  category= new category('1457hchtyy6ghc','');
+  categorys:string[]= [];
   id: string;
   productid: string;
   isproduct: boolean;
@@ -48,8 +47,19 @@ export class ProductFormComponent implements OnInit {
   get f() { return this.addproductForm.controls; }
 
   onadd(){
-    this.categorys[0] = new category('',this.f.category.value);
-    this.categorys[0] = new category('',this.f.category1.value);
+    if ( this.f.category.value != '' &&  this.f.category1.value != '')
+    {
+    this.categorys[0] = this.f.category.value
+    this.categorys[1] = this.f.category1.value
+    }
+    else if(this.f.category.value == '' &&  this.f.category1.value != '')
+    {
+      this.categorys[0] = this.f.category1.value
+    }
+    else{
+      this.categorys[0] = this.f.category.value
+    }
+    
     this.prductsService.addProduct(this.f.name.value, this.f.desc.value, this.f.price.value, 5, 8, this.f.image.value, this.categorys)
           .subscribe(
               res => {console.log('them san pham thanh cong');

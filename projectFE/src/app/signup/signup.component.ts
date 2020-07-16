@@ -27,7 +27,8 @@ export class SignupComponent implements OnInit{
           name: ['', Validators.required],
           password: ['', [Validators.required, Validators.minLength(6)]],
           rule: ['user'],
-          phone: ['', Validators.required]
+          phone: [''],
+          address: ['']
          
       });
   }
@@ -73,6 +74,11 @@ export class SignupComponent implements OnInit{
   get mail(){
     return this.registerForm.get('mail');
   }
+  
+  get address(){
+    return this.registerForm.get('address');
+  }
+
   login(){
     this.registerForm.setErrors({
       invalidLogin: true

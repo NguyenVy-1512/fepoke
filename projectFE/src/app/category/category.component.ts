@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../shared';
-import { products } from '../_models';
+import { products, category } from '../_models';
 
 
 @Component({
@@ -11,8 +11,10 @@ import { products } from '../_models';
 })
 export class CategoryComponent implements OnInit {
  
-  products: products[];
-  category: string;
+  products: products[] = [];
+  category: category;
+  name: string
+  cate: string[];
   totalproduct: number= 0;
  
 /* i là số sản phẩm được lọc theo category */
@@ -22,9 +24,17 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.category = this.route.snapshot.url[1].path;
-    this.productsServices.getProductByCategories(this.category).subscribe((data) => {
-    this.products = data;
+    this.products = []
+    this.name = this.route.snapshot.url[1].path;
+    this.productsServices.getProductByCategories(this.name).subscribe((data) => {
+      console.log(data);
+    this.category = data;
+    for(var i=0; i< data.products.length; i++)
+    {
+    this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+    this.products.push(res);
+    })
+    }
     console.log(this.products);
     for(var i= 0; i< this.products.length; i++)
     {

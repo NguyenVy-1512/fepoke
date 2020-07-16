@@ -1,0 +1,204 @@
+### 
+GET http://localhost:3000/user
+
+###
+GET http://localhost:3000/user/5dd3cfc8b6eb421d546751e6
+###
+DELETE http://localhost:3000/user/5dc915119f007d27782d1bfa
+### SignUp
+POST http://localhost:3000/user/signup
+Content-Type: application/json
+
+{
+    "name": "33333",
+    "email": "test@api.nhe",
+    "password": "wwww",
+    "role": "user",
+    "phone": ""
+}
+
+### verify
+POST http://localhost:3000/verify/84383593e9ac9a44f9aa5ca1c66d4d1e
+Content-Type: application/json
+
+### login
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "email": "levychuyenvan@gmail.com",
+    "password": "01653659895"
+}
+###profile
+GET http://localhost:3000/user/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGFiNjZlYmZiNzNhMTU2YzYxMDU5ZSIsImlhdCI6MTU5NDczNTAzNX0.HLXrmN4A9r8C-BqYgY04SQZ8Tk-yXL6dH9iwnEOa1OY
+
+###logout
+POST http://localhost:3000/user/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDFhMWMyY2FiM2I5MjUwOGUwZjI0OSIsImlhdCI6MTU3Nzg2MDkxN30.rHabaUASxiiBuVDuYP4rksFkcQDSPmzktEEqHOvccUs
+
+###logoutall
+POST http://localhost:3000/user/logoutall
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZGY3MzEyMTRkN2Q5MjJkYzRmYWEwMiIsImlhdCI6MTU3NDkyNTcwM30.EaY0w_mOuAqIBtaMfiJMneo3ZITGYJDILPbKRmvUuaQ
+
+### change info user
+PATCH  http://localhost:3000/user/changeprofile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDYyYzg1ZDY4ZTkxMzZhNDBlMDlhMCIsImlhdCI6MTU3NzgxODkyM30.2k2_8HKs1fZILmJBFKqw3Yqp9n2vDm8VrRalljEahlk
+{
+    "name": "le vy",
+    "email": "levy151298@gmail.com"
+}
+
+### change password
+PATCH http://localhost:3000/user/changepassword
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDFhMmIzMjdkMmY3MWQzY2E0ZGY0MiIsImlhdCI6MTU3Nzc5MzU3MX0.P0MTBIyjbwepk235iNhTrtw9Rmh6m1ienpzfI0dsqaA
+
+{
+    "password1": "123456",
+    "password2": "123456"
+}
+
+### Add product
+### Neu product thuoc 1 cate thi phai xoa ngoac []
+POST  http://localhost:3000/product/add
+Content-Type: application/json
+
+{
+    "name": "Hitmonchan",
+    "desc": "aadav dasd adafasdf",
+    "price": "1200",
+    "rating": "8",
+    "qty": "2",
+    "imgurl": "https://i.ibb.co/MMKg9Dk/107-Hitmonchan-Fighting.png",
+    "category": [
+        {
+            "_id": "5e090471e3d81d0e486af33b",
+            "name": "Fighting"
+        },{
+            "_id": "5e09041de3d81d0e486af330",
+            "name": "Dragon"
+        }
+    ]
+}
+
+### get product (không có category name)
+GET http://localhost:3000/product/v1
+Content-Type: application/json
+
+### get product (có category name)
+GET http://localhost:3000/product/v2/normal
+Content-Type: application/json
+
+###
+GET http://localhost:3000/product/5e0cd9e93272931d00d386d0
+Content-Type: application/json
+###
+PATCH  http://localhost:3000/product/5e0cd9e93272931d00d386d0
+Content-Type: application/json
+
+{
+    "desc": "sản phẩm mới của chúng tôi"
+}
+###
+DELETE  http://localhost:3000/product/5dd420b39420db2280e327df
+Content-Type: application/json
+
+###
+POST http://localhost:3000/order/ntf
+Content-Type: application/json
+
+###upload image - trong adminpage
+POST http://localhost:3000/upload
+Content-Type: application/json
+
+{
+    "name": "test",
+    "imgPath": "c:\\Users\\lynkn\\Desktop\\Mona_Lisa.jpg"
+}
+
+###add category
+POST http://localhost:3000/category
+Content-Type: application/json
+
+{
+    "name": "Ground"
+}
+
+### reset password
+POST http://localhost:3000/user/resetpassword
+Content-Type: application/json
+
+{
+    "email": ""
+}
+
+### get category by id
+
+GET  http://localhost:3000/category/5e0903ece3d81d0e486af32b
+Content-Type: application/json
+
+### get category by name
+
+GET  http://localhost:3000/category/cate/Normal
+Content-Type: application/json
+### get category
+GET  http://localhost:3000/category
+Content-Type: application/json
+
+### post order
+POST http://localhost:3000/order/add
+Content-Type: application/json
+
+{
+    "productid": "5e0cd9e93272931d00d386d0",
+    "quantity": 2,
+    "userid": "5f0ab66ebfb73a156c61059e",
+    "phone": "0353659895",
+    "address": "ktx khu b",
+    "email": "levychuyenvan@gmail.com"
+}
+
+### get order by id
+Get http://localhost:3000/order/5f0abf7ec963e538480df52b
+Content-Type: application/json
+
+### get order by user
+
+Get http://localhost:3000/order/user/5f0ab66ebfb73a156c61059e
+Content-Type: application/json
+
+### get order
+Get http://localhost:3000/order
+Content-Type: application/json
+
+### post rate
+POST http://localhost:3000/rating
+Content-Type: application/json
+
+{
+    "productID": "5e0cdea3c0ef1b255c6f10c6",
+    "rate": 6,
+    "userID": "5f0ab66ebfb73a156c61059e",
+    "content": "đẹp nha, hihi"
+}
+### get rating by id
+Get http://localhost:3000/rating/5f0d7e82261aa231b8a6ee90
+Content-Type: application/json
+
+### get rating by user
+Get http://localhost:3000/rating/user/5f0ab66ebfb73a156c61059e
+Content-Type: application/json
+
+### patch rating
+PATCH  http://localhost:3000/rating/5f0d7e82261aa231b8a6ee90
+Content-Type: application/json
+
+{
+    "rate": 9,
+    "content": "đẹp, hihi"
+}

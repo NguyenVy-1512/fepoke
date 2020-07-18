@@ -51,7 +51,17 @@
                         <div id="myModal" class="modal">
                             <div [ngSwitch]="loading">
                                 <div *ngSwitchCase="false">
-                                <button class="c" routerLink="/login" data-dismiss="modal" >Đăng nhập để đánh giá</button>
+                                    <div class="popup">
+
+                                        
+                                        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
+                                       
+                                
+                                        <div class="content">
+                                            <!-- bỏ nó vào div content để căn giữa cho nó -->
+                                            <button routerLink="/login" data-dismiss="modal" class="butt">ĐĂNG NHẬP ĐỂ ĐÁNH GIÁ</button>
+                                        </div>
+                                    </div>
                                 </div>
                             <div *ngSwitchCase="true">
                             <div class="c">
@@ -72,7 +82,7 @@
                 </div>
 
                 <h4 class=" headtype">Related Products</h4>
-                <div class="row no-gutters r-in">
+                <div class="row">
                     <div class="conbo">
                         <div class="prod">
                             <product-card *ngFor="let product of products" [product]="product"></product-card>
@@ -81,11 +91,31 @@
                 </div>
                 <div class="col">
                     <div class= "conbo">
-                        
+                        <comment></comment>
                     </div>
                 </div>
             </div>
         </div>
 
+    </div>
+</div>
+
+
+
+<!-- thêm event cho button trong này -->
+<div id="myModal" class="modal">
+    <div class="popup">
+
+        <!-- khu vực này ko cần quan tâm -->
+        <i class="far fa-smile fa-2x"></i>
+        <h3>Are you sure?</h3>
+        <p style="margin-bottom:-10px; margin-top:-10px; opacity: .5;">chak chua za?</p>
+        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
+        <!-- khu vực này ko cần quan tâm -->
+
+        <div class="content">
+            <!-- bỏ nó vào div content để căn giữa cho nó -->
+            <button routerLink="/cancel-order" data-dismiss="modal" class="btn btnn"></button>
+        </div>
     </div>
 </div>

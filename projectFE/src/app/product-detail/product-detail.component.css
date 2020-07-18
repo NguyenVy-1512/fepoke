@@ -89,6 +89,28 @@ justify-items: center;
     position: relative;
     overflow: hidden;
   }
+
+  .butt {
+    border-radius: 0;
+    outline: none;
+    border: 2px solid #242424;
+    font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
+    color: #242424;
+    background: none;
+    height: 50px;
+  width: 200px;
+  margin-top: 53px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .butt:hover{
+    background: #242424;
+    color: white;
+
+  }
   
   .btn:after{
     content: "ADD TO CART";
@@ -267,3 +289,63 @@ padding-right: 0;
 }
 
 }
+
+
+.modal {
+  margin-top: 100px;
+}
+
+.popup {
+ margin: 100px auto;
+ padding: 20px;
+ background: #fff;
+ border-radius: 5px;
+ width: 300px;
+ height: 200px;
+ position: relative;
+ transition: all 5s ease-in-out;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+}
+
+.popup .close {
+ position: absolute;
+ font-size: 20px;
+ text-decoration: none;
+ color: #d3d3d3;
+ opacity: 1;
+ display: flex;
+ flex-direction: row-reverse;
+ height: 37px;
+ width: 37px;
+ top: 0;
+ right: 0;
+ padding-top: 10px;
+ padding-right: 10px;  
+ cursor: pointer;
+}
+
+.popup .close:hover {
+ color: #242424;
+}
+
+.popup .content {
+justify-content: center;
+}
+
+
+.btnn {
+ height: 50px;
+ width: 100px;
+ background: #242424;
+ color: white;
+ position: relative;
+ overflow: hidden;
+}
+
+.btnn:hover {
+background: yellowgreen;
+border: yellowgreen;
+}
+

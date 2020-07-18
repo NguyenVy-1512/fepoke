@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit{
         email: ['', Validators.required],
           name: ['', Validators.required],
           password: ['', [Validators.required, Validators.minLength(6)]],
-          rule: ['user'],
           phone: [''],
           address: ['']
          
@@ -46,12 +45,11 @@ export class SignupComponent implements OnInit{
       console.log(this.registerForm.value);
       
       this.loading = true;
-      this.userService.register(this.registerForm.value)
+      this.userService.register(this.f.name.value, this.f.phone.value, this.f.address.value, this.f.password.value, this.f.email.value, 'user')
           .subscribe((
               result) => {
                   console.log('done');
                   this.alertService.success('Registration successful', true);
-                  this.router.navigate(['/login']);
               },
               error => {
                   this.alertService.error(error);
@@ -59,26 +57,7 @@ export class SignupComponent implements OnInit{
               });
       
   }
-  get username(){
-    return this.registerForm.get('username');
-  }
-
-  get password(){
-    return this.registerForm.get('password');
-  }
-
-  get phone(){
-    return this.registerForm.get('phone');
-  }
-
-  get mail(){
-    return this.registerForm.get('mail');
-  }
   
-  get address(){
-    return this.registerForm.get('address');
-  }
-
   login(){
     this.registerForm.setErrors({
       invalidLogin: true

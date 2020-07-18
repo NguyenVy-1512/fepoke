@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, DataService } from '../shared';
-import { products, category } from '../_models';
+import { products, category, rating } from '../_models';
 
 @Component({
   selector: 'product-detail',
@@ -27,6 +27,8 @@ export class ProductDetailComponent implements OnInit {
   setcard: boolean;
   category: category[] = [];
   checkrating: boolean = false;
+  comment: rating[];
+  @Output() rate = new EventEmitter<number>();
   constructor(private route: ActivatedRoute,
               private router: Router,
               private productService: ApiService,
@@ -49,6 +51,7 @@ export class ProductDetailComponent implements OnInit {
       {
         this.checkrating = true;
       }
+      this.rate = data.view;
       console.log(this.p);
       //lấy tên categorys
      for(var i=0; i < data.category.length; i++)
@@ -89,6 +92,11 @@ export class ProductDetailComponent implements OnInit {
     console.log(this.quantity[this.productlist.indexOf(this.productid)]);
     console.log(this.counter);
     console.log(this.productid);
+    // list comment
+    this.productService.getratingbyproduct(this.productid).subscribe(res => {
+      this.comment = res;
+      console.log(res);
+    })
 
   }
 

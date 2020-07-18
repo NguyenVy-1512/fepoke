@@ -4,7 +4,7 @@
   <div class="col">
   
   <div class="form-group text-center">
-    <ngb-rating [formControl]="ctrl">
+    <ngb-rating [formControl]="ctrl"  [(rate)]= rate >
      <ng-template let-fill="fill">
     <span class="star color{{rating}}" [class.filled]="fill === 100" >&#9733;</span>
   </ng-template>
@@ -33,8 +33,7 @@
             type="text" 
             class="form-control"
             style="font-size: 14px;"
-
-            ></textarea> 
+            >{{content}}</textarea> 
     </div>
   </form>
   </div>

@@ -5,5 +5,6 @@ export class rating {
     rate: number;
     content: string;
     productID:string;
+    createdAT: Date;
     
 }

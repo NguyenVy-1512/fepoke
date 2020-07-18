@@ -34,7 +34,7 @@
                         </div>
                         <h2 class="product-price">{{p.price}}</h2>
                         <p class="old-price">{{p.price + (p.price * 10/100)}}</p>
-                        <h2 class="product-rating">{{p.view}} sao</h2>
+                        <h2 class="product-rating">{{rate}} sao</h2>
                         <div class="product-quantity">
                             <product-quantity
                             [Counter] = "counter"
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col">
                     <div class= "conbo">
-                        <comment></comment>
+                        <comment *ngFor="let p of comment" [id] = "p"></comment>
                     </div>
                 </div>
             </div>

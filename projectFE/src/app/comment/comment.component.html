@@ -1,17 +1,15 @@
-<div class="row" id="cmt section">
+<div class="col" id="cmt section">
     <div class="row" id="user section">
         <img src="https://i.imgur.com/YgDOOTW.png" alt="" style="height: 60px">
         <div class="col">
-            <h4 style="font-weight: bold">username</h4>
-        <h6 style="color: rgb(153, 153, 153);">date time</h6>
-    </div>
-    </div>
-    <div class="row">
-        <ngb-rating [formControl]="ctrl">
+            <h4 style="font-weight: bold">{{name}}</h4>
+        <h6 style="color: rgb(153, 153, 153);">{{date}}</h6>
+        <ngb-rating [formControl]="ctrl" [(rate)] = id.rate>
             <ng-template let-fill="fill">
            <span class="star color{{rating}}" [class.filled]="fill === 100" >&#9733;</span>
          </ng-template>
            </ngb-rating>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat voluptas, repellat consectetur modi veritatis aspernatur illum repudiandae aut eaque, quae ad at! Nesciunt fugit vero repellendus illum, ratione tenetur et quasi nam cum voluptatum nostrum porro alias, voluptas, illo distinctio nobis consectetur temporibus hic aliquid possimus quam tempora ipsam. Corporis.</p>
+        </div>
     </div>
+    <p>{{id.content}}</p>
 </div>

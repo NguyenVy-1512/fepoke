@@ -1,0 +1,26 @@
+
+<section>
+    <div class="login-form">
+    <h1 style="font-weight: bolder; margin-top: 60px;" class="text-center">Email Verification</h1>
+    <p style="margin-bottom: 40px; " class="text-center">Please verify your account by clicking the button</p>
+    <div id="wrapper">
+       <button class="btn" (click)=" onreset()" data-target="#myModal" data-toggle="modal">Verify</button></div>
+    
+
+
+</div>
+
+<div class="modal" id="myModal">
+        <div class="popup">
+                <i class="fas fa-check"></i>
+                <i class="far fa-circle fa-3x"></i>
+                <i class="far fa-circle fa-3x f1"></i>
+                <i class="far fa-circle fa-3x f2"></i>
+                <i class="far fa-circle fa-3x f3"></i>
+                <h3>Success!</h3>
+                <a class="close"  data-dismiss="modal"><i class="fas fa-times"></i></a>
+                <button class="btn back" routerLink="/login" data-dismiss="modal">back to login page</button>
+            </div>
+</div>
+
+</section>

@@ -61,6 +61,7 @@ import { ChatModule } from './chat/chat.module';
 import { NgxStripeModule } from '@nomadreservations/ngx-stripe';
 import { RatingComponent } from './rating/rating.component';
 import { CommentComponent } from './comment/comment.component';
+import { VerityComponent } from './verity/verity.component';
 
 
 const appRoutes: Routes = [
@@ -90,6 +91,7 @@ const appRoutes: Routes = [
   { path: 'search/:idserch' , component: SearchComponent},
   { path: 'search/' , component: SearchComponent},
   { path: 'vclteam' , component: WebInfoComponent},
+  { path: 'verify/:id' , component: VerityComponent}
 ];
 
 @NgModule({
@@ -135,6 +137,7 @@ const appRoutes: Routes = [
     SideNavComponent,
     RatingComponent,
     CommentComponent,
+    VerityComponent,
     //ChatDialogComponent,  
   ],
   imports: [

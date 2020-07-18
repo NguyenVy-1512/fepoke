@@ -45,6 +45,18 @@ export class RatingComponent implements OnInit {
     this.data.currentuser.subscribe(user=> this.user = user);
     this.data.currenttoken.subscribe(token => this.token = token);
     console.log(this.user._id);
+    this.Service.getratingbyuser(this.user._id).subscribe(res=>{
+      for(var i = 0; i < res.length; i++)
+      {
+        if(res[i].productID == this.p)
+        {
+          this.Service.getProduct(this.p).subscribe(res=>{
+          this.rate = res.view
+          })
+          this.content = res[i].content;
+        }
+      }
+    })
   }
   toggle() {
     this.rate = this.ctrl.value;

@@ -50,8 +50,8 @@ export class ApiService {
   }
 
   //Get user by ID
-  getUserByID(): Observable<any> {
-    return this.http.get<any>(this.apiURL + '/user/:id').pipe(
+  getUserByID(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/user/'+ id).pipe(
       retry(1),
       catchError(this.handleError)
     )
@@ -79,8 +79,8 @@ export class ApiService {
           return this.handleError(error)
         }));
   }
-  register(user) {
-    return this.http.post(this.apiURL + `/user/signup`, user, this.httpOpt)
+  register(name, phone, address, password, email, role) {
+    return this.http.post(this.apiURL + `/user/signup`, {name: name, phone: phone, address: address, password: password, email: email, role: role}, this.httpOpt)
       .pipe(
         tap((data: any) => {
           console.log(data);
@@ -118,14 +118,8 @@ export class ApiService {
         }));
   }
 
-  infouser(Authorization: string) {
-    this.httpOption = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': Authorization
-      })
-    }
-    return this.http.get(this.apiURL + `/user/profile`, this.httpOption)
+  infouser(id: string): Observable<any> {
+    return this.http.get<any>(this.apiURL + `/user/profile/`+ id, this.httpOpt)
       .pipe(
         catchError(error => {
           return this.handleError(error)
@@ -143,6 +137,15 @@ export class ApiService {
         return this.handleError(error)
       }));
   }
+
+  verity(id){
+    return this.http.post(this.apiURL + '/user/verify/' + id, this.httpOpt)
+    .pipe(
+      catchError(error => {
+        return this.handleError(error)
+      }));
+  }
+
   getCategory(id): Observable<category> {
     return this.http.get<category>(this.apiURL + '/category/' + id, this.httpOpt).pipe(
      catchError(this.handleError));
@@ -239,6 +242,11 @@ export class ApiService {
 
   getratingbyuser(id): Observable<any> {
     return this.http.get<any>(this.apiURL + '/rating/user/'+id ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  getratingbyproduct(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/rating/product/'+id ,this.httpOpt).pipe(
      catchError(this.handleError));
   }
 

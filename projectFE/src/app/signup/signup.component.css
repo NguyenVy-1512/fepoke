@@ -1,7 +1,86 @@
+
 section {
-    padding-top: 20px;
-   margin-top: 20px;
+   padding: 20px;
+  margin-top: 20px;
 }
+
+
+.back {
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+
+.popup {
+  margin: 100px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 5px;
+  width: 300px;
+  height: 230px;
+  position: relative;
+  transition: all 5s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup .close {
+  position: absolute;
+  font-size: 20px;
+  text-decoration: none;
+  color: #d3d3d3;
+  opacity: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 37px;
+  width: 37px;
+  top: 0;
+  right: 0;
+  padding-top: 10px;
+  padding-right: 10px;  
+  cursor: pointer;
+}
+
+.popup .close:hover {
+  color: #242424;
+}
+
+.popup .content {
+ justify-content: center;
+}
+
+.fa-check {
+   position: relative;
+   margin-top: 4px;
+   margin-bottom: 30px;
+   font-size: 25px;
+   color: yellowgreen;
+}
+
+.far {
+   position: absolute;
+   margin-top: -8px;
+   color: yellowgreen;
+   animation: spin;
+   animation-iteration-count: infinite;
+   animation-duration: 2s;
+  animation-timing-function: linear;
+}
+
+
+.f1 {
+  animation-delay: 25ms;
+}
+
+.f2 {
+  animation-delay: 50ms;
+}
+
+.f3 {
+  animation-delay: 75ms;
+}
+
 
 .alert {
    text-align: right;

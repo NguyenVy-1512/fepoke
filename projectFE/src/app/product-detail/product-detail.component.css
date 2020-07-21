@@ -6,12 +6,6 @@
     
 }
 
-
-/* Modal Content */
-
-
-/* The Close Button */
-
 .c:hover,
 .c:focus {
   color: #000;
@@ -20,12 +14,6 @@
 }
 .col {
   padding-bottom: 200px;
-}
-
-.prod {
-  display: grid;
-grid-template-columns: auto auto auto auto;
-justify-items: center;
 }
 
 .product-info{
@@ -63,7 +51,7 @@ justify-items: center;
   text-transform: uppercase;
     margin-top: 20px;
     margin-bottom: 10px;
-    padding-left: 50px;
+    padding-left: 30px;
 }
 
 .container-fluid {
@@ -264,6 +252,119 @@ padding-right: 0;
   border-left: none;
   border-bottom: none;
   margin-bottom: 0;
+}
+
+}
+
+.col-2 {
+  padding-left: 30px;
+  }
+
+.category {
+    border: 1px solid #e0e0e0;
+  }
+
+
+#category{
+visibility: hidden;
+}
+
+.category-row{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-bottom: 20px;
+}
+
+  .prod {
+    margin-top: -10px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    list-style-type: none;
+    justify-items: center;
+  }
+  
+  .col {
+    padding-bottom: 50px;
+  }
+
+  .r-in {
+    padding-left: 50px;
+    padding-bottom: 20px;
+  }
+  
+  .image {
+    margin-bottom: 50px;
+  }
+
+  .container-fluid {
+    width: 100%;
+    max-width: 1400px;
+  padding: 0;
+  }
+  
+  .row {
+      width: 100%;
+  }
+
+.cat-name {
+font-weight: bolder;
+padding-left: 30px;
+}
+
+.remaining-products {
+font-size: 15px;
+font-weight: 500;
+color: #888888;
+text-transform: uppercase;
+}
+
+option {
+text-transform: uppercase;
+}
+
+select {
+height: 35px;
+width: 100px;
+background: var(--den);
+color: white;
+border: none;
+outline: none;
+}
+
+@media only screen and (max-width: 1150px) {
+#category {
+  visibility: visible;
+}
+
+#cat {
+  display: none;
+}
+
+.prod {
+  padding-left: 0;
+}
+
+.col {
+  width: 100%;
+}
+}
+
+@media only screen and (max-width: 1050px) {
+.prod{
+  grid-template-columns: auto auto auto;
+
+}
+
+}
+
+@media only screen and (max-width: 800px) {
+.prod{
+  grid-template-columns: auto auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 }

@@ -3,25 +3,21 @@
     <ul class="breadcrumb">
         <button class="back">BACK</button>
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/category">category</a></li>
+        <li><a routerLink="/category">{{cate.name}}</a></li>
         <li>{{p.name}}</li>
     </ul>
     <h2 class="cat-name">GRASS <span class="remaining-products">(23 products)</span> </h2>
 
     <div class="row no-gutters" style="margin-top: 20px;">
- <div class="col">
-            <div class="detail">
-                <div class="row no-gutters no r-in">
         <div class="col col-2">
             <div class="category">
                 <product-filter></product-filter>
             </div>
         </div>
 
-        <div class="col col-10">
+        <div class="col col-10" >
             <div class="detail"  >
-               
-                <div class="row no-gutters no r-in">
+                <div class="row  r-in">
                     <div class="col-5 image">
                         <img src={{p.imgurl}} alt="Product-image"
                             style="width: 100%;">
@@ -71,21 +67,18 @@
                     <p>{{p.description}}</p>
                 </div>
 
-                <h4 class=" headtype">Related Products</h4>
-                <div class="row no-gutters r-in">
+                <h4 class="headtype">Related Products</h4>
+    
                     <div class="conbo">
                         <div class="prod">
                             <product-card *ngFor="let product of products" [product]="product"></product-card>
+                       
                         </div>
                     </div>
-                </div>
+
                 <div class="col">
                     <div class= "conbo">
-                        
+                       
                     </div>
                 </div>
             </div>
-        </div>
-
-    </div>
-</div>

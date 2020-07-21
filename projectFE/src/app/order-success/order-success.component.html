@@ -7,7 +7,7 @@
             <h1 class="far fa-check-circle fa-3x"></h1>
             <h3 style="font-weight: bold;" class="noti"> Your order has been placed!</h3>
             
-            <p>Order Number : <span  *ngFor="let p of orderid" style="font-weight: bold;">{{p}}</span> </p>
+            <p>Order Number : <span style="font-weight: bold;">{{orderid}}</span> </p>
          
 
         </div>
@@ -35,7 +35,7 @@
 
         <div class="content">
             <!-- bỏ nó vào div content để căn giữa cho nó -->
-            <button routerLink="/cancel-order" data-dismiss="modal" class="btn btnn"></button>
+            <button (click) = "Cancel()" routerLink="/cancel-order" data-dismiss="modal" class="btn btnn"></button>
         </div>
     </div>
 </div>

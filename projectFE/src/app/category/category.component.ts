@@ -31,15 +31,12 @@ export class CategoryComponent implements OnInit {
     this.category = data;
     for(var i=0; i< data.products.length; i++)
     {
+      this.totalproduct = this.totalproduct+1;
     this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
     this.products.push(res);
     })
     }
-    console.log(this.products);
-    for(var i= 0; i< this.products.length; i++)
-    {
-      this.totalproduct = this.totalproduct+1;
-    }
+
     });
 
   }
@@ -47,7 +44,7 @@ export class CategoryComponent implements OnInit {
     this.products =[];
     this.products = $event[0];
     this.totalproduct = $event[1];
-    this.category = $event[2];
+    this.category.name = $event[2];
     console.log(this.products);
     console.log(this.category);
     console.log(this.totalproduct);

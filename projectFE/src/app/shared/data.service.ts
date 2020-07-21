@@ -20,7 +20,7 @@ export class DataService {
   insearch = new BehaviorSubject<boolean>(true);
   productlistsearch= new BehaviorSubject<products[]>([]);
   productlistcategory = new BehaviorSubject<products[]>([]);
-  orderid = new BehaviorSubject<string[]>([]);
+  orderid = new BehaviorSubject<string>(null);
   productlist= new BehaviorSubject<string[]>([]);
 
   currentorderid = this.orderid.asObservable();
@@ -96,5 +96,19 @@ export class DataService {
   }
   changProductlistCategory(productlistcategory){
     this.productlistcategory.next(productlistcategory);
+  }
+  setlocalstore(key, data)
+  {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+  setlocal(key, data)
+  {
+    localStorage.setItem(key,data)
+  }
+  getlocalstore(key){
+    return localStorage.getItem(key);
+  }
+  removelocalstore(key){
+    localStorage.removeItem(key);
   }
 }

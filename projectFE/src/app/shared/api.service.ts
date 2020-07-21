@@ -10,7 +10,7 @@ import { map, tap, retry, catchError } from 'rxjs/operators';
 
 export class ApiService {
   //Define API
-  //apiURL = 'http://137.135.125.91:3000'
+  //apiURL = 'http://103.57.220.28:2222/CMD_FILE_MANAGER/domains/pokeshop.cf/public_html'
   httpOption;
   apiURL = 'http://localhost:3000'
   constructor(
@@ -51,7 +51,7 @@ export class ApiService {
 
   //Get user by ID
   getUserByID(id): Observable<any> {
-    return this.http.get<any>(this.apiURL + '/user/'+ id).pipe(
+    return this.http.get<any>(this.apiURL + '/user/'+ id, this.httpOpt).pipe(
       retry(1),
       catchError(this.handleError)
     )
@@ -138,6 +138,14 @@ export class ApiService {
       }));
   }
 
+  reset(password: string, id){
+    return this.http.post(this.apiURL + '/user/reset/'+ id, {password: password} , this.httpOpt)
+    .pipe(
+      catchError(error => {
+        return this.handleError(error)
+      }));
+  }
+
   verity(id){
     return this.http.post(this.apiURL + '/user/verify/' + id, this.httpOpt)
     .pipe(
@@ -183,7 +191,7 @@ export class ApiService {
       }));
   }
 
-  addorder(productid, userid, quantity,email, phone, address): Observable<any> {
+  addorder(productid, userid, quantity,phone, address, email): Observable<any> {
 
     return this.http.post<any>(this.apiURL + '/order/add', {productid: productid, userid: userid, quantity: quantity, phone: phone, address: address, email: email
     } ,this.httpOpt).pipe(
@@ -205,14 +213,8 @@ export class ApiService {
      catchError(this.handleError));
   }
 
-  deleteOrder(id, Authorization): Observable<any> {
-    this.httpOption = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': Authorization
-      })
-    }
-    return this.http.delete<any>(this.apiURL + '/order/' + id, this.httpOption).pipe(
+  deleteOrder(id): Observable<any> {
+    return this.http.delete<any>(this.apiURL + '/order/' + id, this.httpOpt).pipe(
       catchError(error => {
         return this.handleError(error)
       }));

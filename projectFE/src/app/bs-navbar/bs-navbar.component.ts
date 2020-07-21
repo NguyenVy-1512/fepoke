@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User, products } from '../_models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service'
+import { Local } from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'bs-navbar',
@@ -12,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service'
 })
 export class BsNavbarComponent implements OnInit {
   searchForm: FormGroup;
-  loading: boolean = true;
+  loading: boolean = false;
   token: string;
   user: User;
   name: string;
@@ -24,6 +25,7 @@ export class BsNavbarComponent implements OnInit {
   product$: products[] = [];
   inadmin: boolean;
   quantity: number[] = [];
+  userid: string;
   @Input() totalproduct;
   constructor( private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -36,12 +38,35 @@ export class BsNavbarComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       search: ['', Validators.required],
   });
-
+  
   this.search = this.f.search.value;
   this.data.currentsearch.subscribe(insearch => this.insearch =insearch);
     this.data.currentloading.subscribe(loading => this.loading = loading);
+    this.token = this.data.getlocalstore('token')
+    this.userid = this.data.getlocalstore('id')
     this.data.currenttoken.subscribe(token => this.token = token);
     this.data.currentuser.subscribe(user => this.user = user);
+    
+    // if((this.userid == '') || (this.userid == null))
+    // {
+    //   this.loading = false;
+    // }
+    // else{
+    //   this.loading = true;
+    //   this.userid = this.userid.slice(1, this.userid.length-1)
+    //   console.log(this.userid);
+    //   this.token = this.token.slice(1, this.token.length-1)
+    //   console.log(this.token);
+    // }
+  
+    console.log(this.loading);
+
+    if (this.loading == true)
+    {
+      this.authenticationService.getUserByID(this.userid).subscribe((res) => {
+        this.user = res;
+        console.log(res);})
+    }
     console.log(this.user);
     this.data.currentinadmmin.subscribe(inadmin => this.inadmin = inadmin);
     this.data.currentquantity.subscribe(quantity => this.quantity = quantity);
@@ -50,27 +75,19 @@ export class BsNavbarComponent implements OnInit {
       //this.totalproduct = this.totalproduct + this.quantity[i];
     }
     console.log(this.inadmin);
-    this.iduser = this.cookieService.get("id");
-    this.name = this.cookieService.get("name");
-    this.token = this.cookieService.get("token");
-    console.log(this.token);
-    if(this.token !== '')
-    {
-      this.loading = true;
-    }
-
-    this.authenticationService.infouser(this.token).subscribe((res) => {
-      
-      console.log(res);
-    })
-
+    //this.iduser = this.cookieService.get("id");
+    //this.name = this.cookieService.get("name");
+    //this.token = this.cookieService.get("token");
     
+
   }
   
   logout() {
     this.authenticationService.logout(this.token).subscribe(res => {
       this.alertService.success('Logout successful', true);
-      this.router.navigate(['/login']);
+      location.reload()
+      this.data.removelocalstore("token");
+      this.data.removelocalstore("id");
       console.log("logout rồi nè");
     },
       error => {
@@ -79,9 +96,7 @@ export class BsNavbarComponent implements OnInit {
       this.data.changeMessage(false);
       this.data.changeToken("");
       this.data.changUser('');
-      this.cookieService.set("token", '');
-      this.cookieService.set("id", '');
-      this.cookieService.set("name", '');
+      //this.data.setlocalstore("name", '');
   }
 
   onsetcard(){

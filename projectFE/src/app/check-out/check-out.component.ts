@@ -32,7 +32,10 @@ export class CheckOutComponent implements OnInit {
   order: order;
   loading: boolean;
   paymethod: string = "";
-  orderid: string[] = [];
+  orderid: string;
+  phone: string;
+  address: string;
+  email: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -108,22 +111,46 @@ export class CheckOutComponent implements OnInit {
     this.data.currentuser.subscribe(user => this.user = user);
     this.data.currentproductlist.subscribe(productlist => this.productlist = productlist);
     this.data.currentquantity.subscribe(quantity => this.quantity = quantity);
-
+    console.log(this.productlist)
+    console.log(this.f.phone.value)
+    console.log(this.user._id)
+    console.log(this.quantity)
     //this.productsServices.payment(this.token, '', this.Total, this.CheckOut.get('phone').value, this.CheckOut.get('address').value, this.paymethod);
 
-    for (var i = 0; i < this.productlist.length; i++) {
-      
-        this.productsServices.addorder(this.productlist[i], this.user._id, this.quantity[i], this.f.phone.value, this.f.address.value, this.f.name.value).subscribe(
+    //for (var i = 0; i < this.productlist.length; i++) {
+      if(this.f.phone.value == '')
+      {
+        this.phone = this.user.phone;
+      }
+      else{
+        this.phone = this.f.phone.value;
+      }
+      if(this.f.address.value == '')
+      {
+        this.address = this.user.address;
+      }
+      else{
+        this.address = this.user.address;
+      }
+      if(this.f.name.value == '')
+      {
+        this.email = this.user.email;
+      }
+      else{
+        this.email = this.f.name.value;
+      }
+      console.log(this.phone)
+
+        this.productsServices.addorder(this.productlist, this.user._id, this.quantity, this.phone, this.address, this.email).subscribe(
           res => { console.log('order thành công');
-          this.orderid.push(res._id);
+          this.orderid = res._id;
           this.data.changeorderid(this.orderid);
-          this.data.changProductlistcard([]);
-          this.data.changQuantity([]);
-          this.data.changProductlist([]);
-          this.router.navigate(['/order-success']);
         }); 
-      
-    }
+    //}
+    this.data.changProductlistcard([]);
+    this.data.changQuantity([]);
+    this.data.changProductlist([]);
+    this.router.navigate(['/order-success']);
   }
 
   // buy() {

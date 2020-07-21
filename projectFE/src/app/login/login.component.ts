@@ -62,9 +62,9 @@ export class LoginComponent implements OnInit{
               res => {
                 console.log(res);
                 this.alertService.success('Login successful', true);
-                this.cookieService.set("token", res.token);
-                this.cookieService.set("id", res.user._id);
-                this.cookieService.set("name", res.user.name);
+                this.data.setlocalstore("token",'Bearer '+ res.token);
+                this.data.setlocalstore("id", res.user._id);
+                this.data.setlocalstore("name", res.user.name);
                 this.data.changeToken('Bearer '+ res.token);
                 this.data.changUser(res.user);
                 this.data.currentuser.subscribe(user => this.user = user);

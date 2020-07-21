@@ -21,7 +21,7 @@ export class OrderCardComponent implements OnInit {
   }
   cancel(){
     this.data.currenttoken.subscribe(token => this.token = token);
-    this.orderService.deleteOrder(this.order._id, this.token).subscribe(res =>
+    this.orderService.deleteOrder(this.order._id).subscribe(res =>
       {
         console.log("hủy thành công");
       })

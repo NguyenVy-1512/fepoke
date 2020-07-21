@@ -23,8 +23,8 @@
                     <thead>
                         <tr>
                             <th style="width: 25%;">Order Number</th>
-                            <th style="width: 25%;">Summary</th>
-                            <th style="width: 25%;">User ID</th>
+                            <th style="width: 20%;">Summary</th>
+                            <th style="width: 30%;">User ID</th>
                             <th style="width: 15%;">Price</th>
                             <th style="width: 10%;">Actions</th>
                         </tr>
@@ -34,15 +34,28 @@
                             <td> 
                                 <a data-target="#myModal1" data-toggle="modal">{{order._id}}</a>
                                 </td>
-                            <td>{{products[i].name}} x {{order.quantity}}</td>
-                            <td>{{order.userID}}</td>
-                            <td>{{products[i].price * order.quantity + 1000}}</td>
+                                <td>
+                                    <div *ngFor ="let name of order.name; index as i">{{name}} x {{order.quantity[i]}}
+                                    </div>  
+                                </td>
+                                <td>{{order.userid}}</td>
+                                <td>{{order.total}}</td>
                             <td style="font-size: 16px;">
                                 <span class="fas fa-check" style="color: yellowgreen; padding-left: 5px;"> </span>
                                 <!--span data-toggle="modal" data-target="#myModal2" class="fas fa-times" style="color: #e73939; padding-left: 15px;"> </--span-->
                             </td>
                         </tr>
-                   
+                        <div id="myModal2" class="modal">
+                            <div class="popup">
+                                    <i class="far fa-question-circle fa-3x"></i>
+                                    <h4 class="are">Are you sure?</h4>
+                                    <p class="quote">This order will be canceled!</p>
+                                    <div class="close"  data-dismiss="modal"><i class="fas fa-times"></i></div>
+                                    <div class="content">
+                                       <button (click)= "cancel(order._id)" data-dismiss="modal" class="btnn">CONFIRM</button>
+                                    </div>
+                                </div>
+                        </div>
                     </table>
                 </div>
             </div>
@@ -55,14 +68,4 @@
     </div>
 
     
-    <div id="myModal2" class="modal">
-            <div class="popup">
-                    <i class="far fa-question-circle fa-3x"></i>
-                    <h4 class="are">Are you sure?</h4>
-                    <p class="quote">This order will be canceled!</p>
-                    <div class="close"  data-dismiss="modal"><i class="fas fa-times"></i></div>
-                    <div class="content">
-                       <button (click)= "cancel()" data-dismiss="modal" class="btnn">CONFIRM</button>
-                    </div>
-                </div>
-        </div>
+    

@@ -71,10 +71,10 @@
             <div class="bulk"> <label>SUMMARY</label>
                 <p class="dash">___</p>
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        {{order.quantity}} x {{product.name}}
+                    <li *ngFor ="let name of order.name; index as i" class="list-group-item">
+                        {{order.quantity[i]}} x {{name}}
                         <div class="float-right">
-                            {{order.quantity * product.price}}
+                            {{order.total}}
                         </div>
                     </li>
 
@@ -86,7 +86,7 @@
                     <li class="list-group-item">
                         Subtotal
                         <div class="float-right">
-                            {{order.quantity * product.price}}
+                            {{order.total}}
                         </div>
                     </li>
 
@@ -114,7 +114,7 @@
             <div class="bulk" style="border-top: 1px solid #e0e0e0;">
                 <label>TOTAL</label> <span style="font-size: 10px; margin-top: 5px;" class="float-right">CASH ON
                     DELIVERY</span>
-                <h2 class="tien">{{order.quantity * product.price + 1000}} </h2>
+                <h2 class="tien">{{order.total + 1000}} </h2>
                 <p style="font-size: 10px; margin-top: -5px;"> Including 10% VAT and shipping fee</p>
 
             </div>

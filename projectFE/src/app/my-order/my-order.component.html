@@ -38,9 +38,14 @@
                     <tbody>
                         <tr *ngFor = "let order of orders; index as i">
                             <td> <a data-toggle="modal" data-target="#myModal">{{order._id}}</a> </td>
-                            <td> <p data-toggle="modal" data-target="#myModal">{{products[i].name}}</p> </td>
-                            <td>{{order.quantity}}</td>
-                            <td>{{products[i].price * order.quantity}}</td>
+                            <td>
+                                <div *ngFor ="let name of order.name">{{name}}
+                                </div>  
+                            </td>
+                            <td >
+                                <div *ngFor ="let quan of order.quantity"> {{quan}}</div> </td>
+                            <td>{{order.total}}</td>
+                            <td>{{order.phone}}</td>
                             <td>{{order.address}}</td>
                             <div id="myModal" class="modal">
                                 <div class="c">

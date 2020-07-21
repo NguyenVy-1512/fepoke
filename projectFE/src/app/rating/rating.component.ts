@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import {FormBuilder,FormGroup, FormControl, Validators} from '@angular/forms';
 import { User, products, rating } from '../_models';
 import { AlertService, ApiService, DataService } from '../shared';
@@ -20,6 +20,7 @@ color: #FFD656;
 `]
 })
 export class RatingComponent implements OnInit {
+  @Output() valueChange = new EventEmitter<number>();
   rate:number;
   check: boolean = false;
   token:string;
@@ -29,6 +30,7 @@ export class RatingComponent implements OnInit {
   r: rating;
   rateForm: FormGroup;
   ctrl = new FormControl(null, Validators.required);
+  productid: string;
 
 
   constructor( private data: DataService, 
@@ -90,5 +92,13 @@ export class RatingComponent implements OnInit {
   reset(){
     this.ctrl.setValue(null);
     this.rateForm.reset();
+  }
+  change(){
+    this.productid = this.route.snapshot.url[1].path;
+    this.Service.getProduct(this.p).subscribe(res=>{
+      this.rate = res.view
+      this.valueChange.emit(this.rate);
+      })
+      
   }
 }

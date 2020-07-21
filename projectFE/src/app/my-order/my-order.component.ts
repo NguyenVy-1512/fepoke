@@ -12,7 +12,8 @@ export class MyOrderComponent implements OnInit {
   user: User;
   token: string;
   orders: order[] = [];
-  products: products[] = [];
+  products: (products[])[] = [];
+  product: products[] = [];
   p : products;
   constructor(private router: Router,
     private productsServices: ApiService,
@@ -25,13 +26,6 @@ export class MyOrderComponent implements OnInit {
       {
         console.log(res);
         this.orders = res;
-        for(var i = 0; i< res.length; i++)
-        {
-          this.productsServices.getProduct(this.orders[i].productid).subscribe(res=>{
-            this.products.push(res);
-        }) 
-        console.log(this.products);
-        }
         console.log("lay order thành cong");
       });
   }

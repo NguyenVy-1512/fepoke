@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
   productlistcard: products[] = [];
   products: products[] = [];
   product$: products[] = [];
-  p: products;
+  @Output() p: products;
   cate: string[];
   quantity: number[];
   flag: boolean = false;
@@ -156,5 +156,20 @@ export class ProductDetailComponent implements OnInit {
   }
   notifyMessage1($event) {
     this.counter = this.counter -1;
+  }
+  notifyMessage2($event) {
+    this.rate = $event;
+  }
+
+  valueChanged1($event) {
+    this.productid = this.route.snapshot.url[1].path;
+    this.productService.getProduct(this.productid).subscribe((data)=>{this.p = data;
+      if(data.view == 0)
+      {
+        this.checkrating = true;
+      }
+      this.rate = data.view;
+      console.log(this.p);
+    })
   }
 }

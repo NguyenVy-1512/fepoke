@@ -45,9 +45,9 @@ export class OrdersListComponent implements OnInit {
         this.p = res;
     })  
   }
-  cancel(){
+  cancel(id){
     this.data.currenttoken.subscribe(token => this.token = token);
-    this.productsServices.deleteOrder(this.prductid, this.token).subscribe(res =>
+    this.productsServices.deleteOrder(id).subscribe(res =>
       {
         console.log("hủy thành công");
       })

@@ -2,7 +2,7 @@
     <ul class="breadcrumb">
         <button class="back">BACK</button>
         <li><a href="/">Home</a></li>
-        <li>{{category}}</li>
+        <li>{{category.name}}</li>
     </ul>
 
     <div class="row no-gutters">
@@ -15,7 +15,7 @@
 
         <div class="col">
             <div class="row category-row">
-                <h2 class="cat-name">{{category}} <span class="remaining-products">({{totalproduct}} products)</span> </h2>
+                <h2 class="cat-name">{{category.name}} <span class="remaining-products">({{totalproduct}} products)</span> </h2>
                 <!-- chiếc select để đựng category khi thu nhỏ màn hình lại -->
                 <select id="category">
                     <option value="Type1">Type</option>

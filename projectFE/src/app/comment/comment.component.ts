@@ -20,7 +20,7 @@ import { Console } from 'console';
 export class CommentComponent implements OnInit {
   @Input() id: rating;
   name: string;
-  date: Date;
+  date: string;
   constructor(
     private data: DataService,
     private service: ApiService
@@ -32,6 +32,8 @@ export class CommentComponent implements OnInit {
     console.log(res);
      this.name = res.name;
    })
-   this.date = this.id.createdAT;
+   
+   console.log(this.id.createdAt)
+   this.date = this.id.createdAt.toString().slice(0,10);
   }
 }

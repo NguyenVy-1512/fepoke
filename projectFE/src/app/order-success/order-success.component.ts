@@ -21,8 +21,11 @@ export class OrderSuccessComponent implements OnInit {
   }
 
   cancel(){
+    this.data.currentorderid.subscribe(orderid => this.orderid = orderid);
+    console.log(this.orderid)
     this.sevice.deleteOrder(this.orderid).subscribe(res => {
       console.log('sorry')
+      this.data.changeorderid('')
     })
   }
 

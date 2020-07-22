@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
       var k = 0;
       for(var l = 0; l< this.product$.length; l++)
       {
-        if(this.product$[l].qty >= 5){
+        if(this.product$[l].qty > 20){
           this.products1[k] = this.product$[l];
           k++;
           console.log(k);

@@ -1,5 +1,3 @@
-import { AdminAuthGuardService as AdminAuthGuard } from './admin-auth-guard.service';
-import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -45,10 +43,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { OrdersListComponent } from './admin/orders-list/orders-list.component';
 import { ProCatComponent } from './pro-cat/pro-cat.component';
 import { CategoryComponent } from './category/category.component';
-import { AuthGuardService as AuthGuard } from './auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { CategoryService } from './category.service';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { AlertService} from './shared';
 import { AlertComponent } from './_directives';
@@ -63,6 +59,7 @@ import { RatingComponent } from './rating/rating.component';
 import { CommentComponent } from './comment/comment.component';
 import { VerityComponent } from './verity/verity.component';
 import { ResetComponent } from './reset/reset.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const appRoutes: Routes = [
@@ -93,7 +90,8 @@ const appRoutes: Routes = [
   { path: 'search/' , component: SearchComponent},
   { path: 'vclteam' , component: WebInfoComponent},
   { path: 'verify/:id' , component: VerityComponent},
-  { path: 'reset/:id', component: ResetComponent}
+  { path: 'reset/:id', component: ResetComponent},
+  { path: 'cart/:id', component: CartComponent},
 ];
 
 @NgModule({
@@ -141,6 +139,7 @@ const appRoutes: Routes = [
     CommentComponent,
     VerityComponent,
     ResetComponent,
+    CartComponent,
     //ChatDialogComponent,  
   ],
   imports: [
@@ -164,10 +163,6 @@ const appRoutes: Routes = [
     ChatModule
   ],
   providers: [
-    AuthService,
-    AuthGuard,
-    AdminAuthGuard,
-    CategoryService,
     AlertService,
     CookieService,
     ChatModule

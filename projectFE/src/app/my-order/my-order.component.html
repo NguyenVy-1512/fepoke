@@ -36,8 +36,8 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor = "let order of orders; index as i">
-                            <td> <a data-toggle="modal" data-target="#myModal">{{order._id}}</a> </td>
+                        <tr *ngFor = "let order of orders; index as i" >
+                            <td > <a (click)="openModal(myModal, order)" data-toggle="modal" data-target="#myModal" >{{order._id}}</a> </td>
                             <td>
                                 <div *ngFor ="let name of order.name">{{name}}
                                 </div>  
@@ -47,13 +47,9 @@
                             <td>{{order.total}}</td>
                             <td>{{order.phone}}</td>
                             <td>{{order.address}}</td>
-                            <div id="myModal" class="modal">
-                                <div class="c">
-                                    <user-order-card [order] = "order" [product] ="products[i]">  </user-order-card>
-                                    <button class="fas fa-times" data-dismiss="modal"></button>
-                                </div>
-                            </div>
+                            
                         </tr>
+                       
                     </tbody>
 
                 </table>
@@ -61,7 +57,14 @@
         </div>
 
     </div>
-
+    <!--ng-template class="c" #myModal let-modal-->
+    <div id="myModal" class="modal">
+        <div class="c">
+            <user-order-card  [order] = "order">  </user-order-card>
+            <button class="fas fa-times" data-dismiss="modal" (click)="modal.dismiss()"></button>
+        </div>
+    </div>
+<!--/ng-template--->
 
 
 </div>

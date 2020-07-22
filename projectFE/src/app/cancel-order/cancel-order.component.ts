@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService, ApiService } from '../shared';
 
 @Component({
   selector: 'cancel-order',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cancel-order.component.css']
 })
 export class CancelOrderComponent implements OnInit {
-
-  constructor() { }
+  orderid: string;
+  constructor(private data: DataService,
+    private service: ApiService) { }
 
   ngOnInit() {
+
   }
+  
 
 }

@@ -27,14 +27,17 @@ export class ProductDetailComponent implements OnInit {
   setcard: boolean;
   category: category[] = [];
   checkrating: boolean = false;
-  comment: rating[];
-  @Output() rate = new EventEmitter<number>();
+  @Output() comment: rating[];
+  @Output() rate: number;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private productService: ApiService,
               private data: DataService) {
   }
-
+  ngOnChanges(){
+    this.ngOnInit();
+  }
+  
   ngOnInit() {
     this.category = [];
     this.data.currentloading.subscribe(loading => this.loading = loading);
@@ -44,13 +47,10 @@ export class ProductDetailComponent implements OnInit {
     this.data.currentquantity.subscribe(quantity => this.quantity = quantity);
     //lấy id product là gọi api để lấy product
     this.productid = this.route.snapshot.url[1].path;
+    
     console.log(this.productid);
     // lấy thông tin product
     this.productService.getProduct(this.productid).subscribe((data)=>{this.p = data;
-      if(data.view == 0)
-      {
-        this.checkrating = true;
-      }
       this.rate = data.view;
       console.log(this.p);
       //lấy tên categorys
@@ -61,9 +61,10 @@ export class ProductDetailComponent implements OnInit {
        })
      }
      })
-   
+     this.data.currentp.subscribe(p => this.p = p)
+    
     //this.data.currentp.subscribe(p => this.p = p)
-    console.log(this.category)
+    console.log(this.p)
 
     //this.productid = this.route.snapshot.url[1].path;
     //this.getProduct(this.productid);
@@ -158,18 +159,33 @@ export class ProductDetailComponent implements OnInit {
     this.counter = this.counter -1;
   }
   notifyMessage2($event) {
-    this.rate = $event;
+    this.productid = this.route.snapshot.url[1].path;
+    this.rate = $event[0];
+    this.productService.getProduct(this.productid).subscribe((data)=>{this.p = data;
+           this.rate = data.view;
+           console.log(this.p);
+         })
+    this.productService.getratingbyproduct(this.productid).subscribe(res=>{
+      this.comment = res;
+    })
+    this.router.navigate([`/product-detail/` + this.productid]);
   }
 
-  valueChanged1($event) {
-    this.productid = this.route.snapshot.url[1].path;
-    this.productService.getProduct(this.productid).subscribe((data)=>{this.p = data;
-      if(data.view == 0)
-      {
-        this.checkrating = true;
-      }
-      this.rate = data.view;
-      console.log(this.p);
-    })
-  }
+  // valueChanged1($event) {
+  //   this.productid = this.route.snapshot.url[1].path;
+  //   this.productService.getProduct(this.productid).subscribe((data)=>{this.p = data;
+  //     if(data.view == 0)
+  //     {
+  //       this.checkrating = true;
+  //     }
+  //     this.rate = data.view;
+  //     console.log(this.p);
+  //   })
+  //   this.productService.getratingbyproduct(this.productid).subscribe(res => {
+  //     this.comment = res;
+  //     console.log(res);
+  //   })
+  //   this.router.navigate([`/product-detail/` + this.productid]);
+  // }
+  
 }

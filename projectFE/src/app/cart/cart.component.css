@@ -5,9 +5,9 @@
 }
 
 .container {
-    width: 860px;
+    width: 90%;
     margin-top: 100px;
-    box-shadow: 5px 10px 30px 0 rgba(82, 82, 82, 0.418);
+    
 }
 
 .dashi {
@@ -40,20 +40,6 @@
       }
 
       .bn:hover {
-          background: #d93a3a;
-      }
-      .btn {
-        height: 50px;
-        width: 150px;
-        background: #242424;
-        font-weight: 600;
-        font-family: 'Share Tech Mono', monospace;
-        
-        border: none;
-        color: white;
-      }
-
-      .btn:hover {
           background: #d93a3a;
       }
 

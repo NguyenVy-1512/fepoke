@@ -23,7 +23,8 @@ export class ProductCardComponent implements OnInit {
     this.router.navigate([`/shopping-cart`]);
   }
   onproductdetaill(){
-    this.router.navigate([`/product-detail/` + this.product._id]);
     this.data.changP(this.product);
+    this.router.navigate([`/product-detail/` + this.product._id]);
+    
   }
 }

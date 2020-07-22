@@ -9,19 +9,15 @@
     <h2 class="cat-name">GRASS <span class="remaining-products">(23 products)</span> </h2>
 
     <div class="row no-gutters" style="margin-top: 20px;">
- <div class="col">
-            <div class="detail">
-                <div class="row no-gutters no r-in">
         <div class="col col-2">
             <div class="category">
                 <product-filter></product-filter>
             </div>
         </div>
 
-        <div class="col col-10">
+        <div class="col col-10" >
             <div class="detail"  >
-               
-                <div class="row no-gutters no r-in">
+                <div class="row  r-in">
                     <div class="col-5 image">
                         <img src={{p.imgurl}} alt="Product-image"
                             style="width: 100%;">
@@ -34,7 +30,7 @@
                         </div>
                         <h2 class="product-price">{{p.price}}</h2>
                         <p class="old-price">{{p.price + (p.price * 10/100)}}</p>
-                        <h2 class="product-rating">{{rate}} sao</h2>
+                        <span class="fa fa-star-o" > {{p.view}}</span>
                         <div class="product-quantity">
                             <product-quantity
                             [Counter] = "counter"
@@ -50,23 +46,19 @@
                         <button class="b" data-toggle="modal" data-target="#myModal">Dánh giá</button>
                         <div id="myModal" class="modal">
                             <div [ngSwitch]="loading">
-                                <div *ngSwitchCase="false">
-                                    <div class="popup">
-
-                                        
-                                        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
-                                       
-                                
-                                        <div class="content">
-                                            <!-- bỏ nó vào div content để căn giữa cho nó -->
-                                            <button routerLink="/login" data-dismiss="modal" class="butt">ĐĂNG NHẬP ĐỂ ĐÁNH GIÁ</button>
-                                        </div>
-                                    </div>
+                                <div  class="popup" *ngSwitchCase="false">
+                                    <i class="fas fa-check"></i>
+                                 <i class="far fa-circle fa-3x"></i>
+                                <i class="far fa-circle fa-3x f1"></i>
+                                <i class="far fa-circle fa-3x f2"></i>
+                                <i class="far fa-circle fa-3x f3"></i>
+                                <button class="bn back" routerLink="/login" data-dismiss="modal" >Đăng nhập để đánh giá</button>
                                 </div>
                             <div *ngSwitchCase="true">
                             <div class="c">
-                                <rating [p] = "productid" >  </rating>
-                                <button class="fas fa-times" data-dismiss="modal"></button>
+                                <rating [p] = "productid" (valueChange1)="notifyMessage2($event)">  </rating>
+                                <button class="fas fa-times" data-dismiss="modal" (change) = "valueChanged1($event)"
+                                [(ngModel)]="mymodel"></button>
                             </div>
                             </div>
                             </div>
@@ -81,41 +73,20 @@
                     <p>{{p.description}}</p>
                 </div>
 
-                <h4 class=" headtype">Related Products</h4>
-                <div class="row">
+                <h4 class="headtype">Related Products</h4>
+    
                     <div class="conbo">
                         <div class="prod">
                             <product-card *ngFor="let product of products" [product]="product"></product-card>
+                       
                         </div>
                     </div>
-                </div>
-                <div class="col">
+
+          
+                    <h4 class="headtype">NHẬN XÉT & ĐÁNH GIÁ</h4>
                     <div class= "conbo">
-                        <comment *ngFor="let p of comment" [id] = "p"></comment>
+                       <comment 
+                       *ngFor="let p of comment" [id] = "p"></comment>
                     </div>
-                </div>
+            
             </div>
-        </div>
-
-    </div>
-</div>
-
-
-
-<!-- thêm event cho button trong này -->
-<div id="myModal" class="modal">
-    <div class="popup">
-
-        <!-- khu vực này ko cần quan tâm -->
-        <i class="far fa-smile fa-2x"></i>
-        <h3>Are you sure?</h3>
-        <p style="margin-bottom:-10px; margin-top:-10px; opacity: .5;">chak chua za?</p>
-        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
-        <!-- khu vực này ko cần quan tâm -->
-
-        <div class="content">
-            <!-- bỏ nó vào div content để căn giữa cho nó -->
-            <button routerLink="/cancel-order" data-dismiss="modal" class="btn btnn"></button>
-        </div>
-    </div>
-</div>

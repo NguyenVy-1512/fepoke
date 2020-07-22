@@ -102,8 +102,19 @@ export class ShoppingCartComponent implements OnInit {
 
   }
 
-  deleteproduct(){
-    
+  deleteproduct(id){
+    this.data.currentquantity.subscribe(quantity => this.quantity = quantity);
+    this.data.currentproductlist.subscribe(productlist => this.productlist = productlist);
+    this.data.currentproductlistcard.subscribe(productlistcard => this.productlistcard = productlistcard);
+    this.quantity.splice(id-1, 1)
+    this.productlist.splice(id-1,1)
+    this.productlistcard.splice(id-1,1)
+    for (var i = 0; i < this.quantity.length; i++) {
+      this.totalproduct = this.totalproduct + this.quantity[i];
+      this.total = this.total + (this.productlistcard[i].price * this.quantity[i]);
+    }
+    this.total
+    this.totalproduct
   }
   notifyMessage($event) {
     this.totalproduct = this.totalproduct + 1;

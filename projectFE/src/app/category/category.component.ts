@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../shared';
 import { products, category } from '../_models';
@@ -16,7 +16,7 @@ export class CategoryComponent implements OnInit {
   name: string
   cate: string[];
   totalproduct: number= 0;
- 
+
 /* i là số sản phẩm được lọc theo category */
   constructor( private productsServices: ApiService,
     private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class CategoryComponent implements OnInit {
     this.category = data;
     for(var i=0; i< data.products.length; i++)
     {
-      this.totalproduct = this.totalproduct+1;
+    this.totalproduct = this.totalproduct+1;
     this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
     this.products.push(res);
     })
@@ -48,6 +48,46 @@ export class CategoryComponent implements OnInit {
     console.log(this.products);
     console.log(this.category);
     console.log(this.totalproduct);
+  }
+
+  onClicks(e){
+    this.totalproduct = 0;
+    if(e == "All-Types"){
+    this.productsServices.getProducts().subscribe((data) => {
+      this.products = data;
+      this.products = this.products;
+      for(var i = 0; i< data.length; i++)
+      {
+        this.totalproduct = this.totalproduct +1;
+      }
+      this.name = "All-Types"
+      console.log(this.products);
+      
+      });
+    
+    this.router.navigate(["/category/All-Types"]);}
+    else{
+      this.totalproduct = 0;
+      this.products = [];
+      this.productsServices.getProductByCategories(e).subscribe((data) => {
+        for(var i=0; i< data.products.length; i++)
+      {
+      this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+      this.products.push(res);
+      })
+      }
+        this.products = this.products;
+        for(var i = 0; i< data.products.length; i++)
+        {
+          this.totalproduct = this.totalproduct +1;
+        }
+        this.name = e
+        console.log(this.products);
+       
+        });
+      
+      this.router.navigate(["/category/"+ e]);
+    }
   }
 
 }

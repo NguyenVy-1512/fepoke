@@ -85,7 +85,6 @@ export class BsNavbarComponent implements OnInit {
   logout() {
     this.authenticationService.logout(this.token).subscribe(res => {
       this.alertService.success('Logout successful', true);
-      location.reload()
       this.data.removelocalstore("token");
       this.data.removelocalstore("id");
       console.log("logout rồi nè");

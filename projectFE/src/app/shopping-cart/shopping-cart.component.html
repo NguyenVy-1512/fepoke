@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="col del-sub">
-                  <button  class="del-btn"></button>
+                  <button id="{{i}}" class="del-btn"  (click)="deleteproduct(this.id)"></button>
                   <p class="sub-total">{{product.price * quantity[i]}}</p>
                 </div>
               </div>

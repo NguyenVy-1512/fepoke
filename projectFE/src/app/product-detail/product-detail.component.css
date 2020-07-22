@@ -1,3 +1,86 @@
+.fa {
+  color: orange;
+  font-size: 20px;
+  margin-top: -15px;
+  font-weight: 700 ;
+}
+
+.bn {
+  background: #242424;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  height : 55px;
+}
+
+.bn:focus {
+  box-shadow: 0 5px 0 0 yellowgreen;
+}
+
+.back {
+  font-size: 14px;
+  margin-top: 25px;
+}
+.popup {
+  margin: 100px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 5px;
+  width: 300px;
+  height: 230px;
+  position: relative;
+  transition: all 5s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup .close {
+  position: absolute;
+  font-size: 20px;
+  text-decoration: none;
+  color: #d3d3d3;
+  opacity: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 37px;
+  width: 37px;
+  top: 0;
+  right: 0;
+  padding-top: 10px;
+  padding-right: 10px;  
+  cursor: pointer;
+}
+
+.popup .close:hover {
+  color: #242424;
+}
+
+.popup .content {
+ justify-content: center;
+}
+.fa-check {
+  position: relative;
+  margin-top: 4px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  color: yellowgreen;
+}
+
+.far {
+  position: absolute;
+  margin-top: -8px;
+  color: yellowgreen;
+  animation: spin;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+ animation-timing-function: linear;
+}
 .c {
   display :inline-block;
     flex-direction : row;
@@ -5,12 +88,6 @@
     position: relative;
     
 }
-
-
-/* Modal Content */
-
-
-/* The Close Button */
 
 .c:hover,
 .c:focus {
@@ -20,12 +97,6 @@
 }
 .col {
   padding-bottom: 200px;
-}
-
-.prod {
-  display: grid;
-grid-template-columns: auto auto auto auto;
-justify-items: center;
 }
 
 .product-info{
@@ -63,7 +134,7 @@ justify-items: center;
   text-transform: uppercase;
     margin-top: 20px;
     margin-bottom: 10px;
-    padding-left: 50px;
+    padding-left: 30px;
 }
 
 .container-fluid {
@@ -88,28 +159,6 @@ justify-items: center;
   margin-top: 20px;
     position: relative;
     overflow: hidden;
-  }
-
-  .butt {
-    border-radius: 0;
-    outline: none;
-    border: 2px solid #242424;
-    font-weight: bold;
-    font-size: 15px;
-    font-weight: bold;
-    color: #242424;
-    background: none;
-    height: 50px;
-  width: 200px;
-  margin-top: 53px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .butt:hover{
-    background: #242424;
-    color: white;
-
   }
   
   .btn:after{
@@ -290,62 +339,115 @@ padding-right: 0;
 
 }
 
+.col-2 {
+  padding-left: 30px;
+  }
 
-.modal {
-  margin-top: 100px;
+.category {
+    border: 1px solid #e0e0e0;
+  }
+
+
+#category{
+visibility: hidden;
 }
 
-.popup {
- margin: 100px auto;
- padding: 20px;
- background: #fff;
- border-radius: 5px;
- width: 300px;
- height: 200px;
- position: relative;
- transition: all 5s ease-in-out;
- display: flex;
- align-items: center;
- flex-direction: column;
+.category-row{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-bottom: 20px;
 }
 
-.popup .close {
- position: absolute;
- font-size: 20px;
- text-decoration: none;
- color: #d3d3d3;
- opacity: 1;
- display: flex;
- flex-direction: row-reverse;
- height: 37px;
- width: 37px;
- top: 0;
- right: 0;
- padding-top: 10px;
- padding-right: 10px;  
- cursor: pointer;
+  .prod {
+    margin-top: -10px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    list-style-type: none;
+    justify-items: center;
+  }
+  
+  .col {
+    padding-bottom: 50px;
+  }
+
+  .r-in {
+    padding-left: 50px;
+    padding-bottom: 20px;
+  }
+  
+  .image {
+    margin-bottom: 50px;
+  }
+
+  .container-fluid {
+    width: 100%;
+    max-width: 1400px;
+  padding: 0;
+  }
+  
+  .row {
+      width: 100%;
+  }
+
+.cat-name {
+font-weight: bolder;
+padding-left: 30px;
 }
 
-.popup .close:hover {
- color: #242424;
+.remaining-products {
+font-size: 15px;
+font-weight: 500;
+color: #888888;
+text-transform: uppercase;
 }
 
-.popup .content {
-justify-content: center;
+option {
+text-transform: uppercase;
 }
 
-
-.btnn {
- height: 50px;
- width: 100px;
- background: #242424;
- color: white;
- position: relative;
- overflow: hidden;
+select {
+height: 35px;
+width: 100px;
+background: var(--den);
+color: white;
+border: none;
+outline: none;
 }
 
-.btnn:hover {
-background: yellowgreen;
-border: yellowgreen;
+@media only screen and (max-width: 1150px) {
+#category {
+  visibility: visible;
 }
 
+#cat {
+  display: none;
+}
+
+.prod {
+  padding-left: 0;
+}
+
+.col {
+  width: 100%;
+}
+}
+
+@media only screen and (max-width: 1050px) {
+.prod{
+  grid-template-columns: auto auto auto;
+
+}
+
+}
+
+@media only screen and (max-width: 800px) {
+.prod{
+  grid-template-columns: auto auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+}

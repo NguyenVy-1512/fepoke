@@ -22,6 +22,43 @@ export class ProductFilterComponent implements OnInit {
 
   ngOnInit() {
   }
+  onClicks(){
+    this.totalproduct = 0;
+    this.productsServices.getProducts().subscribe((data) => {
+      this.products = data;
+      this.products.sort(function(a, b){return a.price - b.price})
+      this.a[0] = this.products;
+      for(var i = 0; i< data.length; i++)
+      {
+        this.totalproduct = this.totalproduct +1;
+      }
+      this.a[1] = this.totalproduct;
+      this.a[2] = "All-Types"
+      console.log(this.products);
+      this.valueChange1.emit(this.a);
+      });
+    
+    this.router.navigate(["/category/All-Types"]);
+  }
+  onClicks1(){
+    this.totalproduct = 0;
+    this.productsServices.getProducts().subscribe((data) => {
+      this.products = data;
+      this.products.sort(function(a, b){return a.price - b.price})
+      this.products.reverse()
+      this.a[0] = this.products;
+      for(var i = 0; i< data.length; i++)
+      {
+        this.totalproduct = this.totalproduct +1;
+      }
+      this.a[1] = this.totalproduct;
+      this.a[2] = "All-Types"
+      console.log(this.products);
+      this.valueChange1.emit(this.a);
+      });
+    
+    this.router.navigate(["/category/All-Types"]);
+  }
   onClick(){
     this.totalproduct = 0;
     this.productsServices.getProducts().subscribe((data) => {

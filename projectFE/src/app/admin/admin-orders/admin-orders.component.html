@@ -14,9 +14,9 @@
                                         <button class="change-view card-view"><i class="fas fa-th-list"></i></button>    
                                     </div>  
                              </div>
-
-                    <order-card></order-card>
-                    <order-card></order-card>
+                <div *ngFor = "let order of orders; index as i">
+                    <order-card [order] = "order"></order-card>
+                </div>
             </div>
         </div>    
 

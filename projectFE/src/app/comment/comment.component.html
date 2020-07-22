@@ -1,12 +1,12 @@
 <div class="col" id="cmt section">
     <div class="row" id="user section">
-        <img src="https://i.imgur.com/YgDOOTW.png" alt="" style="height: 60px">
+        <img src="https://i.imgur.com/YgDOOTW.png" alt="" style="height: 60px; margin-left: 40px;">
         <div class="col">
             <h4 style="font-weight: bold">{{name}}</h4>
         <h6 style="color: rgb(153, 153, 153);">{{date}}</h6>
-        <ngb-rating [(rate)] = id.rate>
+        <ngb-rating [(rate)] = id.rate [readonly]="true" [max]="10">
             <ng-template let-fill="fill">
-           <span class="star color{{rating}}" [class.filled]="fill === 100" >&#9733;</span>
+           <span  class="star color{{rating}}" [class.filled]="fill === 100" >&#9733;</span>
          </ng-template>
            </ngb-rating>
         </div>

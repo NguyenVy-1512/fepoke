@@ -74,26 +74,15 @@
 
             </div>
         </div>
-
-        <div class="row" style="border: none; position: relative;">
-            <div class="col-8"></div>
-            <div class="col-4">
-                <button class="btn" data-dismiss="modal" routerLink="/cart/{{order._id}}" >PAYMENT</button>
-                <button class="bn" data-toggle="modal" data-target="#myModal2">CANCEL ORDER</button>
-            </div>
-
-        </div>
+    
+        <h3 style="margin-top: 20px;">Phương thức thanh toán</h3>
+        <div class="row">
+    <button class="btn">giao tại nhà</button>
+    <button class="btn">thanh toán paypal</button>
+    </div>  
     </div>
 
 </div>
 
-<div id="myModal2" class="modal">
-    <div class="popup">
-        <h5 style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
-            This order will be canceled!</h5>
-        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
-        <div class="content">
-            <button (click) ="cancel()" routerLink="/cancel-order" data-dismiss="modal" class="btnn"></button>
-        </div>
-    </div>
-</div>
+
+

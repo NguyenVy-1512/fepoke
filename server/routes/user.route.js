@@ -18,7 +18,7 @@ userRoute.get('/', async (req,res)=>{
 })
 
 // get one user
-userRoute.get('/:id', getUser, (req, res)=>{
+userRoute.get('/:id', getUser, async (req, res)=>{
     res.status(200).json(res.user)
 })
 
@@ -43,44 +43,98 @@ userRoute.post('/signup', async (req, res)=>{
             if(err){
                 res.status(400).json({message: err.message})
             }
-            const tokenv = new token2verify({userID: user._id, token: crypto.randomBytes(16).toString('hex'), type: "verify"})
+            const tokenv = new token2verify({userID: user._id, token: crypto.randomBytes(16).toString('hex'), func: "verify"})
             tokenv.save((err)=>{
                 if(err){
                     res.status(500).json({message: err.message})
                 }
-                // const transporter = nodeMailer.createTransport({service: 'gmail', auth: {user: process.env.VERIFY_EMAIL, pass: process.env.VERIFY_PASS}})
-                // const mailOptions = { from: 'robot', to: user.email, subject: 'Account Verification', html: 'click: \nhttp:\/\/' + '137.135.125.91:3000' + '\/verify\/' + tokenv.token + '\n'}
-                // transporter.sendMail(mailOptions, (err)=>{
-                //     if(err){
-                //         return res.send({msg: err.message})
-                //     }
-                //     res.status(200).json({msg: `A Verification email has been send to ` + user.email + `.`})
-                // })
+                 const transporter = nodeMailer.createTransport({service: 'Gmail', auth: {user: process.env.MAILER_EMAIL, pass: process.env.MAILER_PASS}})
+                 const mailOptions = { from: 'robot', to: user.email, subject: 'Account Verification', text: 'Please verify your account by clicking the link: \nhttp:\/\/' + 'localhost:4200' + '\/verify\/' + user._id + '\n'}
+                 transporter.sendMail(mailOptions, (err)=>{
+                     if(err){
+                         return res.send({msg: err.message})
+                     }
+                     res.status(200).json({msg: `A Verification email has been send to ` + user.email + `.`})
+                 })
                 console.log(`verify token: `, tokenv.token)
+                console.log(process.env.MAILER_EMAIL, process.env.MAILER_PASS)
             })
         })
-        res.status(200).send()
+        //res.status(200).send()
     } catch (err) {
+        res.status(400).json({message: err.message})
+    }
+})
+
+userRoute.post('/verify/:id', getUser, async(req, res) =>{
+    try{
+        res.user.isVerified = true;
+        res.user.save((err)=>{
+            if(err){
+                res.status(500).json({message: err.message})   
+            }
+            res.status(200).json('xác thực thành công')
+        })
+    }
+    catch (err) {
         res.status(400).json({message: err.message})
     }
 })
 
 userRoute.post('/resetpassword', async (req, res)=>{
     try {
-        const user = User.findOne({email: req.body.email})
-        if (!user){
-            res.status(404).json({message: `Unable to find user!`})
-        } else {
-            const tokenreset = new token2verify({userID: user._id, token: crypto.randomBytes(16).toString('hex'), type: "resetpass"})
-            tokenreset.save((err)=>{
+        const user = User.findOne({email: req.body.email}).exec(async function(err, result){
+            if(!result){
+                return res.status(404).json({message: 'Unable to find user!'})
+            }
+            // const tokenreset = new token2verify({userID: user._id, token: crypto.randomBytes(16).toString('hex'), func: "resetpass"})
+            tempPass = crypto.randomBytes(8).toString('hex')
+            result.password = tempPass
+            await result.save((err)=>{
                 if(err){
-                    res.status(500).json({message: err.message})
+                    return res.status(500).send({message: err.message})
                 }
+                const transporter = nodeMailer.createTransport({
+                    service: 'Gmail',
+                    auth: {
+                        user: process.env.MAILER_EMAIL,
+                        pass: process.env.MAILER_PASS
+                    }
+                })
+                const mailOptions = { 
+                    from: 'robot',
+                    to: result.email,
+                    subject: 'Account Password Reset',
+                    html: 'Hello ' + result.name + '!\nChung toi da nhan duoc yeu cau reset password tu ban. Hay dang nhap voi password tam ben duoi va doi lai mat khau ngay lap tuc!\nPassword cua ban la: ' + tempPass
+                }
+                transporter.sendMail(mailOptions, (err)=>{
+                    if(err){
+                        return res.send({message: err.message})
+                    }
+                    return res.status(200).send({message: 'A Verification email has been send to ' + user.email + '.'})
+                })
             })
-        }
-
+        })
+        res.status(200).json({message: 'An email password has sent to your email!'})
     } catch (error) {
         res.json({message: error.message})
+    }
+})
+
+userRoute.post('/reset/:id', getUser, async (req, res)=>{
+    try{
+      
+        res.user.password = req.body.password;
+        
+        res.user.save((err)=>{
+            if(err){
+                res.status(500).json({message: err.message})   
+            }
+            res.status(200).json('xác thực thành công')
+        })
+    }
+    catch (err) {
+        res.status(400).json({message: err.message})
     }
 })
 
@@ -95,9 +149,9 @@ userRoute.post('/login', async (req, res)=>{
         if(!user.isVerified){
             return res.status(401).send({type: 'not-verified', message: 'You account not have been verified!!!'})
         }
-        if(user.role == 'admin'){
-            res.redirect(process.env.SERVER_URL + '/admin')
-        }
+        // if(user.role == 'admin'){
+        //     res.redirect(process.env.SERVER_URL + '/admin/dashboard')
+        // }
         const token = await user.generateAuthToken()
         res.status(200).json({user, token})
     } catch (err) {
@@ -106,8 +160,8 @@ userRoute.post('/login', async (req, res)=>{
 })
 
 //user profile
-userRoute.get('/profile', auth, async (req, res)=>{
-    res.send(req.user)
+userRoute.get('/profile/:id',getUser, async (req, res)=>{
+    res.send(res.user)
 })
 
 //logout
@@ -177,6 +231,7 @@ userRoute.delete('/:id', getUser, async (req,res)=>{
 })
 
 async function getUser(req, res, next){
+    let user
     try {
         user = await User.findById(req.params.id)
         if (user == null){

@@ -3,8 +3,7 @@ const orderRoute = express.Router()
 const Order = require('../models/order.model')
 const Notifi = require('../models/notification.model')
 const User = require('../models/user.model')
-const auth = require('../middleware/auth')
-const { response } = require('express')
+const Product = require('../models/product.model')
 
 orderRoute.get('/', async (req,res)=>{
     try{
@@ -29,15 +28,29 @@ orderRoute.get('/user/:id', async(req,res)=>{
 })
 orderRoute.post('/add',async (req,res)=>{
     try{
+        var total = 0;
+        var name = [];
+        for(var i=0; i<req.body.productid.length; i++){
+            const product = await Product.findById(req.body.productid[i])
+            product.sale = product.sale + 1;
+            await product.save()
+            console.log(req.body.productid[i])
+            console.log(req.body.quantity[i])
+            name.push(product.name)
+            total = total + (product.price * req.body.quantity[i])
+        }
         const order = new Order({
             userid: req.body.userid,
             productid: req.body.productid,
             quantity: req.body.quantity,
             phone: req.body.phone,
             address: req.body.address,
-            email: req.body.email
+            email: req.body.email,
+            total: total,
+            name: name
         })
         await order.save()
+        res.status(200).json(order);
     } catch (err){
         res.status(400).json({message: err.message});
     }

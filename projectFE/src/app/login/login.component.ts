@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit{
   returnUrl: string;
   user: User;
   token: string;
-  socket
+  //private url = 'http://localhost:4200';
+    //private socket;
  // @Output() islogin = new EventEmitter<boolean>();
   constructor(
       private formBuilder: FormBuilder,
@@ -28,8 +29,9 @@ export class LoginComponent implements OnInit{
       private authenticationService: ApiService,
       private alertService: AlertService,
       private data: DataService,
-      private cookieService: CookieService) {
-          
+      private cookieService: CookieService,
+      ) {
+        //this.socket = io(this.url)
       }
 
   ngOnInit() {
@@ -70,12 +72,12 @@ export class LoginComponent implements OnInit{
                 this.data.currentuser.subscribe(user => this.user = user);
                 if(res.user.role == 'admin'){
                 this.data.changinadmin(true);
-                //this.socket.close()
+               // this.socket.close()
                 this.router.navigate(['/admin/dashboard']);
                 }
                 else {
                     this.data.changinadmin(false);
-                    //this.socket.emit('userLogin', this.user.name)
+                   // this.socket.emit('userLogin', this.user.name)
                     this.router.navigate(['/']);
                 }
                 //   this.cookieService.set('userID', res.user._id);

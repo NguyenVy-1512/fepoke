@@ -30,7 +30,7 @@
                         <span style="margin-right: 12px">500</span>
                     </div>
                     <p>Min</p>
-                    <input type="range" class="slider" min="1000" max="2500" value="2000" step="100"  id="slider" *ngIf="range1 >= range"  [ngModel]="mymodel" (ngModelChange)="valueChanged1($event)">
+                    <input type="range" class="slider" min="1000" max="2500" value="2000" step="100"  id="slider"  [ngModel]="mymodel" (ngModelChange)="valueChanged1($event)">
                     ${{range1}}
                     <p>Max</p>
                     <input type="range" class="slider" min="1000" max="2500" value="2000" step="100"  id="slider" [ngModel]="mymodel" (ngModelChange)="valueChanged($event)">

@@ -13,7 +13,7 @@ export class ApiService {
   //apiURL = 'http://103.57.220.28:2222/CMD_FILE_MANAGER/domains/pokeshop.cf/public_html'
   httpOption;
   apiURL = 'https://pokeshop98.herokuapp.com'
-  //apiURL = 'http://localhost:3000'
+  //apiURL = 'http://localhost:5500'
   constructor(
     private http: HttpClient
 
@@ -25,7 +25,12 @@ export class ApiService {
       'Content-Type': 'application/json'
     })
   }
-
+  chat(username): Observable<any>{
+    return this.http.post<any>(this.apiURL + '/', {username: username}, this.httpOpt).pipe(
+      catchError(error=>{
+      return this.handleError(error)
+    }))
+  }
   //payment 
   payment(Authorization: string, stripetoken, amount: number, phone, shippingaddr, method): Observable<any> {
     this.httpOption = {
@@ -173,8 +178,8 @@ export class ApiService {
     return this.http.get(this.apiURL + '/product/' + id, this.httpOpt).pipe(
       map(this.extractData), catchError(this.handleError));
   }
-  addProduct(name, desc, price,rating, qty, imgurl, category): Observable<any> {
-    return this.http.post<any>(this.apiURL + '/product/add', {name: name, desc: desc, price: price, rating: rating, qty:qty, imgurl:imgurl, category:category}, this.httpOpt).pipe(
+  addProduct(name, desc, price, qty, imgurl, category): Observable<any> {
+    return this.http.post<any>(this.apiURL + '/product/add', {name: name, desc: desc, price: price, rating: 7, qty:qty, imgurl:imgurl, category:category}, this.httpOpt).pipe(
       catchError(error => {
         return this.handleError(error)
       }));

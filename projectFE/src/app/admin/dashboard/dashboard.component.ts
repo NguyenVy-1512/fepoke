@@ -11,9 +11,9 @@ import * as io from "socket.io-client";
 export class DashboardComponent implements OnInit {
   chart;
   socket;
-  numberOfOnlineUsers: number;
+  numberOfOnlineUsers: number =0;
   constructor() {
-    this.socket = io.connect('http://localhost:3000')
+    this.socket = io.connect('http://localhost:4200')
   }
   ngOnInit() {
     this.socket.on('numberOfOnlineUsers', (numberOOU) => {

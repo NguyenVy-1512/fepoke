@@ -1,25 +1,20 @@
 const mongoose = require('mongoose')
 
-const ratingSchema = new mongoose.Schema({
+const paymentSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },
-    productID: {
+    orderID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
-        required: true
-    },
-    rate: {
-        type: Number,
-        default: 0,
-        max: 10,
+        ref: 'order',
         required: true
     },
     content: {
         type: String,
-        required: false
+        required: false,
+        enum: ['paypal', 'none']
     },
     createdAt: {
         type: Date,
@@ -30,5 +25,5 @@ const ratingSchema = new mongoose.Schema({
 
 })
 
-const Rating = mongoose.model('ratings', ratingSchema)
-module.exports = Rating
+const Payment = mongoose.model('payments', paymentSchema)
+module.exports = Payment

@@ -39,12 +39,13 @@ const productSchema = new mongoose.Schema({
     view: {
         type: Number,
         ref: 'Rating',
-        default: "0"
+        default: "7"
     },
     category: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-    }]
+    }],
+    
 })
 
 function foo(image, fn){

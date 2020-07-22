@@ -60,6 +60,7 @@ import { CommentComponent } from './comment/comment.component';
 import { VerityComponent } from './verity/verity.component';
 import { ResetComponent } from './reset/reset.component';
 import { CartComponent } from './cart/cart.component';
+import { ChatSocketComponent } from './chat-socket/chat-socket.component';
 
 
 const appRoutes: Routes = [
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
   { path: 'verify/:id' , component: VerityComponent},
   { path: 'reset/:id', component: ResetComponent},
   { path: 'cart/:id', component: CartComponent},
+  { path: 'chat', component: ChatSocketComponent},
 ];
 
 @NgModule({
@@ -140,6 +142,7 @@ const appRoutes: Routes = [
     VerityComponent,
     ResetComponent,
     CartComponent,
+    ChatSocketComponent,
     //ChatDialogComponent,  
   ],
   imports: [

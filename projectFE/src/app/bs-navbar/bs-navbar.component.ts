@@ -88,6 +88,7 @@ export class BsNavbarComponent implements OnInit {
       this.data.removelocalstore("token");
       this.data.removelocalstore("id");
       console.log("logout rồi nè");
+      this.router.navigate(['/login']);
     },
       error => {
         this.alertService.error(error);

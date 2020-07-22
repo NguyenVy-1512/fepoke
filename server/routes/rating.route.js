@@ -13,14 +13,15 @@ ratingRoute.post('/', async (req,res)=>{
                 content: req.body.content
             })
             const result = await newRating.save()
-            var rate ;
             const product = await Product.findById(req.body.productID);
+            var rate = 0;
             const rating = await Rating.find({productID: req.body.productID})
             for(var i=0; i < rating.length; i++)
             {
                 rate += rating.rate
             }
             rate = rate/rating.length
+            console.log(rate)
             product.view = rate
             await product.save()
             res.send(result)
@@ -46,6 +47,15 @@ ratingRoute.get('/:id', async(req,res)=>{
     }
 })
 
+ratingRoute.get('/product/:id', async(req,res)=>{
+    try{
+        const rating = await Rating.find({productID: req.params.id})
+        res.status(200).json(rating)
+    } catch (err){
+        res.status(500).json({message: err.message});
+    }
+}) 
+
 ratingRoute.get('/user/:id', async(req,res)=>{
     try{
         const rating = await Rating.find({userID: req.params.id})
@@ -64,14 +74,15 @@ ratingRoute.patch('/:id',getRating, async (req, res)=>{
     }
     try {
         const updaterating = await res.rating.save()
-        var rate = 0 ;
         const product = await Product.findById(res.rating.productID);
+        var rate = 0;
         const rating = await Rating.find({productID: res.rating.productID})
         for(var i=0; i < rating.length; i++)
         {
             rate = rate + rating[i].rate
         }
         rate = rate / rating.length
+        console.log(rate)
         product.view = rate
         await product.save()
         res.json(updaterating)

@@ -2,7 +2,9 @@
 GET http://localhost:3000/user
 
 ###
-GET http://localhost:3000/user/5dd3cfc8b6eb421d546751e6
+GET http://localhost:3000/user/5f0ab66ebfb73a156c61059e
+Content-Type: application/json
+
 ###
 DELETE http://localhost:3000/user/5dc915119f007d27782d1bfa
 ### SignUp
@@ -11,14 +13,15 @@ Content-Type: application/json
 
 {
     "name": "33333",
-    "email": "test@api.nhe",
-    "password": "wwww",
+    "email": "levy151298@gmail.com",
+    "password": "01653659895",
     "role": "user",
-    "phone": ""
+    "phone": "01653659895",
+    "address": "ktx khu b"
 }
 
 ### verify
-POST http://localhost:3000/verify/84383593e9ac9a44f9aa5ca1c66d4d1e
+POST http://localhost:3000/user/verify/5f12562cda0e430440567c36
 Content-Type: application/json
 
 ### login
@@ -30,14 +33,29 @@ Content-Type: application/json
     "password": "01653659895"
 }
 ###profile
-GET http://localhost:3000/user/profile
+GET http://localhost:3000/user/profile/5f12d0fb0f8cd411d4a6189f
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGFiNjZlYmZiNzNhMTU2YzYxMDU5ZSIsImlhdCI6MTU5NDczNTAzNX0.HLXrmN4A9r8C-BqYgY04SQZ8Tk-yXL6dH9iwnEOa1OY
 
 ###logout
 POST http://localhost:3000/user/logout
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDFhMWMyY2FiM2I5MjUwOGUwZjI0OSIsImlhdCI6MTU3Nzg2MDkxN30.rHabaUASxiiBuVDuYP4rksFkcQDSPmzktEEqHOvccUs
+
+###reset
+POST  http://localhost:3000/user/resetpassword
+Content-Type: application/json
+
+{
+    "email": "levy151298@gmail.com"
+}
+
+###reset
+POST  http://localhost:3000/user/reset/5f12d0fb0f8cd411d4a6189f
+Content-Type: application/json
+
+{
+    "password": "01653659895"
+}
 
 ###logoutall
 POST http://localhost:3000/user/logoutall
@@ -95,7 +113,7 @@ GET http://localhost:3000/product/v2/normal
 Content-Type: application/json
 
 ###
-GET http://localhost:3000/product/5e0cd9e93272931d00d386d0
+GET http://localhost:3000/product/5e0cec0bc0ef1b255c6f10f4
 Content-Type: application/json
 ###
 PATCH  http://localhost:3000/product/5e0cd9e93272931d00d386d0
@@ -105,7 +123,7 @@ Content-Type: application/json
     "desc": "sản phẩm mới của chúng tôi"
 }
 ###
-DELETE  http://localhost:3000/product/5dd420b39420db2280e327df
+DELETE  http://localhost:3000/product/5e0cddf0c0ef1b255c6f10c3
 Content-Type: application/json
 
 ###
@@ -134,7 +152,7 @@ POST http://localhost:3000/user/resetpassword
 Content-Type: application/json
 
 {
-    "email": ""
+    "email": "levychuyenvan@gmail.com"
 }
 
 ### get category by id
@@ -155,9 +173,9 @@ POST http://localhost:3000/order/add
 Content-Type: application/json
 
 {
-    "productid": "5e0cd9e93272931d00d386d0",
-    "quantity": 2,
-    "userid": "5f0ab66ebfb73a156c61059e",
+    "productid": ["5e0cec0bc0ef1b255c6f10f4"],
+    "quantity": [ 1 ],
+    "userid": "5f140b3ef2c61d2b648395f8",
     "phone": "0353659895",
     "address": "ktx khu b",
     "email": "levychuyenvan@gmail.com"
@@ -187,15 +205,19 @@ Content-Type: application/json
     "content": "đẹp nha, hihi"
 }
 ### get rating by id
-Get http://localhost:3000/rating/5f0d7e82261aa231b8a6ee90
+Get http://localhost:3000/rating/5e0cec0bc0ef1b255c6f10f4
 Content-Type: application/json
 
 ### get rating by user
 Get http://localhost:3000/rating/user/5f0ab66ebfb73a156c61059e
 Content-Type: application/json
 
+### get rating by product
+Get http://localhost:3000/rating/product/5e0ceb2ec0ef1b255c6f10f2
+Content-Type: application/json
+
 ### patch rating
-PATCH  http://localhost:3000/rating/5f0d7e82261aa231b8a6ee90
+PATCH  http://localhost:3000/rating/5f16f8c055c37700302b3365
 Content-Type: application/json
 
 {

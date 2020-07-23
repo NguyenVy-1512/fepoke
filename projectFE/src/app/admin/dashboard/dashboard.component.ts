@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import * as io from "socket.io-client";
+//import * as io from "socket.io-client";
 
 @Component({
   selector: 'dashboard',
@@ -10,15 +10,15 @@ import * as io from "socket.io-client";
 })
 export class DashboardComponent implements OnInit {
   chart;
-  socket;
+  //socket;
   numberOfOnlineUsers: number =0;
   constructor() {
-    this.socket = io.connect('http://localhost:4200')
+    
   }
   ngOnInit() {
-    this.socket.on('numberOfOnlineUsers', (numberOOU) => {
-      this.numberOfOnlineUsers = numberOOU
-    })
+    //this.socket.on('numberOfOnlineUsers', (numberOOU) => {
+    //  this.numberOfOnlineUsers = numberOOU
+    //})
 
     this.chart = new Chart('canvas', {
       type: 'bar',

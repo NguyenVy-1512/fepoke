@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, DataService } from 'src/app/shared';
 import { User, order, products } from 'src/app/_models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'orders-list',
@@ -8,19 +10,28 @@ import { User, order, products } from 'src/app/_models';
   styleUrls: ['./orders-list.component.css']
 })
 export class OrdersListComponent implements OnInit {
-
+  paid: boolean;
   user: User;
   token: string;
   orders: order[];
   p: products;
   products: products[]= [];
   prductid: string;
+  id: string;
+  editProfileForm: FormGroup;
   constructor(
     private productsServices: ApiService,
-    private data: DataService
+    private data: DataService,
+    private fb: FormBuilder, private modalService: NgbModal
   ) { }
 
   ngOnInit() {
+    this.editProfileForm = this.fb.group({
+      firstname: [''],
+      lastname: [''],
+      username: [''],
+      email: ['']
+     });
     this.data.currentuser.subscribe(user => this.user = user);
     this.data.currenttoken.subscribe(token => this.token = token);
     console.log(this.token);
@@ -45,11 +56,44 @@ export class OrdersListComponent implements OnInit {
         this.p = res;
     })  
   }
-  cancel(id){
-    this.data.currenttoken.subscribe(token => this.token = token);
-    this.productsServices.deleteOrder(id).subscribe(res =>
-      {
-        console.log("hủy thành công");
-      })
+  // cancel(id){
+  //   this.data.currenttoken.subscribe(token => this.token = token);
+  //   this.productsServices.deleteOrder(id).subscribe(res =>
+  //     {
+  //       console.log("hủy thành công");
+  //     })
+  // }
+ 
+  openModal(targetModal, user) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static'
+    });
+    this.paid = user.paid;
+    this.id = user._id
+    this.editProfileForm.patchValue({
+      firstname: user._id,
+      username: user.userid,
+      email: user.total
+     });
+  }
+  get f() { return this.editProfileForm.controls; }
+    onSubmit() {
+     this.modalService.dismissAll();
+     console.log("res:", this.editProfileForm.getRawValue());
+    }
+    cancel(){
+      this.data.currenttoken.subscribe(token => this.token = token);
+      this.productsServices.deleteOrder(this.id).subscribe(res =>
+        {
+          console.log("hủy thành công");
+        })
+      }
+     confirm(){
+      this.productsServices.confirmorder(this.id).subscribe(res =>
+        {
+        console.log(" thành công");
+        
+        })
   }
 }

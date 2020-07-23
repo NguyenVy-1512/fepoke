@@ -3,6 +3,19 @@ const productRoute = express.Router()
 const Product = require('../models/product.model')
 const Category = require('../models/category.model')
 
+productRoute.get('/total', async(req,res)=>{
+    try {
+        var total =0;
+        const productList = await Product.find()
+        for(var i=0; i<productList.length; i++){
+            total = total + productList[i].qty
+        }
+        res.status(200).json(total);
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+})
+
 productRoute.get('/v1', async (req,res)=>{
     try {
         const productList = await Product.find()

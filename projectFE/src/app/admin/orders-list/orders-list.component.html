@@ -24,8 +24,9 @@
                         <tr>
                             <th style="width: 25%;">Order Number</th>
                             <th style="width: 20%;">Summary</th>
-                            <th style="width: 30%;">User ID</th>
-                            <th style="width: 15%;">Price</th>
+                            <th style="width: 25%;">User ID</th>
+                            <th style="width: 10%;">Price</th>
+                            <th style="width: 10%;">Confirm</th>
                             <th style="width: 10%;">Actions</th>
                         </tr>
                     </thead>
@@ -40,23 +41,80 @@
                                 </td>
                                 <td>{{order.userid}}</td>
                                 <td>{{order.total}}</td>
+                                <td>{{order.paid}}</td>
                             <td style="font-size: 16px;">
-                                <span class="fas fa-check" style="color: yellowgreen; padding-left: 5px;"> </span>
-                                <!--span data-toggle="modal" data-target="#myModal2" class="fas fa-times" style="color: #e73939; padding-left: 15px;"> </--span-->
+                                <span (click)="openModal(eProfileModal, order)" data-toggle="modal" data-target="#eProfileModal" class="fas fa-check" style="color: yellowgreen; padding-left: 5px;"> </span>
+                                <!--span (click)="openModal(editProfileModal, order)" data-toggle="modal" data-target="#editProfileModal" class="fas fa-times" style="color: #e73939; padding-left: 15px;"> </span-->
                             </td>
                         </tr>
-                        <div id="myModal2" class="modal">
-                            <div class="popup">
-                                    <i class="far fa-question-circle fa-3x"></i>
-                                    <h4 class="are">Are you sure?</h4>
-                                    <p class="quote">This order will be canceled!</p>
-                                    <div class="close"  data-dismiss="modal"><i class="fas fa-times"></i></div>
-                                    <div class="content">
-                                       <button (click)= "cancel(order._id)" data-dismiss="modal" class="btnn">CONFIRM</button>
-                                    </div>
+                    </table>
+                    <!--div id="editProfileModal" class="modal">
+                        <div class="popup">
+                                <i class="far fa-question-circle fa-3x"></i>
+                                <h4 class="are">Are you sure?</h4>
+                                <p class="quote">This order will be canceled!</p>
+                                <div class="close"  data-dismiss="modal"><i class="fas fa-times"></i></div>
+                                <div class="content">
+                                   <button (click)= "cancel(order._id)" data-dismiss="modal" class="btnn">CONFIRM</button>
                                 </div>
                         </div>
-                    </table>
+                    </div>
+                    <div id="eProfileModal" class="modal">
+                        <div class="popup">
+                                <i class="far fa-question-circle fa-3x"></i>
+                                <h4 class="are">CONFIRM</h4>
+                                <p class="quote">This order will be confirm!</p>
+                                <div class="close"  data-dismiss="modal"><i class="fas fa-times"></i></div>
+                                <div class="content">
+                                   <button (click)= "confirm(order._id)" data-dismiss="modal" class="btnn">CONFIRM</button>
+                                </div>
+                        </div>
+                    </div-->
+                    <ng-template #eProfileModal let-modal>
+                        <div class="modal-header">
+                         <h5 class="modal-title" id="editProfileLabel">Order Info</h5>
+                         <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                         </button>
+                        </div>
+                        
+                        <div class="modal-body">
+                         <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+                          <div class="form-group row">
+                           <label for="firstname" class="col-sm-4 col-form-label">Orderid</label>
+                           <div class="col-sm-8">
+                            <input type="text" class="form-control" formControlName="firstname" id="firstname">
+                           </div>
+                          </div>
+                          <!--div class="form-group row">
+                           <label for="lastname" class="col-sm-4 col-form-label">Product name</label>
+                           <div class="col-sm-8">
+                            <input type="text" class="form-control" formControlName="lastname" id="lastname">
+                           </div>
+                          </div-->
+                          <div class="form-group row">
+                           <label for="username" class="col-sm-4 col-form-label">Userid</label>
+                           <div class="col-sm-8">
+                            <input type="text" class="form-control" formControlName="username" id="username">
+                           </div>
+                          </div>
+                          <div class="form-group row">
+                           <label for="email" class="col-sm-4 col-form-label">Total</label>
+                           <div class="col-sm-8">
+                            <input type="email" class="form-control" formControlName="email" id="email">
+                           </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="action" class="col-sm-4 col-form-label">Action: {{paid}}</label>
+                           </div>
+                          <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+                           <button type="submit" class="btn btn-primary" routerLink="/admin/orders" (click)="cancel()">Delete</button>
+                           <button type="submit" class="btn btn-primary" routerLink="/admin/orders" (click)="confirm()">Confirm</button>
+                          </div>
+                         </form>
+                        </div>
+                       </ng-template>
                 </div>
             </div>
         </div>    

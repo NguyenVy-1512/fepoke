@@ -504,6 +504,83 @@ input:focus {
     display: none;
 }
 
+.popup {
+    margin: 100px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 5px;
+    width: 300px;
+    height: 230px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .popup .close {
+    position: absolute;
+    font-size: 20px;
+    text-decoration: none;
+    color: #d3d3d3;
+    opacity: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 37px;
+    width: 37px;
+    top: 0;
+    right: 0;
+    padding-top: 10px;
+    padding-right: 10px;  
+    cursor: pointer;
+  }
+  
+  .popup .close:hover {
+    color: #242424;
+  }
+  
+  .popup .content {
+   justify-content: center;
+  }
+  .fa-check {
+    position: relative;
+    margin-top: 4px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    color: yellowgreen;
+  }
+  
+  .far {
+    position: absolute;
+    margin-top: -8px;
+    color: yellowgreen;
+    animation: spin;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+   animation-timing-function: linear;
+  }
+  .bn {
+    background: #242424;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    height : 55px;
+  }
+  
+  .bn:focus {
+    box-shadow: 0 5px 0 0 yellowgreen;
+  }
+  
+  .back {
+    font-size: 14px;
+    margin-top: 25px;
+  }
+
 @media only screen and (max-width:800px) {
 
     #big {

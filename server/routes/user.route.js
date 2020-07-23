@@ -49,7 +49,7 @@ userRoute.post('/signup', async (req, res)=>{
                     res.status(500).json({message: err.message})
                 }
                  const transporter = nodeMailer.createTransport({service: 'Gmail', auth: {user: process.env.MAILER_EMAIL, pass: process.env.MAILER_PASS}})
-                 const mailOptions = { from: 'robot', to: user.email, subject: 'Account Verification', text: 'Please verify your account by clicking the link: \nhttp:\/\/' + 'localhost:4200' + '\/verify\/' + user._id + '\n'}
+                 const mailOptions = { from: 'robot', to: user.email, subject: 'Account Verification', text: 'Please verify your account by clicking the link: \nhttps:\/\/' + 'pokeshop.cf' + '\/verify\/' + user._id + '\n'}
                  transporter.sendMail(mailOptions, (err)=>{
                      if(err){
                          return res.send({msg: err.message})

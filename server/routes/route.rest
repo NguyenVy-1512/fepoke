@@ -148,7 +148,7 @@ Content-Type: application/json
 }
 
 ### reset password
-POST http://localhost:3000/user/resetpassword
+POST http://localhost:5500/user/resetpassword
 Content-Type: application/json
 
 {
@@ -166,6 +166,9 @@ GET  http://localhost:3000/category/cate/Normal
 Content-Type: application/json
 ### get category
 GET  http://localhost:3000/category
+Content-Type: application/json
+
+POST http://localhost:3000/order/vetifi/5f1720e1e8141521000c8c60
 Content-Type: application/json
 
 ### post order

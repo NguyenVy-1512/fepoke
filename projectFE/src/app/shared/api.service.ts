@@ -159,6 +159,13 @@ export class ApiService {
         return this.handleError(error)
       }));
   }
+  deleteuser(id): Observable<any> {
+    return this.http.delete(this.apiURL + '/user/' + id, this.httpOpt)
+    .pipe(
+      catchError(error => {
+        return this.handleError(error)
+      }));
+  }
 
   getCategory(id): Observable<category> {
     return this.http.get<category>(this.apiURL + '/category/' + id, this.httpOpt).pipe(
@@ -201,6 +208,11 @@ export class ApiService {
 
     return this.http.post<any>(this.apiURL + '/order/add', {productid: productid, userid: userid, quantity: quantity, phone: phone, address: address, email: email
     } ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  confirmorder(id): Observable<any>{
+    return this.http.post<any>(this.apiURL + '/order/vetifi/'+ id,this.httpOpt).pipe(
      catchError(this.handleError));
   }
 
@@ -262,6 +274,21 @@ export class ApiService {
     return this.http.patch<any>(this.apiURL + '/rating/'+id ,{rate: rate, content: content},this.httpOpt).pipe(
      catchError(this.handleError));
   }
+
+  addmess( UserID, message, name): Observable<any> {
+    return this.http.post<any>(this.apiURL + '/noty', { UserID: UserID, message: message, name: name} ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  getmess(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/noty' ,this.httpOpt).pipe(
+     catchError(this.handleError));
+  }
+
+  getmessbyuser(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/noty/user/'+id ,this.httpOpt).pipe(
+     catchError(this.handleError));
+    }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

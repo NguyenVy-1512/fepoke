@@ -9,5 +9,6 @@ export class order {
     productid:string[];
     total: number;
     name: string[];
+    paid: boolean;
     
 }

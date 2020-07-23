@@ -13,11 +13,10 @@
             <table class="table" id="table">
                 <thead>
                     <tr>
-                        <th style="width: 20%;">Code</th>
-                        <th style="width: 20%;">Email</th>
+                        <th style="width: 25%;">Code</th>
+                        <th style="width: 25%;">Email</th>
                         <th style="width: 15%;">Name</th>
-                        <th style="width: 10%;">PHONE</th>
-                        <th style="width: 25%;">Orders</th>
+                        <th style="width: 15%;">PHONE</th>
                         <th style="width: 10%;">Actions</th>
                     </tr>
                 </thead>
@@ -28,11 +27,8 @@
                         <td>{{u.name}}</td>
                         <td>{{u.phone}}</td>
 
-                        <td>
-                            <p *ngFor="let id of u.orderIDs">{{id}} </p>
-                        </td>
-
-                        <td>{{u.isVerified}}</td>
+                        <td>{{u.isVerified}} 
+                            <span (click)="openModal(eProfileModal, u)"  class="fas fa-check" style="color: yellowgreen; padding-left: 5px;"> </span></td>
                     </tr>
                 </tbody>
             </table>
@@ -40,14 +36,47 @@
     </div>
 </div>
 
-<div id="myModal" class="modal">
-    <div class="popup">
-        <i class="far fa-question-circle fa-3x"></i>
-        <h4 class="are">Are you sure?</h4>
-        <p class="quote">This user will be blocked!</p>
-        <div class="close" data-dismiss="modal"><i class="fas fa-times"></i></div>
-        <div class="content">
-            <button onclick="cancel()" data-dismiss="modal" class="btnn">CONFIRM</button>
-        </div>
+<ng-template #eProfileModal let-modal>
+    <div class="modal-header">
+     <h5 class="modal-title" id="editProfileLabel">User info</h5>
+     <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+     </button>
     </div>
-</div>
+    
+    <div class="modal-body">
+     <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+       <label for="firstname" class="col-sm-4 col-form-label">Name</label>
+       <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="firstname" id="firstname">
+       </div>
+      </div>
+      <div class="form-group row">
+       <label for="lastname" class="col-sm-4 col-form-label">phone</label>
+       <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="lastname" id="lastname">
+       </div>
+      </div>
+      <div class="form-group row">
+       <label for="username" class="col-sm-4 col-form-label">address</label>
+       <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="username" id="username">
+       </div>
+      </div>
+      <div class="form-group row">
+       <label for="email" class="col-sm-4 col-form-label">email</label>
+       <div class="col-sm-8">
+        <input type="email" class="form-control" formControlName="email" id="email">
+       </div>
+      </div>
+      <div class="form-group row">
+        <label for="action" class="col-sm-4 col-form-label">vetify: {{paid}}</label>
+       </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+       <button type="submit" class="btn btn-primary" routerLink="/admin/dashboard" (click)="cancel()">Delete</button>
+      </div>
+     </form>
+    </div>
+   </ng-template>

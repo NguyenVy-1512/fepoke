@@ -4,16 +4,7 @@ let express = require('express'),
     mongoose = require('mongoose'),
     cors = require('cors'),
     bodyParser = require('body-parser');
-    //socker io
-
-//streamchat
-// const { StreamChat } = require('stream-chat');
-
-//  const serverSideClient = new StreamChat(
-//      process.env.STREAM_API_KEY,
-//      process.env.STREAM_APP_SECRET
-//    );
-   //connect database
+    
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE_URL_HEROKU, {
     useNewUrlParser: true,
@@ -24,6 +15,7 @@ mongoose.connect(process.env.DATABASE_URL_HEROKU, {
 }, err => {
     console.log('Could not connected to database: '+ err)
 })
+const port = process.env.PORT || 5500;
 const ratingRoute = require('./routes/rating.route')
 const userRoute = require('./routes/user.route')
 const verifyRoute = require('./routes/verify.route')
@@ -32,35 +24,54 @@ const orderRoute = require('./routes/order.route')
 const uploadRoute = require('./routes/upload.route')
 const categoryRoute = require('./routes/category.route')
 const paymentRoute = require('./routes/payment.route')
+const chatRoute = require('./routes/chat.route')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }))
-app.use(cors());
+const whitelist = ['http://localhost:4200', 'https://pokeshop.cf'];
+const corsOptions = {
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin))
+      return callback(null, true)
+
+      callback(new Error('Not allowed by CORS'));
+  }
+}
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS, PATCH");
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+  });
+
+
 app.use('/user',userRoute)
 app.use('/verify',verifyRoute)
 app.use('/product',productRoute)
 app.use('/order',orderRoute)
-// app.use('/upload', uploadRoute)
+app.use('/noty', chatRoute)
 app.use('/category',categoryRoute)
 app.use('/rating',ratingRoute)
 app.use('/payment',paymentRoute)
-
-
-const port = process.env.PORT || 5500;
+//app.use(express.static(__dirname + '/public'));
+app.use(cors(corsOptions));
 const server = app.listen(port, ()=>{
     console.log('Connected to port '+port)
 })
+var http = require('https').Server(app) 
 
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", 'https://pokeshop98.herokuapp.com');
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-  });
-var http = require('https').createServer(app);
-//http.listen(serve);
-var io = require('socket.io')(http);
+//http.listen(0)
+var io = require('socket.io').listen(server)//,  {
+//     log: false,
+//     agent: false,
+//     origins: '*:*',
+// });
+//io.set('origins', 'https://pokeshop.cf');
 io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('message', (msg) => {

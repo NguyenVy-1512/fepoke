@@ -26,6 +26,21 @@ orderRoute.get('/user/:id', async(req,res)=>{
         res.status(500).json({message: err.message});
     }
 })
+orderRoute.post('/vetifi/:id', getOrders, async(req,res)=>{
+    try{
+        for(var i=0; i< res.order.productid.length; i++)
+        {
+            const product = await Product.findById(res.order.productid[i])
+            product.qty = product.qty - res.order.quantity[i];
+            await product.save();
+        }
+        res.order.paid = true;
+        const confirm = res.order.save()
+        res.status(200).json(confirm)
+    }catch(err){
+        res.status(500).json({message: err.message});
+    }
+})
 orderRoute.post('/add',async (req,res)=>{
     try{
         var total = 0;
@@ -57,11 +72,14 @@ orderRoute.post('/add',async (req,res)=>{
 })
 
 orderRoute.patch('/:id', getOrders, async (req, res)=>{
-    if(req.body.name !=null){
-        res.product.productname = req.body.name
+    if(req.body.phone !=null){
+        res.order.phone = req.body.phone
     }
-    if(req.body.quantity !=null){
-        res.product.quantity = req.body.quantity
+    if(req.order.address !=null){
+        res.order.address = req.body.address
+    }
+    if(req.body.email != null){
+        res.order.email = req.body.email
     }
     try {
         const updateOrder = await res.order.save()

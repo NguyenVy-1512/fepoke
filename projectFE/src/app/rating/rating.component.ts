@@ -80,6 +80,7 @@ export class RatingComponent implements OnInit {
       }
       if(checkrate == false)
       {
+        checkrate = true;
       this.Service.addrate(this.user._id, this.p, this.rate, this.f.content.value).subscribe(res=>{
         console.log('thanh cong');
         this.a[1] = res._id;

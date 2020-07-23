@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit{
       private data: DataService,
       private cookieService: CookieService,
       ) {
-        //this.socket = io(this.url)
       }
 
   ngOnInit() {
@@ -72,12 +71,11 @@ export class LoginComponent implements OnInit{
                 this.data.currentuser.subscribe(user => this.user = user);
                 if(res.user.role == 'admin'){
                 this.data.changinadmin(true);
-               // this.socket.close()
+               
                 this.router.navigate(['/admin/dashboard']);
                 }
                 else {
                     this.data.changinadmin(false);
-                   // this.socket.emit('userLogin', this.user.name)
                     this.router.navigate(['/']);
                 }
                 //   this.cookieService.set('userID', res.user._id);

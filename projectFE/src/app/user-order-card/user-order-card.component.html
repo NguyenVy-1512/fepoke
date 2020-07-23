@@ -12,10 +12,12 @@
                         <p>12/12/19</p>
                     </div>
                 </div>
-                <div class="bulk">
+                <div [ngSwitch]="order.paid" class="bulk">
                     <label for="">ORDER STATUS</label>
-                    <p class="s a">Confirmed <span class="tim">12/12/2019 - 12:45AM</span> </p>
-                    <p class="s a">Packed <span class="tim"> 12/12/2019 - 12:50AM</span></p>
+                    <p *ngSwitchCase="true"class="s a">Confirmed <span class="tim">12/12/2019 - 12:45AM</span> </p>
+                    <p *ngSwitchCase="false"class="s a" style="font-weight: 600;">Confirmed <span class="tim">12/12/2019 - 12:45AM</span> </p>
+                    <p *ngSwitchCase="true" class="s a" style="font-weight: 600;">Packed <span class="tim"> 12/12/2019 - 12:50AM</span></p>
+                    <p *ngSwitchCase="false" class="s a" >Packed <span class="tim"> 12/12/2019 - 12:50AM</span></p>
                     <p class="s a">Delivering <span class="tim">12/12/2019 - 1:00AM</span> </p>
                     <p class="s a">Delivered <span class="tim">12/13/2019 - 12:45AM</span> </p>
                 </div>

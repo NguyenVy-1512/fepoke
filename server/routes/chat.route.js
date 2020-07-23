@@ -1,33 +1,51 @@
 const User = require('../models/user.model')
-app.post('/join', async (req, res) => {
-    const { username } = req.body;
-    const token = serverSideClient.createToken(username);
-    try {
-      await serverSideClient.updateUser(
-        {
-          id: username,
-          name: username,
-        },
-        token
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  
-    const admin = { id: 'admin' };
-    const channel = serverSideClient.channel('team', 'talkshop', {
-      name: 'Talk Shop',
-      created_by: admin,
-    });
-  
-    try {
-      await channel.create();
-      await channel.addMembers([username, 'admin']);
-    } catch (err) {
-      console.log(err);
-    }
-  
-    return res
-      .status(200)
-      .json({ user: { username }, token, api_key: process.env.STREAM_API_KEY });
-  });
+const Noti = require('../models/notification.model')
+const express = require('express')
+const chatRoute = express.Router()
+chatRoute.get('/', async (req,res)=>{
+  try {
+      const chat = await Noti.find()
+      res.json(chat)
+  } catch (err) {
+      res.status(500).json({message: err.message})
+  }
+})
+chatRoute.get('/:id', getChat, async (req, res)=>{
+  res.status(200).json(res.chat)
+})
+chatRoute.get('/user/:id', async (req,res)=>{
+  try {
+      const chat = await Noti.find({UserID: req.params.id})
+      res.json(chat)
+  } catch (err) {
+      res.status(500).json({message: err.message})
+  }
+})
+chatRoute.post('/', async (req,res)=>{
+  try {
+          const newChat = new Noti({
+              UserID: req.body.UserID,
+              message: req.body.message,
+              name: req.body.name
+          })
+          const result = await newChat.save()
+          res.json(result)
+  } catch (error) {
+      res.status(400).json({message: error.message})
+  }
+})
+async function getChat(req, res, next){
+  let chat
+  try {
+      chat = await Noti.findById(req.params.id)
+      if (chat == null){
+          return res.status(404).json({message: `Can't find user!!!`})
+      }
+  } catch (err) {
+      return res.status(500).json({message: err.message})   
+  }
+
+  res.chat = chat
+  next()
+}
+module.exports = chatRoute

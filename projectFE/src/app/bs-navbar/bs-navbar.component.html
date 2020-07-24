@@ -72,19 +72,16 @@
     </a>
     <div [ngSwitch]="loading">
     <button *ngSwitchCase="false" class="btn" data-toggle="modal" data-target="#myModal">
-      chat
+      <img src="https://i.imgur.com/8AijTfK.gif" alt="" style="position: absolute; left:6px; top: 4px; width: 15px;">
       </button>
       <button *ngSwitchCase="true" class="btn" routerLink="/chat">
-        chat
+        <img src="https://i.imgur.com/8AijTfK.gif" alt="" style="position: absolute; left:6px; top: 4px; width: 15px;">
         </button>
     </div>
     <div id="myModal" class="modal">
           <div  class="popup">
               <i class="fas fa-check"></i>
            <i class="far fa-circle fa-3x"></i>
-          <i class="far fa-circle fa-3x f1"></i>
-          <i class="far fa-circle fa-3x f2"></i>
-          <i class="far fa-circle fa-3x f3"></i>
           <button class="bn back" routerLink="/login" data-dismiss="modal" >Đăng nhập kênh chat</button>
           </div>
       </div>

@@ -1,7 +1,8 @@
+
 .chat-messages-show-container{
     background: #c3c3c3;
-    height: 400px;
     display: flex;
+    height: 500px;
     flex-direction: column;
     overflow: auto;
  }
@@ -21,8 +22,51 @@
     margin: 29px 30px;
     flex:2
  }
- .chat-messages-create-button {
-    height: 50px;
-    margin: auto 40px;
-    width: 100px;
- }
+
+ .btnn {
+   height: 50px;
+   width: 100px;
+   background: #242424;
+   color: white;
+   position: relative;
+   overflow: hidden;
+   margin: auto 40px;
+   border: none;
+   outline: none;
+  }
+  
+  .btnn:after{
+   content: "SEND";
+   position: absolute;
+   color: white;
+   left: 50%;
+   margin-left: -14px;
+   top: 50%;
+   margin-top: -10px;
+   transition: 0.2s;
+  }
+  
+  .btnn::before{
+   font-family: "Font Awesome 5 Free";
+   content: "\f1d8";
+   position: absolute;
+   color: white;
+   font-size: 25px;
+   left: 50%;
+   margin-left: -12px;
+   top: 50%;
+   margin-top: 35px;
+   transition: 0.2s;
+  }
+  
+  .btnn:hover:after {
+   margin-top: -50px;
+  }
+  
+  .btnn:hover::before {
+   margin-top: -17px;
+  }
+
+
+
+ 

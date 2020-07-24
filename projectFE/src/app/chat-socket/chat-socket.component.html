@@ -1,14 +1,14 @@
 <div class="chat-messages">
-    <div class="chat-messages-show-container">
-      <div *ngFor = "let m of mess; index as i" >
-        <li *ngIf="m.UserID !== name" style="background: white; padding: 15px 30px;margin: 10px;">{{m.name}}: {{m.message}}</li>
-        <li *ngIf="m.UserID === name" style="background: white; padding: 15px 30px;margin: 10px; text-align: right;"> {{m.message}} : {{m.name}} </li>
-      </div>
-      <ul class="chat-messages-show-list" id ="message-list">
-      </ul>
+  <div class="chat-messages-show-container">
+    <div *ngFor = "let m of mess; index as i" >
+      <li *ngIf="m.UserID !== name" style="background: white; padding: 15px 30px;margin: 10px;">{{m.name}}: {{m.message}}</li>
+      <li *ngIf="m.UserID === name" style="background: white; padding: 15px 30px;margin: 10px; text-align: right;"> {{m.message}} : {{m.name}} </li>
     </div>
-    <div class="chat-messages-create-container"> 
-      <input class="chat-messages-create-input" type="text" [(ngModel)]="message" (keyup.enter)="SendMessage()" >
-      <button  class="chat-messages-create-button" (click)="SendMessage()"> Send </button>
-    </div>
- </div>
+    <ul class="chat-messages-show-list" id ="message-list">
+    </ul>
+  </div>
+  <div class="chat-messages-create-container"> 
+    <input class="chat-messages-create-input" type="text" [(ngModel)]="message" (keyup.enter)="SendMessage()" >
+    <button  class="btnn" (click)="SendMessage()"></button>
+  </div>
+</div>

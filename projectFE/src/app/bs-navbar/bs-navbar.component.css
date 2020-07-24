@@ -14,6 +14,26 @@ border: 2px solid #212529;
 margin-top: 2px;
 }
 
+.btn {
+    width: 30px;
+    margin-left: 20px;
+    height: 24px;
+    border: 2px solid #111;
+    border-radius: 20px;
+    position: relative;
+}
+
+.btn::after{
+    position: absolute;
+    content: " ";
+    width: 2px;
+    height: 9px;
+    background-color: #d93a3a;
+    transform: rotate(-45deg);
+    right: 7px;
+    bottom: -8px;
+}
+
 .cart {
     position: relative;
 }
@@ -280,7 +300,6 @@ right: 5px;
 background: linear-gradient(to right, #d93a3a 50%, transparent 50%, transparent);
 transition: 0.2s;
    }
-
    .drod-togg:before {
     position: absolute;
     width: 22px;
@@ -292,13 +311,11 @@ transition: 0.2s;
     background: linear-gradient(to left, #d93a3a 55%, transparent 50%, transparent);
     transition: 0.2s;
    }
-
    
    .dropdown:hover .drod-togg:after {
  transform: rotate(45deg);
  bottom: -20px;
    }
-
       
    .dropdown:hover .drod-togg:before {
     transform: rotate(-45deg);

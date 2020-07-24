@@ -76,7 +76,7 @@
                         <input id="btn-input" type="text" class="form-control input-sm chat_input"
                             placeholder="muốn gì ..." [(ngModel)]="formValue" (keyup.enter)="sendMessage()" />
                         <span class="input-group-btn">
-                            <button class="btn btn-black" id="btn-chat">Send</button>
+                            <button (click) = "sendMessage()"  class="btn btn-black" id="btn-chat">Send</button>
                         </span>
                     </div>
                 </div>

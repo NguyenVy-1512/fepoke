@@ -24,7 +24,7 @@
       <form [formGroup]="searchForm" id="big">
         <div class="container cuc">
           <a class="search-button" (click)="onsearch()"> <i class="fas fa-minus"></i> </a>
-          <input formControlName="search" name="search" type="search" class="search" placeholder="Search">
+          <input (keyup.enter)="onsearch()" formControlName="search" name="search" type="search" class="search" placeholder="Search">
         </div>
       </form>
       <div [ngSwitch]="loading" class="log">

@@ -113,7 +113,7 @@ GET http://localhost:3000/product/v2/normal
 Content-Type: application/json
 
 ###
-GET http://localhost:3000/product/5e0cec0bc0ef1b255c6f10f4
+GET http://localhost:5500/product/5e0ce865c0ef1b255c6f10e8
 Content-Type: application/json
 ###
 PATCH  http://localhost:3000/product/5e0cd9e93272931d00d386d0
@@ -167,8 +167,8 @@ Content-Type: application/json
 ### get category
 GET  http://localhost:3000/category
 Content-Type: application/json
-
-POST http://localhost:3000/order/vetifi/5f1720e1e8141521000c8c60
+### xác nhận đơn
+POST http://localhost:5500/order/vetifi/5f18770c768e4b36980ab491
 Content-Type: application/json
 
 ### post order
@@ -182,6 +182,16 @@ Content-Type: application/json
     "phone": "0353659895",
     "address": "ktx khu b",
     "email": "levychuyenvan@gmail.com"
+}
+
+### patch order
+PATCH http://localhost:5500/order/5f191760421aa30030b58474
+Content-Type: application/json
+
+{
+    "phone": "0353659895",
+    "address": "ktx khu b",
+    "email": "levy151298@gmail.com"
 }
 
 ### get order by id
@@ -227,3 +237,20 @@ Content-Type: application/json
     "rate": 9,
     "content": "đẹp, hihi"
 }
+
+### post message
+POST http://localhost:5500/noty
+Content-Type: application/json
+
+{
+    "UserID": "5f0ab66ebfb73a156c61059e",
+    "message": "chào shop"
+}
+
+### get mess by user
+Get http://localhost:5500/noty/user/5f0ab66ebfb73a156c61059e
+Content-Type: application/json
+
+### get mess
+Get http://localhost:5500/noty/
+Content-Type: application/json

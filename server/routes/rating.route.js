@@ -16,11 +16,12 @@ ratingRoute.post('/', async (req,res)=>{
             const product = await Product.findById(req.body.productID);
             var rate = 0;
             const rating = await Rating.find({productID: req.body.productID})
+            console.log(rating)
             for(var i=0; i < rating.length; i++)
             {
-                rate += rating.rate
+                rate = rate + rating[i].rate
             }
-            rate = rate/rating.length
+            rate = rate / rating.length
             console.log(rate)
             product.view = rate
             await product.save()

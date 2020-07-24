@@ -1,7 +1,7 @@
-const User = require('../models/user.model')
-const Noti = require('../models/notification.model')
 const express = require('express')
 const chatRoute = express.Router()
+const User = require('../models/user.model')
+const Noti = require('../models/notification.model')
 chatRoute.get('/', async (req,res)=>{
   try {
       const chat = await Noti.find()
@@ -28,8 +28,8 @@ chatRoute.post('/', async (req,res)=>{
               message: req.body.message,
               name: req.body.name
           })
-          const result = await newChat.save()
-          res.json(result)
+          await newChat.save()
+          res.json(newChat)
   } catch (error) {
       res.status(400).json({message: error.message})
   }

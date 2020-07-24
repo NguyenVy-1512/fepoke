@@ -25,6 +25,7 @@ export class ChatSocketComponent implements OnInit {
    }
 
   ngOnInit() {
+    
     this.data.currentuser.subscribe(user => this.user = user)
     this.sevice.getmess().subscribe(res=>{
       this.mess = res;
@@ -42,7 +43,7 @@ export class ChatSocketComponent implements OnInit {
     this.a[1] = this.user.name
     console.log(this.user.name)
     this.name = this.user._id
-  this.setupSocketConnection();
+    this.setupSocketConnection();
 }
 setupSocketConnection() {
   this.socket = io(SOCKET_ENDPOINT);
@@ -61,7 +62,6 @@ setupSocketConnection() {
 }
 SendMessage() {
   this.data.currentuser.subscribe(user => this.user = user)
-
   this.sevice.addmess(this.user._id, this.message, this.user.name).subscribe(res=>{
   })
   this.a[0] = this.message;

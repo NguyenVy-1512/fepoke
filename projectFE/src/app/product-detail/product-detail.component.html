@@ -1,7 +1,7 @@
 <div class="container-fluid" (ngOninit)="ngOnInit()" >
 
     <ul class="breadcrumb">
-        <button class="back">BACK</button>
+        <a class="back">BACK</a>
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/category">category</a></li>
         <li>{{p.name}}</li>
@@ -43,21 +43,18 @@
                         </div>
                         <div class="row">
                         <button class="btn add-to-cart-btn"  (click) = "addtocard()"></button>
-                        <button class="b" data-toggle="modal" data-target="#myModal">Dánh giá</button>
-                        <div id="myModal" class="modal">
+                        <button class="b" data-toggle="modal" data-target="#myModall">Dánh giá</button>
+                        <div id="myModall" class="modal">
                             <div [ngSwitch]="loading">
                                 <div  class="popup" *ngSwitchCase="false">
-                                    <i class="fas fa-check"></i>
-                                 <i class="far fa-circle fa-3x"></i>
-                                <i class="far fa-circle fa-3x f1"></i>
-                                <i class="far fa-circle fa-3x f2"></i>
-                                <i class="far fa-circle fa-3x f3"></i>
-                                <button class="bn back" routerLink="/login" data-dismiss="modal" >Đăng nhập để đánh giá</button>
+                                 <i class="fas fa-exclamation fa-3x" style="color: #d93a3a"></i>
+                            
+                                <button class="bn" routerLink="/login" data-dismiss="modal" >Đăng nhập để đánh giá</button>
                                 </div>
                             <div *ngSwitchCase="true">
                             <div class="c">
                                 <rating [p] = "productid" (valueChange1)="notifyMessage2($event)">  </rating>
-                                <button class="fas fa-times" data-dismiss="modal" (change) = "valueChanged1($event)"
+                                <button class="fas fa-times xoa" data-dismiss="modal" (change) = "valueChanged1($event)"
                                 [(ngModel)]="mymodel"></button>
                             </div>
                             </div>

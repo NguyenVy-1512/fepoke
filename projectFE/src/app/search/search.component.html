@@ -22,19 +22,22 @@
     <div class="container" id="navbar">
         <div class="box-3">
             <div class="sub">
-                <div class="flex-container f3" style="font-weight: 600; ">
-                    <div class="cuc">
-                        <p class="tooltiptext">Price Range</p>
-                        <span>$1000 - $</span>
-                        <span style="color: #d63939;" id="value">2</span>
-                        <span style="margin-right: 12px">500</span>
+                <div class="row" style="font-weight: 600; border: 1px solid #ececec;">
+                    <div class="col-3" style="border-right: 1px solid #ececec; padding-top: 20px;">
+                        <p class="tooltiptext">PRICE RANGE</p>
+                        <h3 style="margin-top: -10px">$<span class="giad">{{range1}}</span> - $<span class="giad">{{range}}</span></h3>
                     </div>
-                    <p>Min</p>
+                    <div class="col-9" style="padding-top: 20px; padding-left: 20px;">
+                        <div class="row" style="padding-left:20px;">
+                            <p>Min</p>
                     <input type="range" class="slider" min="1000" max="2500" value="2000" step="100"  id="slider"  [ngModel]="mymodel" (ngModelChange)="valueChanged1($event)">
-                    ${{range1}}
-                    <p>Max</p>
+                    {{range1}}</div>
+
+                    <div class="row" style="padding-left:20px;">
+                        <p>Max</p>
                     <input type="range" class="slider" min="1000" max="2500" value="2000" step="100"  id="slider" [ngModel]="mymodel" (ngModelChange)="valueChanged($event)">
-                    ${{range}}
+                    {{range}}</div>
+                </div>
             
                 </div>
             </div>

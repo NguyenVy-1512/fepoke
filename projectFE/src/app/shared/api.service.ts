@@ -12,8 +12,8 @@ export class ApiService {
   //Define API
   //apiURL = 'http://103.57.220.28:2222/CMD_FILE_MANAGER/domains/pokeshop.cf/public_html'
   httpOption;
-  apiURL = 'https://pokeshop98.herokuapp.com'
-  //apiURL = 'http://localhost:5500'
+  //apiURL = 'https://pokeshop98.herokuapp.com'
+  apiURL = 'http://localhost:5500'
   constructor(
     private http: HttpClient
 

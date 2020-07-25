@@ -44,7 +44,7 @@ export class CategoryComponent implements OnInit {
     this.products =[];
     this.products = $event[0];
     this.totalproduct = $event[1];
-    this.category.name = $event[2];
+    this.name = $event[2];
     console.log(this.products);
     console.log(this.category);
     console.log(this.totalproduct);

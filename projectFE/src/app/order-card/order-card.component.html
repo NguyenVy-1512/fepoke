@@ -11,17 +11,19 @@
                     <p>12/12/19</p>
                 </div-->
             </div>
-            <div class="bulk">
+            <div [ngSwitch]="order.paid" class="bulk" >
                 <label for="">ORDER STATUS</label>
                 <p class="dash">___</p>
 
                 <label class="track s">Confirmed
-                    <input type="checkbox" checked="checked">
+                    <input *ngSwitchCase="false" type="checkbox" checked="checked">
+                    <input *ngSwitchCase="true" type="checkbox">
                     <span class="checkmark"></span><span class="tim">12/12/2019 - 12:45AM</span>
                 </label>
 
                 <label class="track s">Packed
-                    <input type="checkbox">
+                    <input *ngSwitchCase="false" type="checkbox">
+                    <input *ngSwitchCase="true" type="checkbox"  checked="checked">
                     <span class="checkmark"></span><span class="tim">12/12/2019 - 12:45AM</span>
                 </label>
 

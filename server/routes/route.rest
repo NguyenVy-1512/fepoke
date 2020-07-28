@@ -208,13 +208,13 @@ Get http://localhost:3000/order
 Content-Type: application/json
 
 ### post rate
-POST http://localhost:3000/rating
+POST http://localhost:5500/rating
 Content-Type: application/json
 
 {
     "productID": "5e0cdea3c0ef1b255c6f10c6",
     "rate": 6,
-    "userID": "5f0ab66ebfb73a156c61059e",
+    "userID": "5f16f62c55c37700302b335f",
     "content": "đẹp nha, hihi"
 }
 ### get rating by id

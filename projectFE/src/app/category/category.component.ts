@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
   category: category;
   name: string
   cate: string[];
-  totalproduct: number= 0;
+  totalproduct: number = 0;
 
 /* i là số sản phẩm được lọc theo category */
   constructor( private productsServices: ApiService,
@@ -25,19 +25,62 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.products = []
+    this.totalproduct = 0;
     this.name = this.route.snapshot.url[1].path;
-    this.productsServices.getProductByCategories(this.name).subscribe((data) => {
-      console.log(data);
-    this.category = data;
-    for(var i=0; i< data.products.length; i++)
-    {
-    this.totalproduct = this.totalproduct+1;
-    this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
-    this.products.push(res);
-    })
+    switch(this.name){
+      case "All-Types":
+        {
+          this.productsServices.getProducts().subscribe((data) => {
+            this.products = data;
+            this.products = this.products;
+            for(var i = 0; i< data.length; i++)
+            {
+              this.totalproduct = this.totalproduct +1;
+            }
+            });
+            break;
+        }
+      case "All-Types-increase":
+        {
+          this.productsServices.getProducts().subscribe((data) => {
+            this.products = data;
+            this.products.sort(function(a, b){return a.price - b.price})
+            for(var i = 0; i< data.length; i++)
+            {
+              this.totalproduct = this.totalproduct +1;
+            }
+            });
+            break;
+        }
+        case "All-Types-reduced":
+          {
+            this.productsServices.getProducts().subscribe((data) => {
+              this.products = data;
+              this.products.sort(function(a, b){return a.price - b.price})
+              this.products.reverse()
+              for(var i = 0; i< data.length; i++)
+              {
+                this.totalproduct = this.totalproduct +1;
+              }
+            })
+            break;
+          }
+      default:
+        {
+          this.productsServices.getProductByCategories(this.name).subscribe((data) => {
+            console.log(data);
+            this.category = data;
+            for(var i=0; i< data.products.length; i++)
+            {
+              this.totalproduct = this.totalproduct+1;
+              this.productsServices.getProduct(data.products[i]).subscribe((res)=>{
+              this.products.push(res);
+              })
+            }
+          });
+          break;
+        }
     }
-
-    });
 
   }
   notifyMessage1($event) {

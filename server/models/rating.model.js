@@ -25,7 +25,7 @@ const ratingSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: Date.now,
-        expires: 1800 //30p, 3h 10800
+        expireAfterSeconds :  3600
     }
 
 })

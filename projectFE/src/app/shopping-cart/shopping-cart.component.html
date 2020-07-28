@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <button (click) ="ckeckout()" style="margin-top: 10px;" class="btn">Check Out</button>
+      <button *ngIf="totalproduct > 0" (click) ="ckeckout()" style="margin-top: 10px;" class="btn">Check Out</button>
       <img src="https://i.imgur.com/QRH4239.png" alt="" style="width: 100%;" *ngIf="totalproduct == 0">
       <div class="omg" *ngIf="totalproduct == 0">
         <a routerLink="/" class="btn btn-back">Continue Browsing</a>

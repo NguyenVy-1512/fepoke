@@ -26,7 +26,8 @@ chatRoute.post('/', async (req,res)=>{
           const newChat = new Noti({
               UserID: req.body.UserID,
               message: req.body.message,
-              name: req.body.name
+              name: req.body.name,
+            
           })
           await newChat.save()
           res.json(newChat)
